@@ -5,8 +5,7 @@ import Welcome from './pages/welcome/welcome';
 import Home from './pages/home/home';
 
 import './App.scss';
-
-
+//import { withTheme } from '../../frontend/src/themes/Theme';
 
 class App extends Component { 
   render() {

@@ -2,7 +2,7 @@ import React from 'react'
 import {FormControlLabel, FormGroup, Switch} from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
-function Brightness() {
+const Brightness = () => {
     const classes = useStyles();
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);

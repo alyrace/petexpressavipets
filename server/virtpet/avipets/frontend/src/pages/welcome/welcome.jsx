@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
-import Login from '../../components/login/Login';
+import Login from '../../components/login/login.component';
 import {Grid, makeStyles, Paper} from '@material-ui/core';
 import imgwelcomelg  from '../../images/aviwelcomebackground.png';
 

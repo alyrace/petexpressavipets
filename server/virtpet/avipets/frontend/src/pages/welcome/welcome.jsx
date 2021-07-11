@@ -4,12 +4,8 @@ import '../welcome/welcome.scss';
 
 function Welcome() {
         return (
-            <div className="container-fluid welcome_page_background">
-                <div className="row main_content text-center login_card">
-                    <div className="row text-center main_login">
-                        <Login />
-                    </div>
-                </div>         
+            <div className="welcome_page_background">
+                <Login />
             </div>
         )
 };

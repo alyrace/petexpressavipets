@@ -1,65 +1,106 @@
 $welcome_image: url('../../images/aviwelcomebackground.png');
 
-$extra_small: 600px;
+$black_d: #F5DEB3;
+
+$mini: 320px;
+$mid_mini: 321px;  
+$extra_small: 411px;
+$mid_small: 412px;
 $small: 600px;
+$mid_medium: 601px;
 $medium: 768px;
 $large: 992px;
 $extra_large: 1200px;
 
-.main_content {
-    width: 50%;
-    border-radius: 20px;
-    box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
-    display: flex;
-}
-.main_login {
-    align-items: flex-end;
-    margin: 20em auto;
-    background:blueviolet;
-}
 
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: $extra_small) {
-    .main-content{
-        width: 70%;
+@media only screen 
+and (max-width: $mini) {
+    .welcome_page_background {
+        font-family: 'Carter One', cursive;
+        min-height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        background-image: linear-gradient(to top, #04aeb3, #289fa4, #369195, #3e8386, #437577);
     }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: $small) {
-    .main-content {
-        width: 70%;
+@media only screen
+    and (min-width: $mid_mini)
+    and (max-width: $extra_small) {
+        .welcome_page_background {
+            font-family: 'Carter One', cursive;
+            min-height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            background-image: linear-gradient(to top, #04aeb3, #289fa4, #369195, #3e8386, #437577);
+        }
     }
+
+@media only screen
+    and (min-width: $mid_small)
+    and (max-width: $small) { 
+        .welcome_page_background {
+            font-family: 'Carter One', cursive;
+            min-height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            background-image: linear-gradient(to top, #04aeb3, #289fa4, #369195, #3e8386, #437577);
+        }
+    }
+
+@media only screen  
+    and (min-width: $mid_medium) 
+    and (max-width: $medium) {
+        .welcome_page_background {
+            font-family: 'Carter One', cursive;
+            min-height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            background-image: linear-gradient(to top, #04aeb3, #289fa4, #369195, #3e8386, #437577);
+        }
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: $medium) {
-    .main-content {
-        width: 70%;
+    .welcome_page_background {
+        font-family: 'Carter One', cursive;
+        min-height: 100vh;
+        background: $welcome_image;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    
     }
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: $large) {
-    .main_content {
-        width: 50%;
-    }
-    
+    .welcome_page_background {
+        font-family: 'Carter One', cursive;
+        min-height: 100vh;
+        background: $welcome_image;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
 }
 
+}
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: $extra_large) {
-    .main_content {
-        width: 50%;
+/* ----------- Non-Retina Screens ----------- */
+@media only screen 
+    and (min-width: $extra_large) 
+    and (-webkit-min-device-pixel-ratio: 1) {
+        .welcome_page_background {
+            font-family: 'Carter One', cursive;
+            color: white;
+            min-height: 100vh;
+            background: $welcome_image;
+            background-size: cover;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        
+        }
     }
-    
-}
-
-.welcome_page_background {
-    min-height: 100vh;
-    background: $welcome_image;
-    background-size: cover;
-    background-repeat: no-repeat;
-
-}

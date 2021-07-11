@@ -1,6 +1,68 @@
-.login_container {
-    z-index: 10;
-    position: absolute;
-    margin-top: 50%;
+$bisque: #FFEBCD;
+$white: #FFFFFF;
 
+$extra_small: 600px;
+$small: 600px;
+$medium: 768px;
+$large: 992px;
+$extra_large: 1200px;
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: $extra_small) {
+    .login_card {
+        background: $bisque;
+        margin-bottom: 20px;
+        padding: 20px 20px;
+        border: solid black 10px;
+    }
+    .login_form {
+        background: $white;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: $small) {
+    .login_card {
+        background: $bisque;
+        margin-bottom: 20px;
+        padding: 40px 40px;
+    }
+    .login_form {
+        background: $white;
+        margin-top: 20px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: $medium) {
+    .login_card {
+        background: $bisque;
+    }
+    .login_form {
+        background: $white;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: $large) {
+    .login_card {
+        background: $bisque;
+    }
+    .login_form {
+        background: $white;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: $extra_large) {
+    .login_card {
+
+    }
+    .login_form {
+        background: $white;
+    }
+    .pet_card {
+     justify-content: center;
+     align-items: center;   
+    }
 }

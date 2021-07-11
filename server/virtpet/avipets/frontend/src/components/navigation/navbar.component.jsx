@@ -1,17 +1,26 @@
-import React, {useState} from 'react';
-import clsx from 'clsx';
-import {AppBar, CssBaseline, Drawer, IconButton, makeStyles, Toolbar, Typography, useTheme} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import CancelIcon from'@material-ui/icons/Cancel';
+import React from 'react';
+//import clsx from 'clsx';
+//import {AppBar, CssBaseline, Drawer, IconButton, makeStyles, Toolbar, Typography, useTheme} from '@material-ui/core';
+//import MenuIcon from '@material-ui/icons/Menu';
+//import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+//import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+//import CancelIcon from'@material-ui/icons/Cancel';
 
+const Navbar = () => {}
+  <div>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        <a href="#" className="navbar-brand">AVI PETS</a>
+      </div>
+    </nav>
+  </div>
+export default Navbar;
 
-//==============================================================
+/*==============================================================
 const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
-    root: {
+    root: {n
       display: 'flex',
     },
     appBar: {
@@ -109,3 +118,4 @@ const Navbar = () => {
 }
 
 export default Navbar;
+*/

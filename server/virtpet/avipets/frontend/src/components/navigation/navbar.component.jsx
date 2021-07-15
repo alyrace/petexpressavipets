@@ -1,121 +1,40 @@
 import React from 'react';
-//import clsx from 'clsx';
-//import {AppBar, CssBaseline, Drawer, IconButton, makeStyles, Toolbar, Typography, useTheme} from '@material-ui/core';
-//import MenuIcon from '@material-ui/icons/Menu';
-//import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-//import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-//import CancelIcon from'@material-ui/icons/Cancel';
-
-const Navbar = () => {}
-  <div>
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container-fluid">
-        <a href="#" className="navbar-brand">AVI PETS</a>
-      </div>
-    </nav>
-  </div>
-export default Navbar;
-
-/*==============================================================
-const drawerWidth = 300;
-
-const useStyles = makeStyles((theme) => ({
-    root: {n
-      display: 'flex',
-    },
-    appBar: {
-      transition: theme.transitions.create(['margin', 'width'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-    },
-    appBarShift: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      transition: theme.transitions.create(['margin', 'width'], {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginRight: drawerWidth,
-    },
-    title: {
-  
-    },
-    hide: {
-      display: 'none',
-    },
-    drawer: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
-    drawerPaper: {
-      width: drawerWidth,
-    },
-    drawerHeader: {
-      display: 'flex',
-      alignItems: 'center',
-      padding: theme.spacing(0, 1),
-      // necessary for content to be below app bar
-      ...theme.mixins.toolbar,
-      justifyContent: 'flex-start',
-    },
-    menu: {
-      flexGrow: 1,
-    },
-  }));
-  
-//=============================================================
+import Logo from '../../images/logo1.png';
 
 const Navbar = () => {
-    const classes = useStyles();
-    const theme = useTheme();
-    const [open, setOpen] = useState(false);
-  
-    const handleDrawerOpen = () => {
-      setOpen(true);
-    };
-  
-    const handleDrawerClose = () => {
-      setOpen(false);
-    };
     return (
-        <div className={classes.root}>
-          <CssBaseline />
-          <AppBar position="fixed"
-            className={clsx(classes.appBar, {
-            [classes.appBarShift]: open,
-            })}>
-                <Toolbar>
-                <IconButton color="inherit"
-                        aria-label="open drawer"
-                        edge="end"
-                        onClick={handleDrawerOpen}
-                        className={clsx(open && classes.hide)}
-                        flexGrow= '1'
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                  <Typography variant="h6" noWrap className={classes.title}>
-                      AVI Pets
-                    </Typography>  
-                </Toolbar>
-            </AppBar> 
-            <Drawer className={classes.drawer}
-                variant="persistent"
-                anchor="right"
-                open={open}
-                classes={{
-                paper: classes.drawerPaper,
-                }}
-            >
-              <div className={classes.drawerHeader}>
-                <IconButton onClick={handleDrawerClose}>
-                  {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <CancelIcon color='secondary' />}
-                </IconButton>
-              </div>
-            </Drawer> 
-        </div>
-    )
-}
+      <div>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container">
+              <a className="navbar-brand" href="#">
+              <img src={Logo} alt="avi pets" />
+              </a>
+              <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+              </button>
+            <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <i class="fas fa-home"></i>
+                  <a className="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="#">Link</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+              </ul>
+              <form className="d-flex mb-2">
+                <input className="form-control me-1" type="search" placeholder="Search" aria-label="Search" />
+                <button className="btn btn-outline-danger me-4" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </div>
+    );
+  };
 
 export default Navbar;
-*/
+

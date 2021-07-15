@@ -2,20 +2,12 @@ $bisque: #F47878;
 $white: #FFFFFF;
 
 
-$mini: 320px;
-$mid_mini: 321px;  
-$extra_small: 411px;
-$mid_small: 412px;
-$small: 600px;
-$mid_medium: 601px;
+$extra_small: 280px;
+$small: 412px;
 $medium: 768px;
-$mid_large: 769px;
 $large: 992px;
 $extra_large: 1200px;
 
-.btn {
-    margin-top: 5px; 
-}
 
 .iconify {
     font-size: 2em;
@@ -23,69 +15,88 @@ $extra_large: 1200px;
 
 
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (min-width: $mini) {
-    .main_content {
-        width: 70%;
-        height: 50vh;
-        background: $white;
-        border-radius: 20px;
-        box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin: 4em auto;
-    }
-    .login_form {
-        background: $white;
-        border-radius: 0px 0px 20px 20px;
-        padding-bottom: 20px;
-        text-align: left;
-        
-    }
-    .pet_card {
-        justify-content: center;
-        align-items: center;
-        background: $bisque;
-        margin-bottom: 10px;
-        border-radius: 20px 20px 40px 40px;   
-       }
-    }
-
-@media only screen
-    and (min-width: $mid_mini)
-    and (max-width: $extra_small) {
-        .login_form {
-            background: $white;
-        }
-        .main_content {
-            width: 70%;
-            height: 50vh;
-            background: $white;
-            border-radius: 20px;
-            box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            margin: 5em auto;
-        }
-        .pet_card {
-            padding: 20px;
-            justify-content: center;
-            align-items: center; 
-            background: $bisque;
-            margin-bottom: 10px;
-            border-radius: 20px 20px 40px 40px; 
-           }
-    }
-
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen 
-    and (min-width: $mid_small)
+    and (min-width: $extra_small)
     and (max-width: $small) {
+        button {
+            text-transform: uppercase;
+            letter-spacing: 6px;
+
+        } 
+        h1 {
+            color: $white;
+            font-family: 'Carter One', cursive; 
+          }
+        h3 {
+            text-transform: uppercase;
+        }
+        label {
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+        .login_form {
+            text-transform: uppercase;
+        }
+        .main_content {
+            width: 100vh;
+            height: 100vh;
+            background: $white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            padding: 100px;
+        }
+        .pet_card { 
+            background: $bisque;
+            border-radius: 20px;
+            color: $white;
+            margin: 10px;
+            font-family: 'Carter One', cursive; 
+        }
+        .welcome_back {
+            text-transform: uppercase;
+            color: black;
+            padding: 10px;
+            margin: 5em auto;
+        }
+    }
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen
+    and (min-width: 412px) 
+    and (max-width: $medium) {  
+        button {
+            text-transform: uppercase;
+            letter-spacing: 6px;
+
+        } 
+        h1 {
+            color: $white;
+            font-family: 'Carter One', cursive; 
+          }
+        h3 {
+            text-transform: uppercase;
+        }
+        img .pet:hover {
+            animation: up-and-down .4s cubic-bezier(.3,.36,1,1.84) forwards infinite alternate .1s;
+        }
+        @keyframes up-and-down {
+            0%{
+                transform: translateY(0px);
+            }
+            100% {
+                transform: translateY(-1px);
+            }
+        }
+        label {
+            padding: 2px;
+        }
         .login_form {
             background: $white;
+            color:black;
+            font-family: 'Poppins', sans-serif;
         }
         .main_content {
             width: 70%;
@@ -97,29 +108,73 @@ $extra_large: 1200px;
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            margin: 8em auto;
-            padding: 20px;
+            margin: 10em auto;
+            padding: 30px;
         }
         .pet_card {
-            justify-content: flex-start;
-            align-items: center; 
             background: $bisque;
-            margin: auto;
+            margin-bottom: 10px;
             border-radius: 20px;
+            margin: 10px;  
+            color: $white;
+            font-family: 'Carter One', cursive;  
         }
     }
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen
-    and (min-width: $mid_medium) 
-    and (max-width: $medium) 
-    and (max-height: 812px) {
-        .login_form {
-            background: $white;
+/* Medium devices (laptops/desktops, 992px and up) */
+
+@media only screen 
+    and (min-width: $medium) 
+    and (max-width: $large){
+        button {
+            text-transform: uppercase;
+            letter-spacing: 6px;
+        } 
+        h1 {
+            color: $white;
+            font-family: 'Carter One', cursive; 
+          }
+        h3 {
+            text-transform: uppercase;
+            letter-spacing: 8px;
         }
+        img .pet:hover {
+            animation: up-and-down .5s cubic-bezier(.3,.36,1,1.84) forwards infinite alternate .1s;
+        }
+        @keyframes up-and-down {
+            0%{
+                transform: translateY(0px);
+            }
+            15%{
+                transform: translateY(-3px);
+            }
+            33% {
+                transform: translateY(-6px);
+            }
+            45% {
+                transform: translateY(-9px);
+            }
+            66% {
+                transform: translateY(-12px);
+            }
+            80%{
+                transform: translateY(-16px);
+            }
+            100% {
+                transform: translateY(-20px);
+            }
+        }    
+        label {
+            padding: 14px;
+        }
+        .login_form {
+            border-top: solid $white 10px ;
+            color:black;
+            font-family: 'Poppins', sans-serif;
+        } 
         .main_content {
-            width: 70%;
-            height: 80vh;
+            width: 80%;
+            height: 50vh;
             background: $white;
             border-radius: 20px;
             box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
@@ -127,82 +182,149 @@ $extra_large: 1200px;
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            margin: 15em auto;
+            margin: 14em auto;
             padding: 30px;
         }
         .pet_card {
             justify-content: center;
-            align-items: center;
+            align-items: center; 
             background: $bisque;
             margin-bottom: 10px;
             border-radius: 20px;
-            margin: auto;   
+            margin: auto;
+            color: $white;
+            font-family: 'Carter One', cursive;
+            padding: 100px 40px;
         }
-    }
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen 
-    and (min-width: $mid_large) 
-    and (max-width: 1999px){
-    .login_form {
-        background: $white;
-    }
-    .main_content {
-        width: 60%;
-        height: 50vh;
-        background: $white;
-        border-radius: 20px;
-        box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin: 12em auto;
-        padding: 30px;
-    }
-    .pet_card {
-        padding: 60px;
-        justify-content: center;
-        align-items: center; 
-        background: $bisque;
-        margin-bottom: 10px;
-        border-radius: 20px;
-        margin: auto;
-       }
-}
-
-@media only screen and (min-width: $large) {
-    .login_form {
-        background: $white;
-    }
-    .main_content {
-        width: 60%;
-        height: 50vh;
-        background: $white;
-        border-radius: 20px;
-        box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin: 12em auto;
-        padding: 30px;
-    }
-    .pet_card {
-        justify-content: center;
-        align-items: center; 
-        background: $bisque;
-        margin: auto;
-        border-radius: 20px;
-
-       }
+    and (min-width: $large)
+    and (max-width: 1999px) {
+        button {
+            text-transform: uppercase;
+            letter-spacing: 6px;
+        } 
+        h1 {
+            color: $white;
+            font-family: 'Carter One', cursive; 
+        }
+        h3 {
+            text-transform: uppercase;
+        }
+        img .pet:hover {
+            animation: up-and-down .5s cubic-bezier(.3,.36,1,1.84) forwards infinite alternate .1s;
+        }
+        @keyframes up-and-down {
+            0%{
+                transform: translateY(0px);
+            }
+            15%{
+                transform: translateY(-3px);
+            }
+            33% {
+                transform: translateY(-6px);
+            }
+            45% {
+                transform: translateY(-9px);
+            }
+            66% {
+                transform: translateY(-12px);
+            }
+            80%{
+                transform: translateY(-16px);
+            }
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+        label {
+            padding: 6px;
+        }
+        .login_form {
+            border-top: solid $white 10px ;
+            color:black;
+            font-family: 'Poppins', sans-serif;
+        } 
+        .main_content {
+            width: 60%;
+            height: 50vh;
+            background: $white;
+            border-radius: 20px;
+            box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: 12em auto;
+            padding: 30px;
+        }
+        .pet_card {
+            justify-content: center;
+            align-items: center; 
+            background: $bisque;
+            margin: auto;
+            border-radius: 20px;
+            color: $white;
+            font-family: 'Carter One', cursive;
+            padding: 100px 40px;
+        }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 /* ----------- Non-Retina Screens ----------- */
 @media only screen 
     and (min-width: $extra_large) 
-    and (-webkit-min-device-pixel-ratio: 1) {    
+    and (-webkit-min-device-pixel-ratio: 1) {
+        button {
+            text-transform: uppercase;
+            letter-spacing: 6px;
+
+        } 
+        h1 {
+            color: $white;
+            font-family: 'Carter One', cursive;
+            letter-spacing: 2px; 
+          }
+        h3 {
+            text-transform: uppercase;
+        }
+        img .pet:hover {
+            animation: up-and-down .5s cubic-bezier(.3,.36,1,1.84) forwards infinite alternate .1s;
+        }
+        @keyframes up-and-down {
+            0%{
+                transform: translateY(0px);
+            }
+            15%{
+                transform: translateY(-3px);
+            }
+            33% {
+                transform: translateY(-6px);
+            }
+            45% {
+                transform: translateY(-9px);
+            }
+            66% {
+                transform: translateY(-12px);
+            }
+            80%{
+                transform: translateY(-16px);
+            }
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+        label {
+            padding: 14px;
+        }
+        .login_form {
+            border-top: solid $white 10px ;
+            color:black;
+            font-family: 'Poppins', sans-serif;
+        }
+           
         .main_content {
             width: 50%;
             height: 60vh;
@@ -222,7 +344,8 @@ $extra_large: 1200px;
             background: $bisque;
             border-radius: 20px;
             margin: auto;
-            
+            font-family: 'Carter One', cursive;
+            padding: 140px 40px;
         }
 }
 

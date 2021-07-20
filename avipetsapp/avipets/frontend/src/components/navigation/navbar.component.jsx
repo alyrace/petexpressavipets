@@ -6,7 +6,7 @@ const Navbar = () => {
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container">
-              <a className="navbar-brand" href="#">
+              <a className="navbar-brand" href="/">
               <img src={Logo} alt="avi pets" />
               </a>
               <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">

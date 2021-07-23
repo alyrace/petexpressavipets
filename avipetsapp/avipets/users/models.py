@@ -1,16 +1,17 @@
 from django.db import models
+import uuid
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractUser, AbstractBaseUser, PermissionsMixin, BaseUserManager
 
 
 class UserAccountManager(BaseUserManager):
-    def create_user(self, email, user_name, first_name, last_name, password, **other_fields):
+    def create_user(self, email, username, first_name, last_name, password, **other_fields):
         if not email:
             raise ValueError('Users must have an email address')
 
         email = self.normalize_email(email)
-        user = self.model(email=email, user_name=user_name,
+        user = self.model(email=email, username=username,
                           first_name=first_name, last_name=last_name,
                           password=password, **other_fields)
 
@@ -18,18 +19,18 @@ class UserAccountManager(BaseUserManager):
         user.save()
         return user
 
-    def create_staffuser(self, email, user_name, first_name, last_name, password, **other_fields):
+    def create_staffuser(self, email, username, first_name, last_name, password, **other_fields):
         other_fields.setdefault('is_staff', True)
         other_fields.setdefault('is_active', True)
 
         user = self.create_user(
-            email, user_name, first_name, last_name, password, **other_fields
+            email, username, first_name, last_name, password, **other_fields
         )
 
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, user_name, first_name, last_name, password, **other_fields):
+    def create_superuser(self, email, username, first_name, last_name, password, **other_fields):
         other_fields.setdefault('is_staff', True)
         other_fields.setdefault('is_active', True)
         other_fields.setdefault('is_superuser', True)
@@ -40,7 +41,7 @@ class UserAccountManager(BaseUserManager):
             raise ValueError('Superuser must be assigned to is_superuser=True')
 
         user = self.create_user(
-            email, user_name, first_name, last_name, password, **other_fields)
+            email, username, first_name, last_name, password, **other_fields)
 
         user.save()
 
@@ -55,13 +56,14 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     )
 
     DEPARTMENTS = (
-        ('ACCOUNTANTING', 'Accountanting'),
+        ('ACCOUNTING', 'Accounting'),
         ('COMPLIANCE', 'Compliance/Processing'),
         ('MANAGEMENT', 'Management'),
         ('OPERATIONS', 'Operations'),
         ('PETCARE', 'Petcare'),
         ('SALES', 'Sales'),
         ('SECURITY', '  TSA Security'),
+        ('SITEADMIN', 'Site Admin')
     )
 
     ROLES = (
@@ -71,7 +73,7 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
         ('COMPLIANCE', 'Compliance/Processing'),
         ('COMPLIANCE_LEAD', 'Compliance/Processing Lead'),
         ('COMPLIANCE_TRAINEE', 'Compliance/Processing Trainee'),
-        ('DEV', 'Devloper'),
+        ('DEV', 'Developer'),
         ('DRIVER', 'Driver'),
         ('DRIVER_LEAD', 'Driver Lead'),
         ('DRIVER_TRAINEE', 'Driver Trainee'),
@@ -90,34 +92,38 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
         ('WEBSITE_ADMIN', 'Website Admin')
     )
 
+    _id = models.UUIDField(primary_key=True,
+                           default=uuid.uuid4,
+                           editable=False)
     email = models.EmailField(max_length=255, unique=True)
-    user_name = models.CharField(max_length=255, unique=True)
+    username = models.CharField(max_length=255, unique=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     phone = models.CharField(max_length=20, blank=True)
     office = models.CharField(
         max_length=200, choices=BRANCHES, default='Los Angeles')
-    department = models.TextField(
-        blank=True, choices=DEPARTMENTS, default='Petcare')
+    department = models.CharField(
+        max_length=100, blank=True, choices=DEPARTMENTS, default='Petcare')
     title = models.CharField(max_length=200, choices=ROLES, default='Trainee')
     drivers_license = models.CharField(max_length=20, blank=True)
     emergency_contact = models.CharField(max_length=200)
+    emergency_contact_number = models.CharField(max_length=20, blank=True)
     hire_date = models.DateTimeField(default=timezone.now, blank=True)
     birth_date = models.DateTimeField(default=timezone.now, blank=True)
     sta_number = models.CharField(max_length=200)
     manager = models.CharField(max_length=200)
-    is_manager = models.BooleanField(default=False)
+    is_manager = models.BooleanField(default='False')
     team_lead = models.CharField(max_length=200)
-    is_team_lead = models.BooleanField(default=False)
+    is_team_lead = models.BooleanField(default='False')
     supervisor = models.CharField(max_length=200)
-    supervisor_status = models.BooleanField(default=False)
+    supervisor_status = models.BooleanField(default='False')
     about = models.TextField(_(
         'about'), max_length=500, blank=True)
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['user_name', 'first_name', 'last_name']
+    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
     objects = UserAccountManager()
 
@@ -125,4 +131,4 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
         return self.email
 
     def __str__(self):
-        return self.user_name
+        return self.username

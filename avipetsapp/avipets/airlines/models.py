@@ -1,16 +1,33 @@
 from django.db import models
+import uuid
 from datetime import datetime
 from django.utils.translation import gettext_lazy as _
 from users.models import NewUser
-
-# for images
+#from django_countries.fields import CountryField
+from django_countries.widgets import CountrySelectWidget
 
 
 def upload_to(instance, filename):
-    return 'airlines/{filename}'.format(filename=filename)
+    return 'media/{filename}'.format(filename=filename)
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 
 class Airline(models.Model):
+    class PostObjects(models.Manager):
+        def get_queryset(self):
+            return super().get_queryset() .filter(status='published')
+
+    OPTIONS = (
+        ('draft', 'Draft'),
+        ('published', 'Published'),
+    )
+
     FREQUENCY = (
         ('FREQUENTLY_VISITED', 'Frequently visited'),
         ('RARELY_VISITED', 'Rarely visited')
@@ -37,18 +54,53 @@ class Airline(models.Model):
         ('RIGHT', 'Right hand side'),
         ('SAME', 'Same building')
     )
+    US_STATES = (('AL', 'Alabama'), ('AK', 'Alaska'),
+                 ('AZ', 'Arizona'), ('AR', 'Arkansas'),
+                 ('CA', 'California'), ('CO', 'Colorado'),
+                 ('CT', 'Connecticut'), ('DE', 'Delaware'),
+                 ('DC', 'District of Columbia'),
+                 ('FL', 'Florida'), ('GA', 'Georgia'),
+                 ('HI', 'Hawaii'), ('ID', 'Idaho'),
+                 ('IL', 'Illinois'), ('IN', 'Indiana'),
+                 ('IA', 'Iowa'), ('KS', 'Kansas'),
+                 ('KY', 'Kentucky'), ('LA', 'Louisiana'),
+                 ('ME', 'Maine'), ('MD', 'Maryland'),
+                 ('MA', 'Massachusetts'), ('MI', 'Michigan'),
+                 ('MN', 'Minnesota'), ('MS', 'Mississippi'),
+                 ('MO', 'Missouri'), ('MT', 'Montana'),
+                 ('NE', 'Nebraska'), ('NV', 'Nevada'),
+                 ('NH', 'New Hampshire'), ('NJ', 'New Jersey'),
+                 ('NM', 'New Mexico'), ('NY', 'New York'),
+                 ('NC', 'North Carolina'), ('ND', 'North Dakota'),
+                 ('OH', 'Ohio'), ('OK', 'Oklahoma'),
+                 ('OR', 'Oregon'), ('PA', 'Pennsylvania'),
+                 ('RI', 'Rhode Island'), ('SC', 'South Carolina'),
+                 ('SD', 'South Dakota'), ('TN', 'Tennessee'),
+                 ('TX', 'Texas'), ('UT', 'Utah'),
+                 ('VT', 'Vermont'), ('VA', 'Virginia'),
+                 ('WA', 'Washington'), ('WV', 'West Virginia'),
+                 ('WI', 'Wisconsin'), ('WY', 'Wyoming')
+                 )
 
-    employee = models.ForeignKey(NewUser, on_delete=models.DO_NOTHING)
+    category = models.ForeignKey(
+        Category, on_delete=models.PROTECT, default=1)
+    _id = models.UUIDField(primary_key=True,
+                           default=uuid.uuid4,
+                           editable=False)
+    #employee = models.ManyToManyField(NewUser, on_delete=models.DO_NOTHING)
     slug = models.CharField(max_length=200, unique=True)
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, unique=True)
     airline_code = models.CharField(max_length=10)
     airline_network = models.TextField(blank=True)
     address = models.CharField(max_length=200)
+    pets_flight_options = models.CharField(max_length=100, 
+        choices=FLIGHT_OPTIONS, default='Cargo')
     city = models.CharField(max_length=100, choices=CITIES, default='LAX')
-    state = models.CharField(max_length=100)
-    zipcode = models.CharField(max_length=20)
-    cargo_phone = models.CharField(max_length=20)
-    reservation_phone = models.CharField(max_length=20)
+    state = models.CharField(
+        max_length=100, choices=US_STATES, default='California')
+    zipcode = models.IntegerField()
+    cargo_phone = models.IntegerField()
+    reservation_phone = models.IntegerField()
     description = models.TextField(blank=True)
     has_grass = models.BooleanField(default=True)
     special_instructions = models.TextField(blank=True)
@@ -60,7 +112,7 @@ class Airline(models.Model):
         choices=FREQUENCY, default='Frequently visited')
     onsite_parking = models.BooleanField(default=True)
     have_account = models.BooleanField(default=True)
-    account_number = models.CharField(max_length=20)
+    account_number = models.IntegerField()
     acclimation_needed = models.BooleanField(default=True)
     food_needed = models.BooleanField(default=True)
     photo_of_pet_needed = models.BooleanField(default=True)
@@ -68,12 +120,24 @@ class Airline(models.Model):
     cut_off_deadline = models.TextField(
         blank=True, choices=PORT_LOCATION, default='Same buidling')
     pick_up_delay = models.TextField(
-        blank=True, choices=PORT_LOCATION, default='Same buidling'),
+        blank=True, choices=PORT_LOCATION, default='Same buidling')
     has_loading_ramp = models.BooleanField(default=True)
-    website = models.TextField(blank=True)
+    website = models.URLField(max_length=200)
     crate_inspection_required = models.BooleanField(default=True)
     photo_main = models.ImageField(
-        _("Image"), upload_to=upload_to, default='airlines/default.png')
+        _("Image"), upload_to=upload_to, default='media/default.png')
+    photo_1 = models.ImageField(
+        _("Image"), upload_to=upload_to, default='media/default.png')
+    photo_2 = models.ImageField(
+        _("Image"), upload_to=upload_to, default='media/default.png')
+    photo_3 = models.ImageField(
+        _("Image"), upload_to=upload_to, default='media/default.png')
+    photo_4 = models.ImageField(
+        _("Image"), upload_to=upload_to, default='media/default.png')
+    photo_5 = models.ImageField(
+        _("Image"), upload_to=upload_to, default='media/default.png')
+    photo_6 = models.ImageField(
+        _("Image"), upload_to=upload_to, default='media/default.png')
     # photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     # photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     # photo_3 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
@@ -85,11 +149,23 @@ class Airline(models.Model):
     ok_to_forward_required = models.BooleanField(default=True)
     earliest_book_date = models.CharField(max_length=100)
     breed_restrictions = models.TextField(blank=True)
-    Weather_restrictions = models.BooleanField(default=True)
-    pet_reservations = models.TextField(blank=True)
+    weather_restrictions = models.BooleanField(default=True)
+    pet_reservations_info = models.TextField(blank=True)
     pets_checkin_options = models.CharField(
         max_length=100, choices=FLIGHT_OPTIONS, default='Cargo')
-    last_updated = models.DateTimeField(default=datetime.now, blank=True)
+    #created_at = models.DateTimeField(
+      #  _("Created at"), auto_now_add=False, editable=False)
+    last_updated = models.DateTimeField(_("Updated at"), default=datetime.now)
+    #terminal_number = models.CharField(max_length=50)
+    airline_docs = models.FileField(upload_to=upload_to, null=True)
+    status = models.CharField(
+        max_length=10, choices=OPTIONS, default='published')
+    #country = models.CountrySelectWidget()
+    objects = models.Manager()  # default manager
+    postobjects = PostObjects()  # custom manager
+
+    #class Meta:
+        #ordering = ('-published')
 
     def __str__(self):
         return self.title

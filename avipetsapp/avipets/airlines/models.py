@@ -3,8 +3,7 @@ import uuid
 from datetime import datetime
 from django.utils.translation import gettext_lazy as _
 from users.models import NewUser
-#from django_countries.fields import CountryField
-from django_countries.widgets import CountrySelectWidget
+from django_countries.fields import CountryField
 
 
 def upload_to(instance, filename):
@@ -47,7 +46,7 @@ class Airline(models.Model):
         ('BAGGAGE', 'Baggage'),
         ('CABIN', 'Cabin'),
         ('CARGO', 'Cargo'),
-        ('OPEN', 'OPEN')
+        ('OPEN', 'Open')
     )
     PORT_LOCATION = (
         ('LEFT', 'Left hand side'),
@@ -87,8 +86,8 @@ class Airline(models.Model):
     _id = models.UUIDField(primary_key=True,
                            default=uuid.uuid4,
                            editable=False)
-    #employee = models.ManyToManyField(NewUser, on_delete=models.DO_NOTHING)
-    slug = models.CharField(max_length=200, unique=True)
+    employee = models.ManyToManyField(NewUser)
+    slug = models.CharField(max_length=200, unique_for_date='published')
     title = models.CharField(max_length=200, unique=True)
     airline_code = models.CharField(max_length=10)
     airline_network = models.TextField(blank=True)
@@ -152,20 +151,20 @@ class Airline(models.Model):
     weather_restrictions = models.BooleanField(default=True)
     pet_reservations_info = models.TextField(blank=True)
     pets_checkin_options = models.CharField(
-        max_length=100, choices=FLIGHT_OPTIONS, default='Cargo')
+        max_length=100, choices=FACILITY, default='Cargo')
     #created_at = models.DateTimeField(
       #  _("Created at"), auto_now_add=False, editable=False)
     last_updated = models.DateTimeField(_("Updated at"), default=datetime.now)
-    #terminal_number = models.CharField(max_length=50)
+    terminal_number = models.CharField(blank=True, max_length=50)
     airline_docs = models.FileField(upload_to=upload_to, null=True)
     status = models.CharField(
         max_length=10, choices=OPTIONS, default='published')
-    #country = models.CountrySelectWidget()
+    country = CountryField(null=True, blank_label=('United States of America'))
     objects = models.Manager()  # default manager
     postobjects = PostObjects()  # custom manager
 
-    #class Meta:
-        #ordering = ('-published')
+    class Meta:
+        ordering = ('title',)
 
     def __str__(self):
         return self.title

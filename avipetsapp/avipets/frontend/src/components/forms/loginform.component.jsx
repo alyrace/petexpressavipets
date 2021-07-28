@@ -1,11 +1,28 @@
-import React from "react";
-
-import "../login/login.scss";
-
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+import { login } from "../../actions/auth";
+import "../../sass/login.scss";
 const LoginForm = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { email, password } = formData;
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    login(email, password);
+  };
+
+  
   return (
     <div>
-      <form className="login_form">
+      <form className="login_form" onSubmit={(e) => onSubmit(e)}>
         <div className="row">
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center welcome_back">
             <h3>Welcome back</h3>
@@ -17,11 +34,14 @@ const LoginForm = () => {
             Username
           </label>
           <input
-            type="text"
-            name="username"
-            id="username"
+            type="email"
+            name="Email"
+            id="email"
             className="form-control"
-            placeholder="Username"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => onChange(e)}
+            required
           />
         </div>
         <div className="form-group">
@@ -35,6 +55,9 @@ const LoginForm = () => {
             id="password"
             className="form-control"
             placeholder="Password"
+            value={password}
+            onChange={(e) => onChange(e)}
+            minLength="10"
           />
         </div>
         <div className="form-group form-check">

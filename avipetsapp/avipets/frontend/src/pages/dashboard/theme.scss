@@ -1,0 +1,22 @@
+$mainColor: #15202B;
+$secondaryColor: #192734;
+$borderColor: #164D56;
+$mainText: #fff;
+$secondaryText: #eeeeee;
+$themeDotBorder: #FFF;
+$previewBg: #000000;
+$previewShadow: #111921;
+$buttonColor: #17a2b8;
+    
+
+.theme-dot{    
+    transition: 0.3s;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin: 5px;
+    border: 2px solid $themeDotBorder;
+    box-shadow: -1px 1px 3px -1px black;
+    cursor: pointer;
+    background-color: #fff;
+}    

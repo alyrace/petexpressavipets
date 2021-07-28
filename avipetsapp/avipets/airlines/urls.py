@@ -1,13 +1,13 @@
 from django.urls import path
-from django.conf import settings
-from .views import AirlineList, AirlineDetail
+from .views import AirlineList, AirlineDetail, AdminAirlineDetail, CreateAirline, EditAirline, DeleteAirline
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name="index.html")),
-    path('', AirlineList.as_view()),
+    path('', AirlineList.as_view(), name='airlineslist'),
     path('<slug>', AirlineDetail.as_view()),
-    #path('search', views.search, name='search'),
-    # path('view_csv'), views.csv, name='views_csv'),
-    # path('view_pdf'), views.pdf, name='views_pdf')
+     # Post Admin URLs
+    path('admin/create/', CreateAirline.as_view(), name='createairline'),
+    path('admin/edit/postdetail/<int:pk>/', AdminAirlineDetail.as_view(), name='admindetailairline'),
+    path('admin/edit/<int:pk>/', EditAirline.as_view(), name='editairline'),
+    path('admin/delete/<int:pk>/', DeleteAirline.as_view(), name='deleteairline'),
 ]

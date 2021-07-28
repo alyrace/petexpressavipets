@@ -35,7 +35,27 @@ def airline_pdf(request):
     # add lines of text
 
 
-class CreateAiriline(APIView):
+class AirlineList(generics.ListAPIView):
+    queryset = Airline.objects.order_by('-title')
+    permission_classes = [IsAuthenticated]
+    serializer_class = AirlineSerializer
+    lookup_field = 'slug'
+
+class AirlineDetail(generics.RetrieveAPIView):
+
+    serializer_class = AirlineDetailSerializer
+    queryset = Airline.objects.all()
+
+    def get_object(self, queryset=None, **kwargs):
+        item = self.kwargs.get('pk')
+        return get_object_or_404(Airline, slug=item)
+
+class AdminAirlineDetail(generics.RetrieveAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = Airline.objects.all()
+    serializer_class = AirlineDetailSerializer
+
+class CreateAirline(APIView):
     permission_classes = [IsAuthenticated]
     parser_classes = [MultiPartParser, FormParser]
 
@@ -49,36 +69,13 @@ class CreateAiriline(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class AirlineList(generics.ListAPIView):
-    queryset = Airline.objects.order_by('-title')
-    permission_classes = [IsAuthenticated]
-    serializer_class = AirlineSerializer
-    lookup_field = 'slug'
-
-
-class AirlineDetail(generics.RetrieveAPIView):
-
-    serializer_class = AirlineDetailSerializer
-    queryset = Airline.objects.all()
-
-    def get_object(self, queryset=None, **kwargs):
-        item = self.kwargs.get('pk')
-        return get_object_or_404(Airline, slug=item)
-
-
-class AdminAirlineDetail(generics.RetrieveAPIView):
-    permission_classes = [IsAuthenticated]
-    queryset = Airline.objects.all()
-    serializer_class = AirlineDetailSerializer
-
-
-class EditPost(generics.UpdateAPIView):
+class EditAirline(generics.UpdateAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = AirlineDetailSerializer
     queryset = Airline.objects.all()
 
 
-class DeletePost(generics.RetrieveDestroyAPIView):
+class DeleteAirline(generics.RetrieveDestroyAPIView):
     permission_classes = [IsAuthenticated, IsAdminUser]
     serializer_class = AirlineDetailSerializer
     queryset = Airline.objects.all()

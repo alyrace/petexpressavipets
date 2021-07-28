@@ -1,13 +1,15 @@
 from os import terminal_size
 #from .views import airline_pdf
 import datetime
-from re import U
 from django.db.models import fields
+from django_countries import widgets
+from django_countries.fields import CountryField
 from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import Airline, NewUser
 from django_countries.serializers import CountryFieldMixin
 from django.utils.translation import gettext_lazy as _
+from django_countries.widgets import CountrySelectWidget
 
 # for datatime
 now = datetime.datetime.now()
@@ -17,11 +19,10 @@ def upload_to(instance, filename):
 class AirlineSerializer(serializers.ModelSerializer):
     class Meta:
         Model: Airline
-        lookup_field = 'slug'
         fields = ('main_photo', 'name', 'status')
 
 
-class AirlineDetailSerializer(serializers.ModelSerializer):
+class AirlineDetailSerializer(CountryFieldMixin, serializers.ModelSerializer):
 
     _id = serializers.UUIDField(format='hex_verbose')
     #employee = serializers.ForeignKey(NewUser, on_delete=models.DO_NOTHING)
@@ -36,7 +37,7 @@ class AirlineDetailSerializer(serializers.ModelSerializer):
         ('BAGGAGE', 'Baggage'),
         ('CABIN', 'Cabin'),
         ('CARGO', 'Cargo'),
-        ('OPEN', 'OPEN')
+        ('OPEN', 'Open')
     ))
     city = serializers.ChoiceField((
         ('LAX', 'Los Angeles'),
@@ -112,9 +113,8 @@ class AirlineDetailSerializer(serializers.ModelSerializer):
     website = serializers.URLField(
         max_length=200, min_length=None, allow_blank=True)
     crate_inspection_required = serializers.BooleanField()
-    """""
     photo_main = serializers.ImageField(
-        max_length=None, allow_empty_file=False)
+        max_length=None, allow_empty_file=False, use_url=upload_to)
     photo_1 = serializers.ImageField(
         max_length=None, allow_empty_file=True, use_url=upload_to)
     photo_3 = serializers.ImageField(
@@ -125,7 +125,6 @@ class AirlineDetailSerializer(serializers.ModelSerializer):
         max_length=None, allow_empty_file=True, use_url=upload_to)
     photo_6 = serializers.ImageField(
         max_length=None, allow_empty_file=True, use_url=upload_to)
-    """
     compliance_notes = serializers.CharField(
         max_length=None, min_length=None, allow_blank=True, trim_whitespace=True)
     driver_notes = serializers.CharField(
@@ -145,12 +144,13 @@ class AirlineDetailSerializer(serializers.ModelSerializer):
     #created_at = serializers.DateTimeField()
     last_updated = serializers.DateTimeField(format=now)
     airline_docs = serializers.FileField()
-    #terminal_number = serializers.CharField(required=False, max_length=50)
+    contry = CountryField()
+    terminal_number = serializers.CharField(required=False, max_length=50)
 
     class Meta:
         Model: Airline
         lookup_field = 'slug'
-        fields = ('title', 'airline_code', 'airline_network',
+        fields = ('title', 'status', 'id', 'employee', 'slug','airline_code', 'airline_network',
                   'address', 'city', 'state', 'zipcode' 'pet_flight_options',
                   'cargo_phone', 'reservation_phone', 'description', 'has_grass',
                   'import_station', 'export_station', 'special_instructions',
@@ -160,12 +160,7 @@ class AirlineDetailSerializer(serializers.ModelSerializer):
                   'has_loading_ramp', 'website', 'crate_inspection_required',
                   'main_photo', 'photo_1', 'photo_2', 'photo_3', 'photo_4',
                   'photo_5', 'photo_6', 'breed_restrictions', 'weather_restrictions',
-                  'pet_reservations_info', 'pets_check_options', 'created_at',
-                  'last updated', 'airline_docs', 'terminal_number')
+                  'pet_reservations_info', 'pets_check_options', 
+                  'airline_docs', 'terminal_number', 'name', 'country')
+        widgets = {'country': CountrySelectWidget()}
 
-
-class CountrySerializer(CountryFieldMixin, serializers.ModelSerializer):
-
-    class Meta:
-        model = Airline
-        fields = ('name', 'country')

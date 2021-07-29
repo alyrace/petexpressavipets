@@ -12,7 +12,7 @@ import "./welcome.scss";
 import LoginForm from "../../components/forms/loginform.component";
 
 
-const Login = ({ login, isAuthenticated }) => {
+const Login = () => {
   return (
     <div className="welcome_page_background auth">
       <Helmet>

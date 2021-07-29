@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../actions/auth";
 import "../../sass/login.scss";
-const LoginForm = () => {
+const LoginForm = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -18,8 +18,9 @@ const LoginForm = () => {
 
     login(email, password);
   };
-
-  
+  if(isAuthenticated){
+    return Redirect("/");
+  }
   return (
     <div>
       <form className="login_form" onSubmit={(e) => onSubmit(e)}>

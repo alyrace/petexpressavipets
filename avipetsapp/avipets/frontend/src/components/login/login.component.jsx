@@ -5,8 +5,7 @@ import dog from "../../images/dog3.png";
 
 import LoginForm from "../forms/loginform.component";
 
-class LoginComponent extends Component {
-  render() {
+const LoginComponent= () => {
     return (
       <div className="container-fluid g-1">
         <div className="row main_content text-center">
@@ -26,7 +25,6 @@ class LoginComponent extends Component {
         </div>
       </div>
     );
-  }
-}
+};
 
 export default LoginComponent;

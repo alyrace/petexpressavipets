@@ -1,5 +1,6 @@
 //import React, { useState, useEffect } from "react";
 import React from "react";
+import { Helmet } from "react-helmet";
 import Navbar from "../../components/navigation/navbar.component";
 import "./home.scss";
 
@@ -12,7 +13,13 @@ const Home = () => {
             }
         }*/
   return (
-    <div>
+    <div className="Home">
+      <main>
+        <Helmet>
+          <title>AVI PETS - HOME</title>
+          <meta name="description" content="AVI Pets Hompage" />
+        </Helmet>
+      </main>
       <Navbar />
       <section className="container">
         <div className="row text-center text-white gx-3 gy-3">

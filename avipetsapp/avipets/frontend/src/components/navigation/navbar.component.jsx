@@ -10,7 +10,7 @@ const Navbar = () => {
       <div>
         <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
           <div className="container">
-            <a className="navbar-brand" href="/home">
+            <a className="navbar-brand" href="/">
               <img src={Logo} alt="avi pets" />
             </a>
             <button

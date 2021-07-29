@@ -1,27 +1,39 @@
 import React, { Component } from "react";
-import defaultimg from "../../images/cat.png";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-class AirlineCard extends Component {
-  render() {
+//import defaultimg from "../../images/cat.png";
+
+const AirlineCard = (props) => {
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    };
     return (
       <div className="container">
         <div className="row row-cols-1 row-cols-md-3 g-4">
           <div className="col">
-            <div className="card h-60 border-dark">
-              <img
-                src={defaultimg}
-                className="card-img-top"
-                alt="airmline image"
-              />
-              <div className="card-header card-img-overlay">
-                <h5 className="card-title text-center">Cat Airlines</h5>
-              </div>
-            </div>
+            <Link to={`/airlineportal/${props.slug}`}>
+              <figure class="figure">
+                <img
+                  src={props.main_photo}
+                  class="figure-img img-fluid rounded"
+                  alt="airlineimage"
+                />
+                <figcaption class="figure-caption">
+                  {listing.title}
+                </figcaption>
+              </figure>
+            </Link>
           </div>
         </div>
       </div>
     );
-  }
-}
+};
+
+card.propTypes = {
+    title: PropTypes.string.isRequired,
+    main_photo: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired
+};
 
 export default AirlineCard;

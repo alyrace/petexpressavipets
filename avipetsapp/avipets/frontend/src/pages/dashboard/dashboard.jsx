@@ -25,7 +25,7 @@ class Dashboard extends Component {
                 data-bs-target="#sidebar"
               ></span>
             </button>
-            <a className="navbar-brand" href="/home">
+            <a className="navbar-brand" href="/">
               <img src={logo} alt="logoimg" />
             </a>
             <button
@@ -159,7 +159,7 @@ class Dashboard extends Component {
                   </div>
                 </li>
                 <li className="list-group-item nav_list">
-                  <a href="/home" className="nav-link px-3">
+                  <a href="/" className="nav-link px-3">
                     <span className="me-2">
                       <i className="fas fa-book-fill"></i>
                     </span>

@@ -1,13 +1,18 @@
 from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
-from serializers import NewUser
-from rest_framework_simplejwt.tokens import RefreshToken
-
+from .models import NewUser
+#from rest_framework_simplejwt.tokens import RefreshToken
+from django.conf  import settings
+#from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+#from rest_framework_simplejwt.settings import api_settings
+#from django.contrib.auth.models import update_last_login
+from djoser.serializers import UserCreateSerializer
+User = settings.AUTH_USER_MODEL
 
 def upload_to(instance, filename):
     return 'airlines/{filename}'.format(filename=filename)
 
-class CustomUserSerializer(serializer= serializerserializer):
+class CustomUserSerializer(UserCreateSerializer):
     
     _id = serializers.UUIDField(format='hex_verbose')
     email = serializers.EmailField(required=True)
@@ -15,18 +20,16 @@ class CustomUserSerializer(serializer= serializerserializer):
     password = serializers.CharField(min_length=8)
     first_name = serializers.CharField(required=True)
     last_name = serializers.CharField(required=True)
-    user_name = serializers.CharField(max_length=255, unique=True)
-    about = serializers.TextField(_(
-        'about'), max_length=500, blank=True)
-    avatar = serializers.ImageField(_("Image"), upload_to=upload_to, default='media/default.png')
-    banner = serializers.ImageField(_("Image"), upload_to=upload_to, default='media/default.png')
-    drivers_license = serializers.CharField(max_length=20, blank=True)
-    phone = serializers.CharField(max_length=20, blank=True)
+    user_name = serializers.CharField(max_length=255)
+    about = serializers.CharField(
+        max_length=None, min_length=None, allow_blank=True, trim_whitespace=True)
+    avatar = serializers.ImageField(max_length=None, allow_empty_file=True, use_url=upload_to)
+    banner = serializers.ImageField(max_length=None, allow_empty_file=True, use_url=upload_to)
+    drivers_license = serializers.CharField(max_length=20)
     emergency_contact = serializers.CharField(max_length=200)
-    emergency_contact_number = serializers.CharField(max_length=20, blank=True)
+    emergency_contact_number = serializers.CharField(allow_blank=True, max_length=20)
     birth_date = serializers.DateTimeField()
-    timezone= serializers.DateTimeField()
-    phone = serializers.IntegerField(required=True, max_value=20, min_value=10)
+    phone = serializers.IntegerField(required=False, max_value=20, min_value=10)
     office = serializers.ChoiceField((
         ('AU', 'Austailia'),
         ('LAX', 'Los Angeles'),
@@ -59,13 +62,13 @@ class CustomUserSerializer(serializer= serializerserializer):
         ('WEBSITE_ADMIN', 'Website Admin')
     ))
     hire_date = serializers.DateTimeField()
-    sta_number = serializers.CharField()
-    manager = serializers.BooleanField(allow_blank=True)
-    is_manager = serializers.BooleanField()
-    team_lead = serializers.CharField(allow_blank=True)
-    is_team_lead = serializers.BooleanField()
-    supervisor = serializers.CharField(allow_blank=True)
-    supervisor_status = serializers.BooleanField()
+    sta_number = serializers.CharField(required=False, allow_blank=True)
+    manager = serializers.CharField(required=False, allow_blank=True)
+    is_manager = serializers.BooleanField(default=False)
+    team_lead = serializers.CharField(required=False, allow_blank=True)
+    is_team_lead = serializers.BooleanField(default=False)
+    supervisor = serializers.CharField(required=False, allow_blank=True)
+    supervisor_status = serializers.BooleanField(default=False)
     is_active = serializers.SerializerMethodField()
     is_staff = serializers.SerializerMethodField()
     is_admin = serializers.SerializerMethodField()
@@ -73,8 +76,11 @@ class CustomUserSerializer(serializer= serializerserializer):
     class Meta:
         model = NewUser
         fields = ('id', '_id', 'email', 'first_name', 'last_name', 'title', 'office',
-                  'department', 'title', 'hire_date', 'sta_number', 'manager', 
-                  'is_manager', 'team_lead', 'is_team_lead', 'supervisor',
+                  'department', 'title','about', 'avatar', 'banner', 
+                  'drivers_license', 'phone', 'emergency_contact', 
+                  'emergency_contact_number','birth_date', 
+                  'hire_date', 'sta_number', 'manager', 'is_manager', 
+                  'team_lead', 'is_team_lead', 'supervisor', 'office', 
                   'supervisor_status', 'supervisor', 'supervisor_status',
                   'is_staff', 'is_admin')
         extra_kwargs = {'password': {'write_only': True}}
@@ -94,15 +100,34 @@ class CustomUserSerializer(serializer= serializerserializer):
             instance.save()
             return instance       
 
+
+
+class UserRegisterSerializer(serializers.ModelSerializer):
+
+    email = serializers.EmailField(required=True)
+    user_name = serializers.CharField(required=True)
+    password = serializers.CharField(min_length=8, write_only=True)
+
+    class Meta:
+        model = NewUser
+        fields = ('email', 'user_name', 'first_name', 'last_name')
+        extra_kwargs = {'password': {'write_only': True}}        
+"""
 class UserSerializerWithToken(CustomUserSerializer):
     token = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = NewUser
-        fields = ['id', '_id', 'email', 'first_name', 'last_name', 'office','department', 'title', 'drivers_license', 
-                  'hire_date', 'sta_number', 'manager', 'is_manager', 'team_lead', 'is_team_lead', 'supervisor',
-                  'supervisor_status', 'supervisor', 'supervisor_status', 'is_staff', 'is_admin', 'token']
+        fields = ['_id', 'email', 'first_name', 'last_name', 'title', 'office',
+                  'department', 'title','about', 'avatar', 'banner', 
+                  'drivers_license', 'phone', 'emergency_contact', 
+                  'emergency_contact_number','birth_date', 
+                  'hire_date', 'sta_number', 'manager', 'is_manager', 
+                  'team_lead', 'is_team_lead', 'supervisor', 'office', 
+                  'supervisor_status', 'supervisor', 'supervisor_status',
+                  'is_staff', 'is_admin', 'token']
 
     def get_token(self, obj):
         token = RefreshToken.for_user(obj)
         return str(token.access_token)
+"""

@@ -1,7 +1,10 @@
 from django.urls import path
-from . import views
+from django.urls.conf import include, include
+from .views import CustomUserCreate
 
 urlpatterns = [
-    path('', views.index, name='users'),
-    path('<int:users_id>', views.users, name='user'),
+    path('create',  CustomUserCreate.as_view(), name='create_user'),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.jwt')),
+
 ]

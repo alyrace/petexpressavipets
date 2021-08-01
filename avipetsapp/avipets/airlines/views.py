@@ -1,13 +1,14 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import status
-from django.shortcuts import render
-from rest_framework import viewsets, filters, generics
+#from django.shortcuts import render
+from rest_framework import filters, generics
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework import status
+from rest_framework import status, permissions
 from rest_framework.parsers import MultiPartParser, FormParser
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from django.contrib.auth.mixins import AccessMixin, PermissionRequiredMixin
+from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 #from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Airline
@@ -35,13 +36,14 @@ def airline_pdf(request):
     # add lines of text
 
 
-class AirlineList(generics.ListAPIView):
-    queryset = Airline.objects.order_by('-title')
-    permission_classes = [IsAuthenticated]
+class AirlineList(PermissionRequiredMixin, generics.ListAPIView):
+    queryset = Airline.objects.all()
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+    permission_required =[permissions.IsAuthenticated]
     serializer_class = AirlineSerializer
-    lookup_field = 'slug'
 
-class AirlineDetail(generics.RetrieveAPIView):
+class AirlineDetail(PermissionRequiredMixin, generics.RetrieveAPIView):
 
     serializer_class = AirlineDetailSerializer
     queryset = Airline.objects.all()
@@ -50,13 +52,22 @@ class AirlineDetail(generics.RetrieveAPIView):
         item = self.kwargs.get('pk')
         return get_object_or_404(Airline, slug=item)
 
+class AirlineListDetailFilter(PermissionRequiredMixin, generics.ListAPIView):
+
+    queryset = Airline.objects.all()
+    serializer_class = AirlineSerializer
+    filter_backends = [filters.SearchFilter]
+    # '^' Starts-with search.
+    # '=' Exact matches.
+    search_fields = ['^slug']
+
 class AdminAirlineDetail(generics.RetrieveAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     queryset = Airline.objects.all()
     serializer_class = AirlineDetailSerializer
 
-class CreateAirline(APIView):
-    permission_classes = [IsAuthenticated]
+class CreateAirline(PermissionRequiredMixin, APIView):
+    permission_classes = [permissions.IsAuthenticated]
     parser_classes = [MultiPartParser, FormParser]
 
     def post(self, request, format=None):
@@ -69,14 +80,14 @@ class CreateAirline(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class EditAirline(generics.UpdateAPIView):
-    permission_classes = [IsAuthenticated]
+class EditAirline(PermissionRequiredMixin, generics.UpdateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = AirlineDetailSerializer
     queryset = Airline.objects.all()
 
 
 class DeleteAirline(generics.RetrieveDestroyAPIView):
-    permission_classes = [IsAuthenticated, IsAdminUser]
+    permission_classes = [permissions.IsAuthenticated, IsAdminUser]
     serializer_class = AirlineDetailSerializer
     queryset = Airline.objects.all()
 

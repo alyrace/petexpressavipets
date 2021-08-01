@@ -1,13 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 //import defaultimg from "../../images/cat.png";
 
 const AirlineCard = (props) => {
-  const numberWithCommas = (x) => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    };
     return (
       <div className="container">
         <div className="row row-cols-1 row-cols-md-3 g-4">
@@ -20,7 +17,7 @@ const AirlineCard = (props) => {
                   alt="airlineimage"
                 />
                 <figcaption class="figure-caption">
-                  {listing.title}
+                  {props.listing.title}
                 </figcaption>
               </figure>
             </Link>
@@ -30,7 +27,7 @@ const AirlineCard = (props) => {
     );
 };
 
-card.propTypes = {
+AirlineCard.propTypes = {
     title: PropTypes.string.isRequired,
     main_photo: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired

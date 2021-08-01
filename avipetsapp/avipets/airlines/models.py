@@ -2,8 +2,10 @@ from django.db import models
 import uuid
 from datetime import datetime
 from django.utils.translation import gettext_lazy as _
-from users.models import NewUser
 from django_countries.fields import CountryField
+from django.conf  import settings
+
+User = settings.AUTH_USER_MODEL
 
 
 def upload_to(instance, filename):
@@ -82,24 +84,25 @@ class Airline(models.Model):
                  )
 
     category = models.ForeignKey(
-        Category, on_delete=models.PROTECT, default=1)
+        Category, on_delete=models.PROTECT, default=1, null=True, blank=True)
     _id = models.UUIDField(primary_key=True,
                            default=uuid.uuid4,
                            editable=False)
-    employee = models.ManyToManyField(NewUser)
-    slug = models.CharField(max_length=200, unique_for_date='published')
+    employee = models.ManyToManyField(User)
+    slug = models.CharField(max_length=200, blank=True)
     title = models.CharField(max_length=200, unique=True)
-    airline_code = models.CharField(max_length=10)
+    published = models.BooleanField(default=True)
+    airline_code = models.CharField(blank=True, max_length=10)
     airline_network = models.TextField(blank=True)
-    address = models.CharField(max_length=200)
+    address = models.CharField(blank=True,max_length=200)
     pets_flight_options = models.CharField(max_length=100, 
         choices=FLIGHT_OPTIONS, default='Cargo')
     city = models.CharField(max_length=100, choices=CITIES, default='LAX')
     state = models.CharField(
         max_length=100, choices=US_STATES, default='California')
-    zipcode = models.IntegerField()
-    cargo_phone = models.IntegerField()
-    reservation_phone = models.IntegerField()
+    zipcode = models.IntegerField(null=True, blank=True)
+    cargo_phone = models.IntegerField(null=True, blank=True)
+    reservation_phone = models.IntegerField(null=True, blank=True)
     description = models.TextField(blank=True)
     has_grass = models.BooleanField(default=True)
     special_instructions = models.TextField(blank=True)
@@ -111,17 +114,15 @@ class Airline(models.Model):
         choices=FREQUENCY, default='Frequently visited')
     onsite_parking = models.BooleanField(default=True)
     have_account = models.BooleanField(default=True)
-    account_number = models.IntegerField()
+    account_number = models.IntegerField(null=True, blank=True)
     acclimation_needed = models.BooleanField(default=True)
     food_needed = models.BooleanField(default=True)
     photo_of_pet_needed = models.BooleanField(default=True)
     contact_label_needed = models.BooleanField(default=True)
-    cut_off_deadline = models.TextField(
-        blank=True, choices=PORT_LOCATION, default='Same buidling')
-    pick_up_delay = models.TextField(
-        blank=True, choices=PORT_LOCATION, default='Same buidling')
+    cut_off_deadline = models.TextField(blank=True)
+    pick_up_delay = models.TextField(blank=True)
     has_loading_ramp = models.BooleanField(default=True)
-    website = models.URLField(max_length=200)
+    website = models.URLField(max_length=200, blank=True)
     crate_inspection_required = models.BooleanField(default=True)
     photo_main = models.ImageField(
         _("Image"), upload_to=upload_to, default='media/default.png')
@@ -146,7 +147,7 @@ class Airline(models.Model):
     compliance_notes = models.TextField(blank=True)
     driver_notes = models.TextField(blank=True)
     ok_to_forward_required = models.BooleanField(default=True)
-    earliest_book_date = models.CharField(max_length=100)
+    earliest_book_date = models.CharField(max_length=100, blank=True)
     breed_restrictions = models.TextField(blank=True)
     weather_restrictions = models.BooleanField(default=True)
     pet_reservations_info = models.TextField(blank=True)
@@ -156,10 +157,10 @@ class Airline(models.Model):
       #  _("Created at"), auto_now_add=False, editable=False)
     last_updated = models.DateTimeField(_("Updated at"), default=datetime.now)
     terminal_number = models.CharField(blank=True, max_length=50)
-    airline_docs = models.FileField(upload_to=upload_to, null=True)
+    airline_docs = models.FileField(blank=True, upload_to=upload_to, null=True)
     status = models.CharField(
         max_length=10, choices=OPTIONS, default='published')
-    country = CountryField(null=True, blank_label=('United States of America'))
+    country = CountryField(null=True, blank_label=(''))
     objects = models.Manager()  # default manager
     postobjects = PostObjects()  # custom manager
 

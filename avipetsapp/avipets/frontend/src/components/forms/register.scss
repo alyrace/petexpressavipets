@@ -1,0 +1,473 @@
+$coolblue: #84ACBA;
+$white: #ffffff;
+
+$extra_small: 280px;
+$small: 412px;
+$medium: 768px;
+$large: 992px;
+$extra_large: 1200px;
+$x_extra_large: 1400px;
+
+.iconify {
+  font-size: 2em;
+}
+
+/* Extra small devices (phones, 600px and down) */
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: $extra_small) and (max-width: $small) {
+  .fas{
+    size: 1px;
+  }
+  button {
+    text-transform: uppercase;
+    letter-spacing: 6px;
+  }
+  h1 {
+    color: $white;
+    font-family: "Carter One", cursive;
+  }
+
+  h3 {
+    text-transform: uppercase;
+  }
+  .login_form {
+    text-transform: uppercase;
+    padding-bottom: 30px;
+  }
+  .main_content2 {
+    width: 100vh;
+    height: 100vh;
+    background: #085078;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #85D8CE, #085078);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #85D8CE, #085078); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em auto;
+    padding: 1px;
+  }
+  .pet_card2 {
+    border-radius: 20px;
+    color: $white;
+    margin: 2px;
+    font-family: "Carter One", cursive;
+  }
+  .register_form {
+    color: $white;
+  }
+  .register_btn {
+    color: $white;
+    border: 1px solid $white;
+  }
+  .welcome_back {
+    text-transform: uppercase;
+    color: black;
+    padding: 1px;
+    margin: 4em auto;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 412px) and (max-width: $medium) {
+  button {
+    text-transform: uppercase;
+    letter-spacing: 6px;
+  }
+  h1 {
+    color: $white;
+    font-family: "Carter One", cursive;
+  }
+  h3 {
+    text-transform: uppercase;
+  }
+  img .pet2:hover {
+    animation: up-and-down 0.4s cubic-bezier(0.3, 0.36, 1, 1.84) forwards
+      infinite alternate 0.1s;
+  }
+  @keyframes up-and-down {
+    0% {
+      transform: translateY(0px);
+    }
+    100% {
+      transform: translateY(-1px);
+    }
+  }
+  .login_form {
+    background: $white;
+    color: black;
+    font-family: "Poppins", sans-serif;
+  }
+  .main_content2 {
+    width: 90%;
+    height: 92vh;
+    background: $white;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 1em auto;
+    padding: 3px;
+  }
+  .pet_card2 {
+    background: $coolblue;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    margin: 1px;
+    color: $white;
+    font-family: "Carter One", cursive;
+  }
+}
+
+/* Medium devices (laptops/desktops, 768px and up) */
+
+@media only screen and (min-width: $medium) and (max-width: $large) {
+  button {
+    text-transform: uppercase;
+    letter-spacing: 6px;
+  }
+  h1 {
+    color: $white;
+    font-family: "Carter One", cursive;
+  }
+  h3 {
+    text-transform: uppercase;
+    letter-spacing: 8px;
+  }
+  img .pet2:hover {
+    animation: up-and-down 0.5s cubic-bezier(0.3, 0.36, 1, 1.84) forwards
+      infinite alternate 0.1s;
+  }
+  @keyframes up-and-down {
+    0% {
+      transform: translateY(0px);
+    }
+    15% {
+      transform: translateY(-3px);
+    }
+    33% {
+      transform: translateY(-6px);
+    }
+    45% {
+      transform: translateY(-9px);
+    }
+    66% {
+      transform: translateY(-12px);
+    }
+    80% {
+      transform: translateY(-16px);
+    }
+    100% {
+      transform: translateY(-20px);
+    }
+  }
+  .login_form {
+    border-top: solid $white 1px;
+    color: black;
+    font-family: "Poppins", sans-serif;
+  }
+  .main_content2 {
+    width: 90%;
+    height: 98vh;
+    background: $white;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 1em auto;
+    padding: 20px;
+  }
+  .pet_card2 {
+    justify-content: center;
+    align-items: center;
+    background: $coolblue;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    color: $white;
+    font-family: "Carter One", cursive;
+    padding: 60px 40px;
+  }
+}
+//for ipad
+@media only screen 
+and (min-width: 768px)
+and (min-height: 1024px) 
+and (max-height: 1200px) {
+  .login_form {
+    color: black;
+    font-family: "Poppins", sans-serif;
+  }
+  .main_content2 {
+    width: 100%;
+    height: 90vh;
+    background: $white;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 5px;
+  }
+  .pet_card2 {
+    justify-content: center;
+    align-items: center;
+    background: $coolblue;
+    border-radius: 20px;
+    font-family: "Carter One", cursive;
+    padding: 5px 10px;
+  }
+}
+//ipad pro
+@media only screen
+and(min-width: 1024px)
+and (min-height: 1366px) {
+  .login_form {
+    border-top: solid $white 1px;
+    color: black;
+    font-family: "Poppins", sans-serif;
+  }
+  .main_content2 {
+    width: 100%;
+    height: 60vh;
+    background: $white;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1px 1px;
+  }
+  .pet_card2 {
+    justify-content: center;
+    align-items: center;
+    background: $coolblue;
+    border-radius: 20px;
+    font-family: "Carter One", cursive;
+    padding: 10px 30px;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen 
+and (min-width: $large) 
+and (max-width: 1199px) {
+  button {
+    text-transform: uppercase;
+    letter-spacing: 6px;
+  }
+  h1 {
+    color: $white;
+    font-family: "Carter One", cursive;
+  }
+  h3 {
+    text-transform: uppercase;
+  }
+  img .pet2:hover {
+    animation: up-and-down 0.5s cubic-bezier(0.3, 0.36, 1, 1.84) forwards
+      infinite alternate 0.1s;
+  }
+  @keyframes up-and-down {
+    0% {
+      transform: translateY(0px);
+    }
+    15% {
+      transform: translateY(-3px);
+    }
+    33% {
+      transform: translateY(-6px);
+    }
+    45% {
+      transform: translateY(-9px);
+    }
+    66% {
+      transform: translateY(-12px);
+    }
+    80% {
+      transform: translateY(-16px);
+    }
+    100% {
+      transform: translateY(-20px);
+    }
+  }
+  .login_form {
+    border-top: solid $white 1px;
+    color: black;
+    font-family: "Poppins", sans-serif;
+  }
+  .main_content2 {
+    width: 80%;
+    height: 98vh;
+    background: $white;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 1em auto;
+    padding: 1px 5px;
+  }
+  .pet_card2 {
+    justify-content: center;
+    align-items: center;
+    background: $coolblue;
+    border-radius: 20px;
+    color: $white;
+    font-family: "Carter One", cursive;
+    padding: 5px 5px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* ----------- Non-Retina Screens ----------- */
+@media only screen 
+and (min-width: $extra_large)
+and (max-width: $x_extra_large) 
+and (-webkit-min-device-pixel-ratio: 1) {
+  button {
+    text-transform: uppercase;
+    letter-spacing: 6px;
+  }
+  h1 {
+    color: $white;
+    font-family: "Carter One", cursive;
+    letter-spacing: 2px;
+  }
+  h3 {
+    text-transform: uppercase;
+  }
+  img .pet2:hover {
+    animation: up-and-down 0.5s cubic-bezier(0.3, 0.36, 1, 1.84) forwards
+      infinite alternate 0.1s;
+  }
+  @keyframes up-and-down {
+    0% {
+      transform: translateY(0px);
+    }
+    15% {
+      transform: translateY(-3px);
+    }
+    33% {
+      transform: translateY(-6px);
+    }
+    45% {
+      transform: translateY(-9px);
+    }
+    66% {
+      transform: translateY(-12px);
+    }
+    80% {
+      transform: translateY(-16px);
+    }
+    100% {
+      transform: translateY(-20px);
+    }
+  }
+  .login_form {
+    border-top: solid $white 5px;
+    color: black;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .main_content2 {
+    width: 80%;
+    height: 70vh;
+    background: $white;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10em auto;
+    padding: 10px;
+  }
+  .pet_card2 {
+    justify-content: center;
+    align-items: center;
+    background: $coolblue;
+    border-radius: 20px;
+    font-family: "Carter One", cursive;
+    padding: 150px 60px;
+    margin: auto;
+  }
+  
+}
+/* x Extra large devices (xxlarge laptops and desktops, 1400px and up) */
+/* ----------- Non-Retina Screens ----------- */
+@media only screen and (min-width: $x_extra_large) and (-webkit-min-device-pixel-ratio: 1) {
+  button {
+    text-transform: uppercase;
+    letter-spacing: 6px;
+  }
+  h1 {
+    color: $white;
+    font-family: "Carter One", cursive;
+    letter-spacing: 2px;
+  }
+  h3 {
+    text-transform: uppercase;
+  }
+  img .pet2:hover {
+    animation: up-and-down 0.5s cubic-bezier(0.3, 0.36, 1, 1.84) forwards
+      infinite alternate 0.1s;
+  }
+  @keyframes up-and-down {
+    0% {
+      transform: translateY(0px);
+    }
+    15% {
+      transform: translateY(-3px);
+    }
+    33% {
+      transform: translateY(-6px);
+    }
+    45% {
+      transform: translateY(-9px);
+    }
+    66% {
+      transform: translateY(-12px);
+    }
+    80% {
+      transform: translateY(-16px);
+    }
+    100% {
+      transform: translateY(-20px);
+    }
+  }
+  label {
+    padding: 14px;
+  }
+  .login_form {
+    border-top: solid $white 10px;
+    color: black;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .main_content2 {
+    width: 70%;
+    height: 70vh;
+    background: $white;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10em auto;
+    padding: 30px;
+  }
+  .pet_card2 {
+    justify-content: center;
+    align-items: center;
+    background: $coolblue;
+    border-radius: 20px;
+    font-family: "Carter One", cursive;
+    padding: 160px 100px;
+  }
+  
+}

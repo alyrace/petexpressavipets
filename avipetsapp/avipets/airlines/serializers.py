@@ -1,15 +1,19 @@
-from os import terminal_size
+import os
 #from .views import airline_pdf
 import datetime
 from django.db.models import fields
 from django_countries import widgets
 from django_countries.fields import CountryField
 from rest_framework import serializers
-from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Airline, NewUser
+#from rest_framework_simplejwt.tokens import RefreshToken
+from .models import Airline
 from django_countries.serializers import CountryFieldMixin
 from django.utils.translation import gettext_lazy as _
 from django_countries.widgets import CountrySelectWidget
+from django.conf  import settings
+
+User = settings.AUTH_USER_MODEL
+
 
 # for datatime
 now = datetime.datetime.now()
@@ -24,8 +28,7 @@ class AirlineSerializer(serializers.ModelSerializer):
 
 class AirlineDetailSerializer(CountryFieldMixin, serializers.ModelSerializer):
 
-    _id = serializers.UUIDField(format='hex_verbose')
-    #employee = serializers.ForeignKey(NewUser, on_delete=models.DO_NOTHING)
+    #employee = serializers.(User, on_delete=models.DO_NOTHING)
     slug = serializers.SlugField(
         max_length=50, min_length=None, allow_blank=False)
     title = serializers.CharField(required=True)
@@ -136,6 +139,7 @@ class AirlineDetailSerializer(CountryFieldMixin, serializers.ModelSerializer):
     weather_restrictions = serializers.BooleanField(default=True)
     pet_reservations_info = serializers.CharField(
         max_length=None, min_length=None, allow_blank=True, trim_whitespace=True)
+    published= serializers.BooleanField()
     pets_checkin_options = serializers.MultipleChoiceField((
         ('CARGO', 'Cargo'),
         ('AIRPORT', 'Airport'),
@@ -150,17 +154,18 @@ class AirlineDetailSerializer(CountryFieldMixin, serializers.ModelSerializer):
     class Meta:
         Model: Airline
         lookup_field = 'slug'
-        fields = ('title', 'status', 'id', 'employee', 'slug','airline_code', 'airline_network',
+        fields = ('category', '_id', 'title', 'published','status', 'employee', 'slug','airline_code', 'airline_network',
                   'address', 'city', 'state', 'zipcode' 'pet_flight_options',
                   'cargo_phone', 'reservation_phone', 'description', 'has_grass',
                   'import_station', 'export_station', 'special_instructions',
                   'frequently_used', 'onsite_parking', 'has_account', 'account_number',
-                  'acclimation_needed', 'food_needed', 'photo_of+pey_needed',
+                  'acclimation_needed', 'food_needed', 'photo_of_pet_needed',
                   'contact_label_needed', 'cut_off_deadline', 'pick_up_delay',
                   'has_loading_ramp', 'website', 'crate_inspection_required',
                   'main_photo', 'photo_1', 'photo_2', 'photo_3', 'photo_4',
                   'photo_5', 'photo_6', 'breed_restrictions', 'weather_restrictions',
-                  'pet_reservations_info', 'pets_check_options', 
-                  'airline_docs', 'terminal_number', 'name', 'country')
+                  'pet_reservations_info', 'pets_checkin_options', 'earliest_book_date', 
+                  'airline_docs', 'compliance_notes', 'driver_notes', 
+                  'terminal_number','last_updated', 'name', 'country')
         widgets = {'country': CountrySelectWidget()}
 

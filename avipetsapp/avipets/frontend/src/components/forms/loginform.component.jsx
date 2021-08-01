@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../actions/auth";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import "../../sass/login.scss";
+
+
 const LoginForm = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: "",
@@ -18,25 +22,26 @@ const LoginForm = ({ login, isAuthenticated }) => {
 
     login(email, password);
   };
-  if(isAuthenticated){
+
+  if (isAuthenticated) {
     return Redirect("/");
   }
   return (
     <div>
-      <form className="login_form" onSubmit={(e) => onSubmit(e)}>
-        <div className="row">
-          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center welcome_back">
-            <h3>Welcome back</h3>
-          </div>
+      <div className="row">
+        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center welcome_back">
+          <h3>Welcome back</h3>
         </div>
+      </div>
+      <form className="login_form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-group">
           <i class="far fa-user-circle"></i>
-          <label htmlFor="username" className="form_label">
+          <label htmlFor="email" className="form_label">
             Username
           </label>
           <input
             type="email"
-            name="Email"
+            name="email"
             id="email"
             className="form-control"
             placeholder="Email"
@@ -58,7 +63,7 @@ const LoginForm = ({ login, isAuthenticated }) => {
             placeholder="Password"
             value={password}
             onChange={(e) => onChange(e)}
-            minLength="10"
+            minLength="8"
           />
         </div>
         <div className="form-group form-check">
@@ -73,13 +78,20 @@ const LoginForm = ({ login, isAuthenticated }) => {
           </label>
         </div>
         <div className="row">
-          <button type="submit" class="btn btn-outline-danger login_btn">
-            Login
-          </button>
+          <button class="btn btn-outline-danger login_btn">Login</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default LoginForm;
+LoginForm.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(LoginForm);

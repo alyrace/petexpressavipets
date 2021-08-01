@@ -1,5 +1,4 @@
-$welcome_image: url('../../images/aviwelcomebackground.png');
-
+$register_image: url('../../images/register2.png');
 
 
   
@@ -15,9 +14,9 @@ $extra_large: 1200px;
 @media only screen  
     and (min-width: $small) 
     and (max-width: $medium) {
-        .welcome_page_background {
+        .register_page_background {
             min-height: 100vh;
-            background: $welcome_image;
+            background: $register_image;
             background-size: cover;
             background-repeat: no-repeat;
             overflow: hidden;
@@ -29,9 +28,9 @@ $extra_large: 1200px;
 @media only screen 
     and (min-width: $medium)
     and (max-width: 1999px) {
-        .welcome_page_background {
+    .register_page_background {
             min-height: 100vh;
-            background: $welcome_image;
+            background: $register_image;
             background-size: cover;
             background-repeat: no-repeat;
             overflow: hidden;
@@ -43,9 +42,9 @@ $extra_large: 1200px;
 @media only screen 
     and (min-width: $extra_large) 
     and (-webkit-min-device-pixel-ratio: 1) {
-        .welcome_page_background {
+        .register_page_background {
             min-height: 100vh;
-            background: $welcome_image;
+            background: $register_image;
             background-size: cover;
             background-repeat: no-repeat;
             overflow: hidden;

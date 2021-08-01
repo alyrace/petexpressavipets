@@ -90,7 +90,6 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     emergency_contact = models.CharField(max_length=200)
     emergency_contact_number = models.CharField(max_length=20, blank=True)
     birth_date = models.DateTimeField(default=timezone.now, blank=True)
-    timezone= models.CharField(max_length=50, null=True) 
     office = models.CharField(
         max_length=200, choices=BRANCHES, default='Los Angeles')
     department = models.CharField(

@@ -2,8 +2,11 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import CustomUserSerializer
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from django.conf  import settings
 
+
+User = settings.AUTH_USER_MODEL
 
 class CustomUserCreate(APIView):
 
@@ -33,36 +36,33 @@ class CustomStaffUserCreate(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-def index(request):
-    return render(request, 'api/users.html'),
 
+           
 
-def users(request):
-    return render(request, 'api/users.html'),
+class SignupView(APIView):
+    permission_classes = [AllowAny]
 
+    def post(self, request, format=None):
+        data = self.request.data
 
-def login_view(request, *args, **kwargs):
-    form = AuthenticationForm(request, data=request.POST or None)
-    if form.is_valid():
-        user_ = form.get_user()
-        login(request, user_)
-        return redirect("/")
-    context = {
-        "form": form,
-        "btn_label": "Login",
-        "title": "Login"
-    }
-    return render(request, "accounts/auth.html", context)
+        user_name = data['user_name']
+        email = data['email']
+        first_name=data['first_name']
+        last_name= ['last_name']
+        password = data['password']
+        password2 = data['password2']
 
+        if password == password2:
+            if User.objects.filter(email=email).exists():
+                return Response({'error': 'Email already exists'})
+            else:
+                if len(password) < 6:
+                    return Response({'error': 'Password must be at least 6 characters'})
+                else:
+                    user = User.objects.create_user(email=email, password=password, user_name=user_name, first_name=first_name, last_name=last_name)
 
-def logout_view(request, *args, **kwargs):
-    if request.method == "POST":
-        logout(request)
-        return redirect("/login")
-    context = {
-        "form": None,
-        "description": "Are you sure you want to logout?",
-        "btn_label": "Click to Confirm",
-        "title": "Logout"
-    }
-    return render(request, "accounts/auth.html", context)
+                    user.save()
+                    return Response({'success': 'User created successfully'})
+        else:
+            return Response({'error': 'Passwords do not match'})
+

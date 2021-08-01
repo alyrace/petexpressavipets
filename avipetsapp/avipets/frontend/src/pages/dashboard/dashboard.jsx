@@ -57,6 +57,7 @@ class Dashboard extends Component {
                 <li className="nav-item dropdown">
                   <a
                     className="nav-link dropdown-toggle ms-2"
+                    // eslint-disable-next-line
                     href="#"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -65,12 +66,13 @@ class Dashboard extends Component {
                     <Avatar
                       shape="square"
                       size="large"
-                      aria-hidem="True"
+                      aria-hidden="True"
                       icon={<UserOutlined />}
                     />
                   </a>
                   <ul className="dropdown-menu dropdown-menu-end">
                     <li>
+                      // eslint-disable-next-line
                       <a className="dropdown-item" href="#">
                         Settings
                       </a>
@@ -81,6 +83,7 @@ class Dashboard extends Component {
                       </a>
                     </li>
                     <li>
+                      // eslint-disable-next-line
                       <a className="dropdown-item ms-0" href="#">
                         Logout
                       </a>
@@ -105,6 +108,7 @@ class Dashboard extends Component {
                   </div>
                 </li>
                 <li>
+                  // eslint-disable-next-line
                   <a href="#" className="nav-link px-3 active">
                     <span className="me-2">
                       <i className="bi bi-speedometer2"></i>

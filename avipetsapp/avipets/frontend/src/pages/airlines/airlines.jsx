@@ -14,7 +14,7 @@ import AirlineCard from "../../components/airliines/airline.component";
 
 
 
-const Airlines = () => {
+const Airlines = (props) => {
   /*const PostLoading = PostLoadingComponent(Posts);
 	[postlist, setPosts] = useState({
 		loading: true,
@@ -103,6 +103,7 @@ const Airlines = () => {
   }
 }
 */
+    let history = useHistory();
     const [loading, setLoading] = useState(false);
     const [airlineListings, setAirlineListings] = useState([]);
     const [count, setCount] = useState(0);
@@ -110,22 +111,25 @@ const Airlines = () => {
     const [next, setNext] = useState('');
     const [active, setActive] = useState(1);
 
-
     const goSearch = (e) => {
       history.push({
         pathname: "/search/",
-        search: "?search=" + airlineListing.search,
+        search: "?search=" + airlineListings.search,
       });
       window.location.reload();
-      let history = useHistory();
 
       setLoading(true);
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
       axios
         .post(
           `${process.env.REACT_APP_API_URL}/api/airlines/search`,
-          {
-            'name',
-          },
+          "name",
           config
         )
         .then((res) => {
@@ -144,9 +148,13 @@ const Airlines = () => {
 
         const fetchData = async () => {
             try {
-                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/listings/?page=1`);
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/airlines/?page=1`);
 
-                setListings(res.data.results);
+                axios.defaults.headers.common["Authorization"] =
+                  "Token " + this.props.auth.getToken();
+                console.log(this.props.auth.getToken());
+
+                setAirlineListings(res.data.results);
                 setCount(res.data.count);
                 setPrevious(res.data.previous);
                 setNext(res.data.next);
@@ -173,19 +181,52 @@ const Airlines = () => {
             );
         });
 
-        for (let i = 0; i < airlineListings.length; i += 3) {
+        for (let i = 0; i < airlineListings.length; i += 12) {
             result.push(
-                <div key={i} className='row'>
-                    <div className='col-1-of-3'>
+              <div key={i}>
+                <div className='row'>
+                    <div className='col-1-of-4'>
                         {display[i]}
                     </div>
-                    <div className='col-1-of-3'>
+                    <div className='col-1-of-4'>
                         {display[i+1] ? display[i+1] : null}
                     </div>
-                    <div className='col-1-of-3'>
+                    <div className='col-1-of-4'>
                         {display[i+2] ? display[i+2] : null}
                     </div>
+                    <div className='col-1-of-4'>
+                        {display[i+3] ? display[i+3] : null}
+                    </div>
                 </div>
+                <div className='row'>
+                    <div className='col-1-of-4'>
+                        {display[i+4] ? display[i+4] : null}
+                    </div>
+                    <div className='col-1-of-4'>
+                        {display[i+5] ? display[i+5] : null}
+                    </div>
+                    <div className='col-1-of-4'>
+                        {display[i+6] ? display[i+6] : null}
+                    </div>
+                    <div className='col-1-of-4'>
+                        {display[i+7] ? display[i+7] : null}
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='col-1-of-4'>
+                        {display[i+8] ? display[i+8] : null}
+                    </div>
+                    <div className='col-1-of-4'>
+                        {display[i+9] ? display[i+9] : null}
+                    </div>
+                    <div className='col-1-of-4'>
+                        {display[i+10] ? display[i+10] : null}
+                    </div>
+                    <div className='col-1-of-4'>
+                        {display[i+11] ? display[i+11] : null}
+                    </div>
+                </div>
+              </div>
             );
         }
 
@@ -193,43 +234,43 @@ const Airlines = () => {
     };
 
     const visitPage = (page) => {
-        axios.get(`${process.env.REACT_APP_API_URL}/api/listings/?page=${page}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/api/airlines/?page=${page}`)
         .then(res => {
-            setListings(res.data.results);
+            setAirlineListings(res.data.results);
             setPrevious(res.data.previous);
             setNext(res.data.next);
             setActive(page);
         })
         .catch(err => {
-
+          console.log(err)
           });
       };
 
     const previous_number = () => {
         axios.get(previous)
         .then(res => {
-            setListings(res.data.results);
+            setAirlineListings(res.data.results);
             setPrevious(res.data.previous);
             setNext(res.data.next);
             if (previous)
                 setActive(active-1);
           })
         .catch(err => {
-
+            console.log(err)
           });
       };
 
     const next_number = () => {
         axios.get(next)
         .then(res => {
-            setListings(res.data.results);
+            setAirlineListings(res.data.results);
             setPrevious(res.data.previous);
             setNext(res.data.next);
             if (next)
                 setActive(active+1);
           })
         .catch(err => {
-
+          console.log(err)
           });
       };
   
@@ -288,9 +329,9 @@ const Airlines = () => {
                       type="search"
                       placeholder="Search"
                       aria-label="Search"
-                      value={airlineListing.search}
-						          onChange={(newValue) => setAirlineListing({ search: newValue })}
-						          onRequestSearch={() => goSearch(airlineListing.search)}
+                      value={airlineListings.search}
+						          onChange={(newValue) => setAirlineListings({ search: newValue })}
+						          onRequestSearch={() => goSearch(airlineListings.search)}
                     />
                     <div className="input-group-append position-relative">
                       <button
@@ -315,14 +356,13 @@ const Airlines = () => {
               <Loader type="Oval" color="#424242"
                       height={50} width={50}
               />
-            </div> : 
-              {displayListings}
-             }; 
+            </div> : <span></span>};
+              {displayListings()} 
             </div>
             <div className="row">
               <div className="col-xxl-12">
                 {
-                  airlineListing.length !== 0 ? (
+                  airlineListings.length !== 0 ? (
                       <Pagination 
                         itemsPerPage={3}
                         count={count}

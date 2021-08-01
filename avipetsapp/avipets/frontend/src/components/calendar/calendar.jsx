@@ -135,28 +135,34 @@ class Calendar extends Component {
     let currentYear = this.state.currentView.getFullYear();
     let prevMonthYear = currentYear;
     let nextMonthYear = currentYear;
+    // eslint-disable-next-line
     const total = 42;
 
+    // eslint-disable-next-line
     if (currentMonthInfo.name == "February") {
       currentMonthInfo.days =
+        // eslint-disable-next-line
         (new Date(currentYear + "-" + "Feb-29").getMonth() == 2
           ? false
           : true) | currentMonthInfo.days;
+      // eslint-disable-next-line
     } else if (prevMonthInfo.name == "February") {
       prevMonthInfo.days =
         (new Date(currentYear + "-" + "Feb-29").getMonth() == 2
           ? false
           : true) | prevMonthInfo.days;
+      // eslint-disable-next-line
     } else if (nextMonthInfo.name == "February") {
       nextMonthInfo.days =
         (new Date(currentYear + "-" + "Feb-29").getMonth() == 2
           ? false
           : true) | nextMonthInfo.days;
     }
-
+    // eslint-disable-next-line
     if (currentMonthInfo.name == "January") {
       prevMonthYear = currentYear - 1;
     }
+    // eslint-disable-next-line
     if (currentMonthInfo.name == "December") {
       nextMonthYear = currentYear + 1;
     }
@@ -331,20 +337,26 @@ class Calendar extends Component {
             <tr>
               <td className="left">
                 <h5>
-                    {month}- 
-                    <i class="fa fa-paw" aria-hidden="true"></i>
-                    -{year}
+                  {month}-<i class="fa fa-paw" aria-hidden="true"></i>-{year}
                 </h5>
               </td>
               <td className="ms-3">
-                <Clock format="h:mm:s a" ticking={true} timezone={"PST"} />
+                <Clock
+                  format="h:mm:s a"
+                  ticking={true}
+                  timezone={"America/Los_Angeles"}
+                />
               </td>
               <td width="200" align="right">
                 <div className="button-group">
                   <input
                     type="text"
                     disabled
-                    value={this.state.todaysDate ? moment().format('MMMM Do YYYY') : selectedDate}
+                    value={
+                      this.state.todaysDate
+                        ? moment().format("MMMM Do YYYY")
+                        : selectedDate
+                    }
                     className="me-2"
                   ></input>
                   <button

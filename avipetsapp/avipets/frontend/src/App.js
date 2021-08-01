@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
@@ -17,6 +17,7 @@ import DriversPortal from "./pages/drivers/drivers";
 import PrivateRoute from '../src/components/protectedroutes';
 
 import "./App.scss";
+import Register from "./pages/register/register";
 
 //import { withTheme } from '../../frontend/src/themes/Theme';
 
@@ -25,7 +26,7 @@ const App = () => (
     <Router>
       <Switch>
         <PrivateRoute exact path="/" component={Home} />
-        <Route path="/airlineportal" component={Airlines} />
+        <PrivateRoute path="/airlineportal" component={Airlines} />
         <Route path="/complianceportal" component={CompliancePortal} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/driversportal" component={DriversPortal} />
@@ -33,6 +34,7 @@ const App = () => (
         <Route path="/operationsportal" component={OperationsPortal} />
         <Route path="/petportal" component={PetPortal} />
         <Route path="/salesportal" component={SalesPortal} />
+        <Route path="/register" component={Register} />
         <Route path="/tsaportal" component={TsaPortal} />
         <Route path="/usdavetportal" component={UsdaVetPortal} />
       </Switch>

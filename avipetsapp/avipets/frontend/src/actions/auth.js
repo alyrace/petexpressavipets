@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 import { setAlert } from "./alert";
 import {
   LOGIN_SUCCESS,
@@ -6,6 +6,10 @@ import {
   LOGOUT,
   USER_LOADED_SUCCESS,
   USER_LOADED_FAIL,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAIL,
+  ACTIVATION_SUCCESS,
+  ACTIVATION_FAIL,
   AUTHENTICATED_SUCCESS,
   AUTHENTICATED_FAIL,
   PASSWORD_RESET_SUCCESS,
@@ -14,8 +18,8 @@ import {
   PASSWORD_RESET_CONFIRM_FAIL,
 } from "./types";
 
-//axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
-//axios.defaults.xsrfCookieName = "csrftoken";
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
 
 export const load_user = () => async (dispatch) => {
   if (localStorage.getItem("access")) {
@@ -29,7 +33,7 @@ export const load_user = () => async (dispatch) => {
 
     try {
       const res = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/users/auth/users/me/`,
+        `${process.env.REACT_APP_API_URL}/auth/users/me/`,
         config
       );
 
@@ -62,7 +66,7 @@ export const checkAuthenticated = () => async (dispatch) => {
 
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/users/auth/jwt/verify/`,
+        `${process.env.REACT_APP_API_URL}/auth/jwt/verify/`,
         body,
         config
       );
@@ -90,6 +94,42 @@ export const checkAuthenticated = () => async (dispatch) => {
     dispatch(setAlert("Error Authenticating", "error"));
   }
 };
+export const signup =
+  (first_name, last_name, user_name, email, password, re_password) => async (dispatch) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const body = JSON.stringify({
+      first_name,
+      last_name,
+      user_name,
+      email,
+      password,
+      re_password,
+    });
+
+    try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/auth/users/`,
+        body,
+        config
+      );
+
+      dispatch({
+        type: SIGNUP_SUCCESS,
+        payload: res.data,
+      });
+      dispatch(setAlert("Signup successful.", "success"));
+    } catch (err) {
+      dispatch({
+        type: SIGNUP_FAIL,
+      });
+      dispatch(setAlert("Error signup.", "error"));
+    }
+  };
 /*
 export const login = (email, password) => async (dispatch) => {
   const config = {
@@ -136,7 +176,7 @@ export const login = (email, password) => async (dispatch) => {
 
   try {
     const res = await axios.post(
-      `${process.env.REACT_APP_API_URL}/api/users/auth/jwt/create/`,
+      `${process.env.REACT_APP_API_URL}/auth/jwt/create/`,
       body,
       config
     );
@@ -156,7 +196,33 @@ export const login = (email, password) => async (dispatch) => {
     dispatch(setAlert("Error Login", "error"));
   }
 };
+export const verify = (uid, token) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
 
+  const body = JSON.stringify({ uid, token });
+
+  try {
+    await axios.post(
+      `${process.env.REACT_APP_API_URL}/auth/users/activation/`,
+      body,
+      config
+    );
+
+    dispatch({
+      type: ACTIVATION_SUCCESS,
+    });
+    dispatch(setAlert("Activation successful.", "success"));
+  } catch (err) {
+    dispatch({
+      type: ACTIVATION_FAIL,
+    });
+    dispatch(setAlert("Error Activation.", "error"));
+  }
+};
 export const reset_password = (email) => async (dispatch) => {
   const config = {
     headers: {
@@ -168,7 +234,7 @@ export const reset_password = (email) => async (dispatch) => {
 
   try {
     await axios.post(
-      `${process.env.REACT_APP_API_URL}/api/users/auth/users/reset_password/`,
+      `${process.env.REACT_APP_API_URL}/auth/users/reset_password/`,
       body,
       config
     );
@@ -197,7 +263,7 @@ export const reset_password_confirm =
 
     try {
       await axios.post(
-        `${process.env.REACT_APP_API_URL}api/users/auth/users/reset_password_confirm/`,
+        `${process.env.REACT_APP_API_URL}/auth/users/reset_password_confirm/`,
         body,
         config
       );
@@ -216,6 +282,6 @@ export const reset_password_confirm =
 
 
 export const logout = () => (dispatch) => {
-  dispatch(setAlert("logout successful.", "success"));
   dispatch({ type: LOGOUT });
+  dispatch(setAlert("logout successful.", "success"));
 };

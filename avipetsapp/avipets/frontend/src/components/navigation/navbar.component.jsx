@@ -1,18 +1,46 @@
-import React from 'react';
-import { Avatar } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-import Logo from '../../images/logo1.png';
-import Sidebar from './minibar.component';
+import React, {Fragment, useState } from "react";
+import { Avatar } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { logout } from "../../actions/auth";
+import Logo from "../../images/logo1.png";
+import Sidebar from "./minibar.component";
 
 
-const Navbar = () => {
-    return (
-      <div>
+const Navbar = ({ logout, isAuthenticated }) => {
+  const [redirect, setRedirect] = useState(false);
+  const guestLinks = () => (
+    <Fragment>
+      <li className="nav-item">
+        <Link className="nav-link" to="/login">
+          Login
+        </Link>
+      </li>
+    </Fragment>
+  );
+
+  const authLinks = () => (
+    <li className="nav-item">
+      <a className="dropdown-item nav-link" href="#!" onClick={logout_user}>
+          <span className="text-secondary">Logout</span>
+      </a>
+    </li>
+  );
+ 
+  const logout_user = () => {
+    logout();
+    setRedirect(true);
+  };
+
+  return (
+    <div>
+      <Fragment>
         <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
           <div className="container">
-            <a className="navbar-brand" href="/">
+            <Link className="navbar-brand" to="/">
               <img src={Logo} alt="avi pets" />
-            </a>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -77,8 +105,9 @@ const Navbar = () => {
                         </div>
                       </a>
                     </li>
+                    {isAuthenticated ? authLinks(): null}
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="/" onClick={logout_user}>
                         <span className="text-secondary">Logout</span>
                       </a>
                     </li>
@@ -88,9 +117,13 @@ const Navbar = () => {
             </div>
           </div>
         </nav>
-      </div>
-    );
-  };
-
-export default Navbar;
+        {redirect ? <Redirect to='/login' /> : <Fragment></Fragment>}
+      </Fragment>  
+    </div>
+  );
+};
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+export default connect(mapStateToProps, { logout })(Navbar);
 

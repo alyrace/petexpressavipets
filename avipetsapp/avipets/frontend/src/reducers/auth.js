@@ -2,6 +2,10 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAIL,
+  ACTIVATION_SUCCESS,
+  ACTIVATION_FAIL,
   USER_LOADED_SUCCESS,
   USER_LOADED_FAIL,
   AUTHENTICATED_SUCCESS,
@@ -46,6 +50,11 @@ const auth = (state = initialState, action) => {
         //timeout: 5000,
         refresh: payload.refreshh,
       };
+    case SIGNUP_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: false,
+      };
     case USER_LOADED_SUCCESS:
       return {
         ...state,
@@ -55,6 +64,10 @@ const auth = (state = initialState, action) => {
       return {
         ...state,
         user: payload,
+      };
+    case ACTIVATION_FAIL:
+      return {
+        ...state,
       };
     case AUTHENTICATED_FAIL:
       return {
@@ -66,19 +79,19 @@ const auth = (state = initialState, action) => {
         ...state,
         user: null,
       };
-
-    case LOGIN_FAIL:
     case LOGOUT:
-      localStorage.removeItem("token");
-      return {
-        ...state,
-        token: null,
-        isAuthenticated: false,
-        loading: false,
-        refresh: null,
-        user: null,
-        //timeout: null,
-      };
+       localStorage.removeItem('access');
+            localStorage.removeItem('refresh');
+            return {
+                ...state,
+                access: null,
+                refresh: null,
+                isAuthenticated: false,
+                user: null
+            };
+    case ACTIVATION_SUCCESS:
+    case LOGIN_FAIL:
+    case SIGNUP_FAIL:
     case PASSWORD_RESET_SUCCESS:
     case PASSWORD_RESET_FAIL:
     case PASSWORD_RESET_CONFIRM_SUCCESS:

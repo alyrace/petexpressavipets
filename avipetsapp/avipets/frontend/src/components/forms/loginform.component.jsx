@@ -66,19 +66,13 @@ const LoginForm = ({ login, isAuthenticated }) => {
             minLength="8"
           />
         </div>
-        <div className="form-group form-check">
-          <label htmlFor="remember_me" className="form-check-label m-1">
-            <input
-              type="checkbox"
-              name="remember_me pd-1"
-              id="remember_me"
-              className="form-check-input login_label"
-            />
-            Remember Me
-          </label>
+        <div className="pt-2 pb-2">
+          <a htmlFor="reset_password" href="/resetpassword" className="link-secondary">
+            Reset password?
+          </a>
         </div>
         <div className="row">
-          <button class="btn btn-outline-danger login_btn">Login</button>
+          <button type="submit" class="btn btn-outline-danger login_btn">Login</button>
         </div>
       </form>
     </div>

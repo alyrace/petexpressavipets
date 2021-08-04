@@ -40,7 +40,7 @@ $extra_large: 1200px;
     justify-content: center;
     align-items: center;
     margin: auto;
-    padding: 100px;
+    padding: 80px;
   }
   .pet_card {
     background: $bisque;
@@ -52,7 +52,7 @@ $extra_large: 1200px;
   .welcome_back {
     text-transform: uppercase;
     color: black;
-    padding: 10px;
+    padding: 8px;
     margin: 5em auto;
   }
 }
@@ -91,8 +91,8 @@ $extra_large: 1200px;
     font-family: "Poppins", sans-serif;
   }
   .main_content {
-    width: 70%;
-    height: 60vh;
+    width: 75%;
+    height: 78vh;
     background: $white;
     border-radius: 20px;
     box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
@@ -100,7 +100,7 @@ $extra_large: 1200px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 10em auto;
+    margin: 5em auto;
     padding: 30px;
   }
   .pet_card {
@@ -165,7 +165,7 @@ $extra_large: 1200px;
   }
   .main_content {
     width: 80%;
-    height: 50vh;
+    height: 60vh;
     background: $white;
     border-radius: 20px;
     box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
@@ -173,7 +173,7 @@ $extra_large: 1200px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 14em auto;
+    margin: 12em auto;
     padding: 30px;
   }
   .pet_card {
@@ -185,7 +185,7 @@ $extra_large: 1200px;
     margin: auto;
     color: $white;
     font-family: "Carter One", cursive;
-    padding: 100px 40px;
+    padding: 90px 40px;
   }
 }
 
@@ -239,7 +239,7 @@ $extra_large: 1200px;
   }
   .main_content {
     width: 60%;
-    height: 50vh;
+    height: 55vh;
     background: $white;
     border-radius: 20px;
     box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
@@ -247,7 +247,7 @@ $extra_large: 1200px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 12em auto;
+    margin: 10em auto;
     padding: 30px;
   }
   .pet_card {
@@ -258,7 +258,7 @@ $extra_large: 1200px;
     border-radius: 20px;
     color: $white;
     font-family: "Carter One", cursive;
-    padding: 100px 40px;
+    padding: 90px 40px;
   }
 }
 
@@ -315,7 +315,7 @@ $extra_large: 1200px;
 
   .main_content {
     width: 50%;
-    height: 60vh;
+    height: 70vh;
     background: $white;
     border-radius: 20px;
     box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
@@ -323,7 +323,7 @@ $extra_large: 1200px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 10em auto;
+    margin: 8em auto;
     padding: 30px;
   }
   .pet_card {
@@ -333,6 +333,6 @@ $extra_large: 1200px;
     border-radius: 20px;
     margin: auto;
     font-family: "Carter One", cursive;
-    padding: 140px 40px;
+    padding: 120px 40px;
   }
 }

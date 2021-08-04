@@ -1,10 +1,13 @@
 //import React, { useState, useEffect } from "react";
 import React from "react";
 import { Helmet } from "react-helmet";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import Navbar from "../../components/navigation/navbar.component";
 import "./home.scss";
 
-const Home = () => {
+const Home = ({isAuthenticated}) => {
+  if (isAuthenticated === false) return <Redirect to="/login" />;
   /*useEffect(() => {
         const config = {
             headers: {
@@ -127,5 +130,7 @@ const Home = () => {
     </div>
   );
 };
-
-export default Home;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+export default connect(mapStateToProps)(Home);

@@ -12,12 +12,12 @@ const AirlineCard = (props) => {
             <Link to={`/airlineportal/${props.slug}`}>
               <figure class="figure">
                 <img
-                  src={props.main_photo}
+                  src={props.photo_main}
                   class="figure-img img-fluid rounded"
                   alt="airlineimage"
                 />
                 <figcaption class="figure-caption">
-                  {props.listing.title}
+                  {props.title}
                 </figcaption>
               </figure>
             </Link>

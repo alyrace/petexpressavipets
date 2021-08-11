@@ -1,3 +1,41 @@
+//==============================
+// Airline Page Detail
+//==============================
+table {
+ border-radius: 20px;
+}
+.table_bg {
+  background-color: #87B3BE;
+  box-shadow: 0 5px 5px rgba(246,164,122,0.7);
+  border-radius: 14px;
+}
+.airline_dets{
+  border-radius: 10px;
+  box-shadow: 0 5px 5px rgba(244,120,120,0.7);
+  background: #67A7B0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right,#67A7B0,#87B3BE, #67A7B0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #67A7B0, #87B3BE, #67A7B0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.box_airlines {
+  height: 300px;
+  text-transform: uppercase;
+  border-radius: 20px;
+  box-shadow: 0 5px 5px rgba(54, 43, 43, 0.4);
+  color: white;
+  border-top: 1px solid #D3D3D3;
+}
+
+//==============================
+// Airline Page
+//==============================
+.airline_img {
+  object-fit: cover;
+  object-position: center;
+  height: 25vh;
+  width: 100%;
+  overflow: hidden;
+}
+
 .banner {
   background: #076585; /* fallback for old browsers */
   background: -webkit-linear-gradient(

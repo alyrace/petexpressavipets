@@ -1,6 +1,6 @@
 import React from 'react'
 import '../navigation/navbar.scss'
-const Sidebar = () => {
+const Minibar = () => {
     return (
       <div>
         <div
@@ -38,9 +38,9 @@ const Sidebar = () => {
               <i className="fas fa-paw fa-lg"></i>
             </button>
           </a>
-          <a href="/operationsportal" className="link-secondary">
+          <a href="/salesportal" className="link-secondary">
             <button type="button" class="btn btn-outline-dark mini_btn p-2">
-              <i className="fas fa-store-alt fa-lg"></i>
+              <i className="fas fa-mobile-alt fa-lg"></i>
             </button>
           </a>
           <a href="/tsaportal" className="link-secondary">
@@ -58,4 +58,4 @@ const Sidebar = () => {
     );
 }
 
-export default Sidebar;
+export default Minibar;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "../../components/navigation/navbar.component";
+//import Navbar from "../../components/navigation/navbar.component";
 import "../airlines/airlines.scss";
 import sales from "../../images/sales.png";
 
@@ -7,8 +7,6 @@ class SalesPortal extends Component {
   render() {
     return (
       <div>
-        <Navbar />
-        <div>
           <section className="container-fluid banner_sales">
             <div className="row">
               <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -72,7 +70,6 @@ class SalesPortal extends Component {
               </div>
             </div>
           </section>
-        </div>
       </div>
     );
   }

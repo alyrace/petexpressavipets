@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import {Redirect} from "react-router-dom";
 //import { useHistory } from 'react-router-dom';
-import { Pagination } from "antd";
+import Pagination from "../../components/pagination/pagination";
 //import Loader from 'react-loader-spinner';
 
-import Navbar from "../../components/navigation/navbar.component";
+//import Navbar from "../../components/navigation/navbar.component";
 import "../airlines/airlines.scss";
 import airlineimg from "../../images/airline.png";
 import AirlineCard from "../../components/airliines/airline.component";
@@ -18,107 +18,7 @@ import AirlineCard from "../../components/airliines/airline.component";
 
 const Airlines = ({ isAuthenticated}) => {
   if (isAuthenticated === false) return <Redirect to="/login" />;
-  /*const PostLoading = PostLoadingComponent(Posts);
-	[postlist, setPosts] = useState({
-		loading: true,
-		posts: null,
-	});
 
-	useEffect(() => {
-		axiosInstance.get().then((res) => {
-			const allPosts = res.data;
-			console.log(res.data);
-			setAppState({ loading: false, posts: allPosts });
-			console.log(res.data);
-		});
-	}, [setPosts]);
-
-  render() {
-    return (
-      <div>
-        <Navbar />
-        <div>
-          <section className="container-fluid banner">
-            <div className="row">
-              <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h1 className="text-white text-center mt-3 pt-2">Airlines</h1>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                <h2 className="text-center text-white mt-3 pt-4 pb-5 ms-0 me-0">
-                  Find airline cargo locations, flight codes, and requirements.
-                </h2>
-              </div>
-              <div className="center col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                <img
-                  className="img-fluid text-center mb-5"
-                  src={airlineimg}
-                  alt="airline"
-                />
-              </div>
-            </div>
-          </section>
-          <section className="container bg-transparent">
-            <div className="row">
-              <div className="center col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h3 className="text-dark text-center">Find an Airline</h3>
-              </div>
-            </div>
-            <div className="row align-items-center pt-5">
-              <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 col-xs-12 mx-auto my-auto">
-                <form className="form-group" action="">
-                  <div className="input-group form-container">
-                    <span className="input-group-text">
-                      <i class="fas fa-search-location fa-2x" id="Search"></i>
-                    </span>
-                    <input
-                      className="form-control"
-                      type="search"
-                      placeholder="Search"
-                      aria-label="Search"
-                    />
-                    <div className="input-group-append position-relative">
-                      <button
-                        className="btn btn-primary btn-lg position-absolute top-0 end-0"
-                        type="submit"
-                        id="Search"
-                      >
-                        <i
-                          class="fa fa-arrow-right fa-sm"
-                          aria-hidden="true"
-                        ></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </section>
-          <section>
-            <div className="container-fluid mt-5 mb-5 pb-5 airlines_section">
-              <AirlineCard isLoading={postlist.loading} posts={postlist.posts}/>
-            </div>
-          </section>
-        </div>
-      </div>
-    );
-  }
-}
-{loading ? (
-              <div className="listingform__loader">
-                <Loader type="Oval" color="#424242" height={50} width={50} />
-              </div>
-            ) : (
-              <span></span>
-            )};
-     
-        axios.defaults.headers.common["Authorization"] =
-          "Token " + this.props.auth.getToken();
-        console.log(this.props.auth.getToken());
-*/            
-
-  //const [loading, setLoading] = useState(false);
   const [airlineListings, setAirlineListings] = useState([]);
   const [count, setCount] = useState(0);
   const [previous, setPrevious] = useState("");
@@ -162,46 +62,48 @@ const Airlines = ({ isAuthenticated}) => {
       );
     });
 
-    for (let i = 0; i <airlineListings.length; i += 12) {
+    for (let i = 0; i < airlineListings.length; i += 12) {
       result.push(
         <div key={i}>
           <div className="row">
-            <div className="col-1-of-4">{display[i]}</div>
-            <div className="col-1-of-4">
+            <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              {display[i]}
+            </div>
+            <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
               {display[i + 1] ? display[i + 1] : null}
             </div>
-            <div className="col-1-of-4">
+            <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
               {display[i + 2] ? display[i + 2] : null}
             </div>
-            <div className="col-1-of-4">
+            <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
               {display[i + 3] ? display[i + 3] : null}
             </div>
           </div>
           <div className="row">
-            <div className="col-1-of-4">
+            <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
               {display[i + 4] ? display[i + 4] : null}
             </div>
-            <div className="col-1-of-4">
+            <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
               {display[i + 5] ? display[i + 5] : null}
             </div>
-            <div className="col-1-of-4">
+            <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
               {display[i + 6] ? display[i + 6] : null}
             </div>
-            <div className="col-1-of-4">
+            <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
               {display[i + 7] ? display[i + 7] : null}
             </div>
           </div>
           <div className="row">
-            <div className="col-1-of-4">
+            <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
               {display[i + 8] ? display[i + 8] : null}
             </div>
-            <div className="col-1-of-4">
+            <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
               {display[i + 9] ? display[i + 9] : null}
             </div>
-            <div className="col-1-of-4">
+            <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
               {display[i + 10] ? display[i + 10] : null}
             </div>
-            <div className="col-1-of-4">
+            <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
               {display[i + 11] ? display[i + 11] : null}
             </div>
           </div>
@@ -263,7 +165,6 @@ const Airlines = ({ isAuthenticated}) => {
           <meta name="description" content="AVI Pets Airline List" />
         </Helmet>
       </main>
-      <Navbar />
       <div>
         <section className="container-fluid banner">
           <div className="row">
@@ -323,20 +224,22 @@ const Airlines = ({ isAuthenticated}) => {
           </div>
         </section>
         <section>
-          <div className="container-fluid mt-5 mb-5 pb-5 airlines_section">
+          <div className="container mt-5 mb-5 pt-5 pb-5 airlines_section">
             {displayListings()}
           </div>
-          <div className="row">
-            <div className="col-xxl-12">
-                <Pagination
-                  itemsPerPage={12}
-                  count={count}
-                  visitPage={visitPage}
-                  previous={previous_number}
-                  next={next_number}
-                  active={active}
-                  setActive={setActive}
-                />
+        </section>
+        <section className="container mt-3 mb-3">
+          <div className="row center ms-5 ps-5 me-5 pe-5">
+            <div className="d-flex justify-content-center col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-12 col-sm-12 col-xs-12 mx-auto my-auto">
+              <Pagination
+                itemsPerPage={12}
+                count={count}
+                visitPage={visitPage}
+                previous={previous_number}
+                next={next_number}
+                active={active}
+                setActive={setActive}
+              />
             </div>
           </div>
         </section>

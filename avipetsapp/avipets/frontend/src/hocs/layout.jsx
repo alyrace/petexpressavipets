@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Footer from "../components/footer/footer";
 import { connect } from "react-redux";
 import { checkAuthenticated, load_user } from "../actions/auth";
+import Navbar from "../components/navigation/navbar.component";
 
 const Layout = ({ checkAuthenticated, load_user, children }) => {
   useEffect(() => {
@@ -11,6 +12,7 @@ const Layout = ({ checkAuthenticated, load_user, children }) => {
 
   return (
     <div>
+      <Navbar />
       {children}
       < Footer />
     </div>

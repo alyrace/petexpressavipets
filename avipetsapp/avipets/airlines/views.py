@@ -8,11 +8,11 @@ from rest_framework.views import APIView
 from rest_framework import status, permissions
 from rest_framework.parsers import MultiPartParser, FormParser
 from django.contrib.auth.mixins import AccessMixin, PermissionRequiredMixin
-from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 #from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Airline
 from .serializers import AirlineSerializer, AirlineDetailSerializer
+
 
 # for pdf file upload
 from django.http import FileResponse
@@ -36,22 +36,27 @@ def airline_pdf(request):
     # add lines of text
 
 
-class AirlineList(PermissionRequiredMixin, generics.ListAPIView):
+class AirlineList(generics.ListAPIView):
     queryset = Airline.objects.all()
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [permissions.IsAuthenticated]
-    permission_required =[permissions.IsAuthenticated]
+    #queryset = Airline.objects.order_by('-title').filter(published=True)
+    #authentication_classes = [TokenAuthentication]
+    permission_classes = [permissions.AllowAny]
+    #permission_required =[permissions.IsAuthenticated]
     serializer_class = AirlineSerializer
+    #lookup_field = 'slug'
 
-class AirlineDetail(PermissionRequiredMixin, generics.RetrieveAPIView):
 
+class AirlineDetail(generics.RetrieveAPIView):
     serializer_class = AirlineDetailSerializer
+    permission_classes = [permissions.AllowAny]
     queryset = Airline.objects.all()
+    lookup_field = 'slug'
 
+    """
     def get_object(self, queryset=None, **kwargs):
         item = self.kwargs.get('pk')
         return get_object_or_404(Airline, slug=item)
-
+    """
 class AirlineListDetailFilter(PermissionRequiredMixin, generics.ListAPIView):
 
     queryset = Airline.objects.all()
@@ -87,7 +92,7 @@ class EditAirline(PermissionRequiredMixin, generics.UpdateAPIView):
 
 
 class DeleteAirline(generics.RetrieveDestroyAPIView):
-    permission_classes = [permissions.IsAuthenticated, IsAdminUser]
+    permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
     serializer_class = AirlineDetailSerializer
     queryset = Airline.objects.all()
 

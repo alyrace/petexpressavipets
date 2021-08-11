@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "../../components/navigation/navbar.component";
+//import Navbar from "../../components/navigation/navbar.component";
 import "../airlines/airlines.scss";
 import tsa from "../../images/tsa.png";
 
@@ -7,8 +7,6 @@ class TsaPortal extends Component {
   render() {
     return (
       <div>
-        <Navbar />
-        <div>
           <section className="container-fluid banner_tsa">
             <div className="row">
               <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -69,7 +67,6 @@ class TsaPortal extends Component {
               </div>
             </div>
           </section>
-        </div>
       </div>
     );
   }

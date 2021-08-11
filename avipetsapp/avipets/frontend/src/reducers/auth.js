@@ -48,7 +48,12 @@ const auth = (state = initialState, action) => {
         loading: false,
         token: payload.access,
         //timeout: 5000,
-        refresh: payload.refreshh,
+        refresh: payload.refresh,
+      };
+    case AUTHENTICATED_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: true,
       };
     case SIGNUP_SUCCESS:
       return {
@@ -80,15 +85,15 @@ const auth = (state = initialState, action) => {
         user: null,
       };
     case LOGOUT:
-       localStorage.removeItem('access');
-            localStorage.removeItem('refresh');
-            return {
-                ...state,
-                access: null,
-                refresh: null,
-                isAuthenticated: false,
-                user: null
-            };
+      localStorage.removeItem("access");
+      localStorage.removeItem("refresh");
+      return {
+        ...state,
+        access: null,
+        refresh: null,
+        isAuthenticated: false,
+        user: null,
+      };
     case ACTIVATION_SUCCESS:
     case LOGIN_FAIL:
     case SIGNUP_FAIL:

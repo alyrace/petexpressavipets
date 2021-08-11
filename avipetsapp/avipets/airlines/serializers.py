@@ -18,16 +18,16 @@ User = settings.AUTH_USER_MODEL
 # for datatime
 now = datetime.datetime.now()
 def upload_to(instance, filename):
-    return 'airlines/{filename}'.format(filename=filename)
+    return 'media/{filename}'.format(filename=filename)
 
 class AirlineSerializer(serializers.ModelSerializer):
     class Meta:
-        Model: Airline
-        fields = ('main_photo', 'name', 'status')
+        model = Airline
+        fields = ('category','_id' ,'photo_main', 'title', 'slug', 'status')
 
 
 class AirlineDetailSerializer(CountryFieldMixin, serializers.ModelSerializer):
-
+    
     #employee = serializers.(User, on_delete=models.DO_NOTHING)
     slug = serializers.SlugField(
         max_length=50, min_length=None, allow_blank=False)
@@ -137,6 +137,8 @@ class AirlineDetailSerializer(CountryFieldMixin, serializers.ModelSerializer):
     breed_restrictions = serializers.CharField(
         max_length=None, min_length=None, allow_blank=True, trim_whitespace=True)
     weather_restrictions = serializers.BooleanField(default=True)
+    weather_restrictions_desc = serializers.CharField(
+        max_length=None, min_length=None, allow_blank=True, trim_whitespace=True)
     pet_reservations_info = serializers.CharField(
         max_length=None, min_length=None, allow_blank=True, trim_whitespace=True)
     published= serializers.BooleanField()
@@ -146,15 +148,17 @@ class AirlineDetailSerializer(CountryFieldMixin, serializers.ModelSerializer):
         ('TBD', 'TBD')
     ))
     #created_at = serializers.DateTimeField()
-    last_updated = serializers.DateTimeField(format=now)
+    #last_updated = serializers.DateTimeField(format=now)
     airline_docs = serializers.FileField()
     contry = CountryField()
     terminal_number = serializers.CharField(required=False, max_length=50)
-
+    
     class Meta:
-        Model: Airline
+        model = Airline
+        fields =  '__all__'
         lookup_field = 'slug'
-        fields = ('category', '_id', 'title', 'published','status', 'employee', 'slug','airline_code', 'airline_network',
+        """
+        ('category', 'title', 'published','status', 'employee', 'slug','airline_code', 'airline_network',
                   'address', 'city', 'state', 'zipcode' 'pet_flight_options',
                   'cargo_phone', 'reservation_phone', 'description', 'has_grass',
                   'import_station', 'export_station', 'special_instructions',
@@ -167,5 +171,6 @@ class AirlineDetailSerializer(CountryFieldMixin, serializers.ModelSerializer):
                   'pet_reservations_info', 'pets_checkin_options', 'earliest_book_date', 
                   'airline_docs', 'compliance_notes', 'driver_notes', 
                   'terminal_number','last_updated', 'name', 'country')
+        """
         widgets = {'country': CountrySelectWidget()}
 

@@ -1,24 +1,16 @@
 import React, {Fragment, useState } from "react";
-import { Avatar } from "antd";
-import { UserOutlined } from "@ant-design/icons";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import { Avatar } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 import { logout } from "../../actions/auth";
-import Logo from "../../images/logo1.png";
-import Sidebar from "./minibar.component";
+import Logo from "../../images/logo3.png";
+import Minibar from "./minibar.component";
+
 
 
 const Navbar = ({ logout, isAuthenticated }) => {
   const [redirect, setRedirect] = useState(false);
-  const guestLinks = () => (
-    <Fragment>
-      <li className="nav-item">
-        <Link className="nav-link" to="/login">
-          Login
-        </Link>
-      </li>
-    </Fragment>
-  );
 
   const authLinks = () => (
     <li className="nav-item">
@@ -36,29 +28,29 @@ const Navbar = ({ logout, isAuthenticated }) => {
   return (
     <div>
       <Fragment>
-        <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
           <div className="container">
-            <Link className="navbar-brand" to="/">
+            <Link className="navbar-brand mx-5" to="/">
               <img src={Logo} alt="avi pets" />
             </Link>
             <button
-              className="navbar-toggler"
+              className="navbar-toggler text-dark"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#navbarTogglerDemo01"
-              aria-controls="navbarTogglerDemo01"
+              data-bs-target="#topNavBar"
+              aria-controls="topNavBar"
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-              <ul className="navbar-nav me-auto mt-4 mb-4 mb-lg-0">
+            <div className="collapse navbar-collapse" id="topNavBar">
+              <ul className="d-flex justify-content-center navbar-nav me-auto mt-2 mb-4 mb-lg-0">
                 <li className="nav-item">
-                  <Sidebar />
+                  <Minibar />
                 </li>
               </ul>
-              <form className="d-flex mb-2">
+              <form className="d-flex mb-1">
                 <input
                   className="form-control me-1"
                   type="search"
@@ -105,9 +97,13 @@ const Navbar = ({ logout, isAuthenticated }) => {
                         </div>
                       </a>
                     </li>
-                    {isAuthenticated ? authLinks(): null}
+                    {isAuthenticated ? authLinks() : null}
                     <li>
-                      <a className="dropdown-item" href="/" onClick={logout_user}>
+                      <a
+                        className="dropdown-item"
+                        href="/"
+                        onClick={logout_user}
+                      >
                         <span className="text-secondary">Logout</span>
                       </a>
                     </li>
@@ -117,8 +113,8 @@ const Navbar = ({ logout, isAuthenticated }) => {
             </div>
           </div>
         </nav>
-        {redirect ? <Redirect to='/login' /> : <Fragment></Fragment>}
-      </Fragment>  
+        {redirect ? <Redirect to="/login" /> : <Fragment></Fragment>}
+      </Fragment>
     </div>
   );
 };

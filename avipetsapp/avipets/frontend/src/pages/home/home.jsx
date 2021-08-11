@@ -3,7 +3,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import Navbar from "../../components/navigation/navbar.component";
+//import Navbar from "../../components/navigation/navbar.component";
 import "./home.scss";
 
 const Home = ({isAuthenticated}) => {
@@ -23,7 +23,6 @@ const Home = ({isAuthenticated}) => {
           <meta name="description" content="AVI Pets Hompage" />
         </Helmet>
       </main>
-      <Navbar />
       <section className="container">
         <div className="row text-center text-white gx-3 gy-3">
           <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">

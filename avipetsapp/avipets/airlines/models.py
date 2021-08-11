@@ -9,7 +9,7 @@ User = settings.AUTH_USER_MODEL
 
 
 def upload_to(instance, filename):
-    return 'media/{filename}'.format(filename=filename)
+    return 'airlines/{filename}'.format(filename=filename)
 
 
 class Category(models.Model):
@@ -125,19 +125,19 @@ class Airline(models.Model):
     website = models.URLField(max_length=200, blank=True)
     crate_inspection_required = models.BooleanField(default=True)
     photo_main = models.ImageField(
-        _("Image"), upload_to=upload_to, default='media/default.png')
+        _("Main Banner"), upload_to=upload_to, default='media/default.png')
     photo_1 = models.ImageField(
-        _("Image"), upload_to=upload_to, default='media/default.png')
+        _("Image1"), upload_to=upload_to, default='media/default.png')
     photo_2 = models.ImageField(
-        _("Image"), upload_to=upload_to, default='media/default.png')
+        _("Image2"), upload_to=upload_to, default='media/default.png')
     photo_3 = models.ImageField(
-        _("Image"), upload_to=upload_to, default='media/default.png')
+        _("Image3"), upload_to=upload_to, default='media/default.png')
     photo_4 = models.ImageField(
-        _("Image"), upload_to=upload_to, default='media/default.png')
+        _("Image4"), upload_to=upload_to, default='media/default.png')
     photo_5 = models.ImageField(
-        _("Image"), upload_to=upload_to, default='media/default.png')
+        _("Image5"), upload_to=upload_to, default='media/default.png')
     photo_6 = models.ImageField(
-        _("Image"), upload_to=upload_to, default='media/default.png')
+        _("Image6"), upload_to=upload_to, default='media/default.png')
     # photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     # photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     # photo_3 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
@@ -150,6 +150,7 @@ class Airline(models.Model):
     earliest_book_date = models.CharField(max_length=100, blank=True)
     breed_restrictions = models.TextField(blank=True)
     weather_restrictions = models.BooleanField(default=True)
+    weather_restrictions_desc = models.TextField(blank=True)
     pet_reservations_info = models.TextField(blank=True)
     pets_checkin_options = models.CharField(
         max_length=100, choices=FACILITY, default='Cargo')

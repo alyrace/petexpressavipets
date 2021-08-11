@@ -1,0 +1,18 @@
+.inventory_box {
+    border: 1px solid black;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 10px 20px rgba(14,99,117,0.7);
+ 
+}
+.inventory_box_edit{
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(14,99,117,0.7);
+ 
+}
+.bg_inventory_thead {
+    background: #723538;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #F17077, #C75D62, #723538);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #F17077, #C75D62, #723538); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+

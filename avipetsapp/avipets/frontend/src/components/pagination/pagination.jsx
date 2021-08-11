@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "../../sass/pagination.scss"
 
 const pagination = (props) => {
   const getNumbers = () => {
@@ -13,15 +14,21 @@ const pagination = (props) => {
       let content = null;
 
       if (props.active === page) {
-        style = "pagination__number pagination__number--active";
         content = (
-          <div key={i} className={style}>
+          <div
+            key={i}
+            className="pagination__number pagination__number--active"
+          >
             {pageNumber}
           </div>
         );
       } else {
         content = (
-          <div key={i} onClick={() => props.visitPage(page)} className={style}>
+          <div
+            key={i}
+            onClick={() => props.visitPage(page)}
+            className="pagination__number pagination__number--active"
+          >
             {pageNumber}
           </div>
         );
@@ -37,11 +44,11 @@ const pagination = (props) => {
   return (
     <div className="pagination">
       <div onClick={() => props.previous()} className="pagination__number">
-        Previous
+        <i class="fa fa-angle-double-left fa-lg" aria-hidden="true"></i>
       </div>
       {getNumbers()}
       <div onClick={() => props.next()} className="pagination__number">
-        Next
+        <i class="fa fa-angle-double-right fa-lg" aria-hidden="true"></i>
       </div>
     </div>
   );

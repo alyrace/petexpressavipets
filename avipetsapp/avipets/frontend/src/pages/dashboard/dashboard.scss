@@ -1,5 +1,5 @@
-$offcanvas-width: 270px;
-$topNavbarHeight: 56px;
+$offcanvas-width: 300px;
+//$topNavbarHeight: 56px;
 .card {
   border-radius: 15px;
 }
@@ -33,6 +33,7 @@ $topNavbarHeight: 56px;
 .sidebar-link[aria-expanded="true"] .right-icon {
   transform: rotate(180deg);
 }
+/*
 @media (min-width: 992px) {
   body {
     overflow: auto !important;
@@ -40,7 +41,7 @@ $topNavbarHeight: 56px;
   main {
     margin-left: $offcanvas-width;
   }
-  /* this is to remove the backdrop */
+  //this is to remove the backdrop 
   .offcanvas-backdrop::before {
     display: none;
   }
@@ -51,4 +52,4 @@ $topNavbarHeight: 56px;
     height: calc(100% - 56px);
     top: $topNavbarHeight;
   }
-}
+}*/

@@ -12,6 +12,7 @@ import DriversPortal from "./pages/drivers/drivers";
 import Home from "./pages/home/home";
 import Inventory from "./pages/inventory/inventoryhome";
 import InventoryAddItems from "./pages/inventory/additems";
+import InventoryDetail from "./pages/inventory/itemdetail";
 import InventoryEditItems from "./pages/inventory/edititems";
 import Login from "./pages/login/login";
 import OperationsPortal from "./pages/operations/operations";
@@ -26,6 +27,9 @@ import UsdaVetPortal from "./pages/usdavet/usdavet";
 
 import "./App.scss";
 import Layout from "./hocs/layout";
+import BarkerHome from "./pages/barker/barkerhome";
+import Employees from "./pages/employees/employees";
+import EmployeeDetail from "./pages/employees/employeedetail";
 
 
 
@@ -40,11 +44,15 @@ const App = () => (
           <Route exact path="/activate/:uid/:token" component={Activate} />
           <Route path="/airlineportal" component={Airlines} />
           <Route exact path="/airline/:id" component={AirlineDetails} />
+          <Route exact path="/barkerhome" component={BarkerHome} />
           <Route path="/complianceportal" component={CompliancePortal} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/driversportal" component={DriversPortal} />
+          <Route path="/employees" component={Employees} />
+          <Route path="/employeeprofile/:id" component={EmployeeDetail} />
           <Route path="/inventory" component={Inventory} />
           <Route path="/inventoryadd" component={InventoryAddItems} />
+          <Route path="/inventoryDetail/:id" component={InventoryDetail} />
           <Route path="/inventoryupdate/:id" component={InventoryEditItems} />
           <Route exact path="/login" component={Login} />
           <Route path="/operationsportal" component={OperationsPortal} />

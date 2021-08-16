@@ -1,16 +1,18 @@
-from rest_framework import status
+from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import CustomUserSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.conf  import settings
-
+from .models import NewUser
+from .filters import UserFilter
+from django_filters import rest_framework as filters
 
 User = settings.AUTH_USER_MODEL
 
 class CustomUserCreate(APIView):
 
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def post(self, request, format='json'):
         serializer = CustomUserSerializer(data=request.data)
@@ -34,10 +36,6 @@ class CustomStaffUserCreate(APIView):
             json = serializer.data
             return Response(json, status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-
-           
 
 class SignupView(APIView):
     permission_classes = [AllowAny]
@@ -66,3 +64,20 @@ class SignupView(APIView):
         else:
             return Response({'error': 'Passwords do not match'})
 
+class ListUsersView(generics.ListAPIView):
+    queryset = NewUser.objects.get_queryset().order_by('id')
+    permission_classes = [AllowAny]
+    serializer_class = CustomUserSerializer
+    paginate_by = 12
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = UserFilter
+
+class UserDetail(generics.RetrieveAPIView):
+    serializer_class = CustomUserSerializer
+    queryset = NewUser.objects.all()
+    permission_classes = [AllowAny]
+
+"""
+class ProfileView(generics.RetrieveAPIView):
+    queryset= User.objects.all()
+"""    

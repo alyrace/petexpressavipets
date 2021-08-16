@@ -3,16 +3,14 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import { Redirect, Link } from "react-router-dom";
+import {CSVLink} from "react-csv";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 import Pagination from "../../components/pagination/pagination";
 
-
-
-//import Navbar from "../../components/navigation/navbar.component";
-//import InventoryTable from "../../components/inventorytable/inventorytable.component";
-
 import "./inventory.scss";
-//import AddItems from "./additems";
+
 
 const Inventory = ({isAuthenticated}) => {
   if (isAuthenticated === false) return <Redirect to="/login" />;
@@ -26,6 +24,7 @@ const Inventory = ({isAuthenticated}) => {
   const [previous, setPrevious] = useState("");
   const [next, setNext] = useState("");
   const [active, setActive] = useState(1);
+  //const [exportData, setExportData] = useState([]);
   
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -51,7 +50,6 @@ const Inventory = ({isAuthenticated}) => {
     fetchData();
   }, []);
  
-  
 
   const renderTableRows = () => {
     function searchInventory(listings) {
@@ -81,14 +79,14 @@ const Inventory = ({isAuthenticated}) => {
    return searchInventory(listings).map(listing => {
      return (
        <tr key={listing.id}>
-         <td className="text-center">{listing.id}</td>
-         <td className="text-center">{listing.category}</td>
+         <td className="text-center text-secondary">{listing.category}</td>
          <td className="text-center">
-           <Link class="link-danger" to={`/inventoryupdate/${listing.id}`}>
+           <Link className="link-danger" to={`/inventorydetail/${listing.id}/`}>
              {listing.item_name}
            </Link>
          </td>
-         <td className="text-center">{listing.quantity}</td>
+         <td className="text-center text-secondary">{listing.quantity}</td>
+         <td className="text-center text-secondary">{listing.last_updated}</td>
        </tr>
      );
    })
@@ -141,6 +139,38 @@ const Inventory = ({isAuthenticated}) => {
         setError(err);
      });
  };
+
+ const exportPDF = () => {
+   const unit = "pt";
+   const size = "A4"; // Use A1, A2, A3 or A4
+   const orientation = "portrait"; // portrait or landscape
+
+   const marginLeft = 40;
+   const doc = new jsPDF(orientation, unit, size);
+
+   doc.setFontSize(15);
+
+   const title = "Pet Express Inventory";
+   const headers = [["CATEGORY", "ITEM NAME", "QUANTITY", "LAST UPDATED"]];
+
+   const data = listings.map((listing) => [
+     listing.category,
+     listing.item_name,
+     listing.quantity,
+     listing.last_updated,
+   ]);
+
+   let content = {
+     startY: 50,
+     head: headers,
+     body: data,
+   };
+
+   doc.text(title, marginLeft, 40);
+   doc.autoTable(content);
+   doc.save("report.pdf");
+ };
+
  if (error) {
           return <>{error.message}</>;
     } else if (!isLoaded) {
@@ -164,42 +194,78 @@ const Inventory = ({isAuthenticated}) => {
             </div>
             <div className="d-flex justify-content-center mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div className="row">
-                <div className="container">
-                  <div className="d-flex justify-content-center mt-2 mb-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                    <input
-                      type="text"
-                      name="set_search"
-                      id="set_search"
-                      placeholder="Search Inventory"
-                      value={search}
-                      onChange={(e) => setSearch(e.target.value)}
-                    />
+                <div className="container p-5 inventory_box_search">
+                  <div className="row">
+                    <div className="d-flex justify-content-center col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div className="row">
+                        <div className="container-fluid">
+                          <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="btn-group" role="group">
+                              <Link to="/inventoryadd">
+                                <i class="fas fa-plus-square fa-5x ivt_btn2"></i>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="d-flex justify-content-center mb-2 mt-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                    <select
-                      /* 
+                  <div className="row">
+                    <div className="d-flex justify-content-center mt-2 mb-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                      <input
+                        className="form-control"
+                        type="text"
+                        name="set_search"
+                        id="set_search"
+                        placeholder="Search Inventory"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                      />
+                    </div>
+                    <div className="d-flex justify-content-center mb-2 mt-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                      <select
+                        /* 
                      here we create a basic select input
                      we set the value to the selected value 
                      and update the setC() state every time onChange is called
                     */
-                      class="form-select"
-                      id="category"
-                      onChange={(e) => {
-                        setFilterParam(e.target.value);
-                      }}
-                      className="custom-select"
-                      aria-label="Filter Inventory"
-                    >
-                      <option value="All">ALL CATEGORIES</option>
-                      <option value="CLEANING">CLEANING</option>
-                      <option value="CRATES">CRATES</option>
-                      <option value="ELECTRONICS">ELECTRONICS</option>
-                      <option value="MISCELLANEOUS">MISCELLANEOUS</option>
-                      <option value="OFFICE MAIN">OFFICE MAIN</option>
-                      <option value="OFFICE SALES">OFFICE SALES</option>
-                      <option value="PET">PET</option>
-                      <option value="PET TRAVEL">PET TRAVEL</option>
-                    </select>
+                        class="form-select form-select-lg"
+                        id="category"
+                        onChange={(e) => {
+                          setFilterParam(e.target.value);
+                        }}
+                        aria-label="Filter Inventory"
+                      >
+                        <option value="All">ALL CATEGORIES</option>
+                        <option value="CLEANING">Cleaning</option>
+                        <option value="CRATES">Crates</option>
+                        <option value="ELECTRONICS">Electronics</option>
+                        <option value="MISCELLANEOUS">Miscellaneous</option>
+                        <option value="OFFICE MAIN">Office Main</option>
+                        <option value="OFFICE OTHER">Office OTHER</option>
+                        <option value="OFFICE SALES">Office Sales</option>
+                        <option value="PET">Pet</option>
+                        <option value="PET TRAVEL">Pet Travel</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="d-flex justify-content-center mt-2 mb-2 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="btn-group" role="group">
+                        <CSVLink
+                          className="btn btn_csv"
+                          data={listings}
+                          filename={"inventory.csv"}
+                        >
+                          <i className="fas fa-file-csv fa-2x pe-2"></i>
+                          <i class="fas fa-download fa-sm"></i>
+                        </CSVLink>
+                        <button className="btn btn_pdf" onClick={exportPDF}>
+                          <i className="fas fa-file-pdf fa-2x me-1"></i>
+                          <i class="fas fa-download fa-sm"></i>
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -210,9 +276,6 @@ const Inventory = ({isAuthenticated}) => {
                   <thead className="bg_inventory_thead">
                     <tr className="text-light">
                       <th scope="col" className="uppercase text-center">
-                        #
-                      </th>
-                      <th scope="col" className="uppercase text-center">
                         CATEGORY
                       </th>
                       <th scope="col" className="uppercase text-center">
@@ -220,6 +283,9 @@ const Inventory = ({isAuthenticated}) => {
                       </th>
                       <th scope="col" className="uppercase text-center">
                         QTY
+                      </th>
+                      <th scope="col" className="uppercase text-center">
+                        UPDATED
                       </th>
                     </tr>
                   </thead>
@@ -238,10 +304,8 @@ const Inventory = ({isAuthenticated}) => {
                 </div>
               </div>
             </div>
-            <div className="col"></div>
           </div>
         </section>
-        <section className="container"></section>
       </div>
     </div>
   );}

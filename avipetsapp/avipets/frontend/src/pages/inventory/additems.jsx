@@ -9,7 +9,7 @@ import {ToastContainer, Bounce, toast, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import "../../sass/toast.scss";
-//import Navbar from "../../components/navigation/navbar.component";
+
 
 
 const InventoryAddItems = ({isAuthenticated}) => {

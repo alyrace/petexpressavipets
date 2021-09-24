@@ -1,0 +1,33 @@
+$mainyellow: #F6A47A;
+$mainyellowalpha: rgba(246,164,122, 0.9);
+$midyellow: #FBB08A;
+$maindarkblue: rgb(14,99,117);
+$maindarkbluealpha: rgba(14,99,117,0.7);
+$mainmidblue: #67A7B0;
+$mainlightblue: #87B3BE;
+.invoice_box_edit {
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px $mainyellowalpha;
+    background: $maindarkblue;
+}
+.inc_qt_box {
+    background: $mainyellow;
+    color: $mainmidblue;
+    border-radius: 20px;
+    width: 130px;
+}
+.inc_btn1 {
+ color: $midyellow;   
+}
+.inc_btn1:hover {
+ color: white;   
+}
+.inc_btn5 {
+    background: $mainyellow;
+    color: #FFFFFF;
+}
+.inc_btn5:hover {
+    background: $midyellow;
+    color: $mainmidblue;
+}

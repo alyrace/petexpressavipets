@@ -72,7 +72,7 @@ const Dashboard = ({ isAuthenticated }) => {
                   href="#layouts"
                 >
                   <span className="me-2">
-                    <i class="fa fa-adjust" aria-hidden="true"></i>
+                    <i className="fa fa-adjust" aria-hidden="true"></i>
                   </span>
                   <span>Theme</span>
                   <span className="ms-auto">
@@ -95,7 +95,7 @@ const Dashboard = ({ isAuthenticated }) => {
                           <div
                             data-mode="light"
                             id="light-mode"
-                            class="theme-dot"
+                            className="theme-dot"
                           ></div>
                         </span>
                       </a>
@@ -129,79 +129,82 @@ const Dashboard = ({ isAuthenticated }) => {
       </div>
       <main class="mt-3">
         <div className="container mt-5 mb-5">
-          <div class="row">
-            <div class="col-md-12">
+          <div className="row">
+            <div className="col-md-12">
               <Calendar />
             </div>
           </div>
         </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-3 mb-3">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-3 mb-3">
               <Link to="/employees">
-                <div class="card card_1 text-white h-100">
-                  <div class="card-body py-5">
-                    <i class="fas fa-users fa-3x mb-2"></i>
+                <div id="card_1" className="card card_dash text-white h-100">
+                  <div className="card-body py-5">
+                    <i className="fas fa-users fa-3x mb-2"></i>
                     <h3>Employees</h3>
                   </div>
                 </div>
               </Link>
             </div>
-            <div class="col-md-3 mb-3">
-              <div class="card card_2 text-white h-100">
-                <div class="card-body py-5">Pets</div>
+            <div className="col-md-3 mb-3">
+              <div id="card_2" className="card card_dash text-white h-100">
+                <div className="card-body py-5">Pets</div>
               </div>
             </div>
-            <div class="col-md-3 mb-3">
-              <div class="card card_3 text-white h-100">
-                <div class="card-body py-5">Open Rooms</div>
+            <div className="col-md-3 mb-3">
+              <div id="card_3" className="card card_dash text-white h-100">
+                <div className="card-body py-5">Open Rooms</div>
               </div>
             </div>
-            <div class="col-md-3 mb-3">
+            <div className="col-md-3 mb-3">
               <Link to="/inventory">
-                <div class="card card_4 text-white h-100 text-center">
-                  <div class="card-body py-5">
-                    <i class="fas fa-box-open fa-3x mb-2"></i>{" "}
+                <div
+                  id="card_4"
+                  className="card card_dash text-white h-100 text-center"
+                >
+                  <div className="card-body py-5">
+                    <i className="fas fa-box-open fa-3x mb-2"></i>{" "}
                     <h3>Inventory</h3>
                   </div>
                 </div>
               </Link>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <div class="card h-100">
-                <div class="card-header">
-                  <span class="me-2">
-                    <i class="fas fa-bar-chart-fill"></i>
+          <div className="row">
+            <div className="col-md-6 mb-3">
+              <div className="card h-100">
+                <div className="card-header">
+                  <span className="me-2">
+                    <i className="fas fa-bar-chart-fill"></i>
                   </span>
                   Area Chart Example
                 </div>
-                <div class="card-body">
-                  <canvas class="chart" width="400" height="200"></canvas>
+                <div className="card-body">
+                  <canvas className="chart" width="400" height="200"></canvas>
                 </div>
               </div>
             </div>
-            <div class="col-md-6 mb-3">
-              <div class="card h-100">
-                <div class="card-header">
-                  <span class="me-2">
-                    <i class="fas fa-bar-chart-fill"></i>
+            <div className="col-md-6 mb-3">
+              <div className="card h-100">
+                <div className="card-header">
+                  <span className="me-2">
+                    <i className="fas fa-bar-chart-fill"></i>
                   </span>
                   Area Chart Example
                 </div>
-                <div class="card-body">
-                  <canvas class="chart" width="400" height="200"></canvas>
+                <div className="card-body">
+                  <canvas className="chart" width="400" height="200"></canvas>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-12 mb-3">
-              <div class="card">
-                <div class="card-header">
+          <div className="row">
+            <div className="col-md-12 mb-3">
+              <div className="card">
+                <div className="card-header">
                   <span>
-                    <i class="bi bi-table me-2"></i>
+                    <i className="bi bi-table me-2"></i>
                   </span>{" "}
                   Data Table
                 </div>

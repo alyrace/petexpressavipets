@@ -27,9 +27,13 @@ import UsdaVetPortal from "./pages/usdavet/usdavet";
 
 import "./App.scss";
 import Layout from "./hocs/layout";
-import BarkerHome from "./pages/barker/barkerhome";
 import Employees from "./pages/employees/employees";
 import EmployeeDetail from "./pages/employees/employeedetail";
+import Invoice from "./pages/invoice/invoicehome";
+import EditInvoice from "./pages/invoice/editinvoice";
+import InvoiceAddItems from "./pages/invoice/invoiceadditems";
+import InvoiceDetail from "./pages/invoice/invoicedetail";
+
 
 
 
@@ -44,7 +48,6 @@ const App = () => (
           <Route exact path="/activate/:uid/:token" component={Activate} />
           <Route path="/airlineportal" component={Airlines} />
           <Route exact path="/airline/:id" component={AirlineDetails} />
-          <Route exact path="/barkerhome" component={BarkerHome} />
           <Route path="/complianceportal" component={CompliancePortal} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/driversportal" component={DriversPortal} />
@@ -52,8 +55,12 @@ const App = () => (
           <Route path="/employeeprofile/:id" component={EmployeeDetail} />
           <Route path="/inventory" component={Inventory} />
           <Route path="/inventoryadd" component={InventoryAddItems} />
-          <Route path="/inventoryDetail/:id" component={InventoryDetail} />
+          <Route path="/inventorydetail/:id" component={InventoryDetail} />
           <Route path="/inventoryupdate/:id" component={InventoryEditItems} />
+          <Route path="/invoices" component={Invoice} />
+          <Route path="/invoiceadd" component={InvoiceAddItems} />
+          <Route path="/invoicedetail/:id" component={InvoiceDetail} />
+          <Route path="/invoiceupdate/:id" component={EditInvoice} />
           <Route exact path="/login" component={Login} />
           <Route path="/operationsportal" component={OperationsPortal} />
           <Route path="/petportal" component={PetPortal} />

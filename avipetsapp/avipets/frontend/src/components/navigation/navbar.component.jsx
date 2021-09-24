@@ -84,15 +84,15 @@ const Navbar = ({ logout, isAuthenticated }) => {
                         <div className="form-check form-switch mt-2 text-secondary">
                           <label
                             className="form-check-label"
-                            for="flexSwitchCheckDefault"
+                            htmlFor="flexSwitchCheckDefault"
                           >
                             <input
                               className="form-check-input me-3"
                               type="checkbox"
                               id="flexSwitchCheckDefault"
                             />
-                            <i class="fa fa-sun-o" aria-hidden="true"></i>/
-                            <i class="fa fa-moon-o" aria-hidden="true"></i>
+                            <i className="fa fa-sun-o" aria-hidden="true"></i>/
+                            <i className="fa fa-moon-o" aria-hidden="true"></i>
                           </label>
                         </div>
                       </a>

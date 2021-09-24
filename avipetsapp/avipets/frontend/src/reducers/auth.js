@@ -14,6 +14,7 @@ import {
   PASSWORD_RESET_FAIL,
   PASSWORD_RESET_CONFIRM_SUCCESS,
   PASSWORD_RESET_CONFIRM_FAIL,
+  SET_BOARD_CONTEXT,
 } from "../actions/types";
 
 /*
@@ -84,6 +85,8 @@ const auth = (state = initialState, action) => {
         ...state,
         user: null,
       };
+    case SET_BOARD_CONTEXT:
+      return { ...state, board: action.board, setBoard: action.setBoard };
     case LOGOUT:
       localStorage.removeItem("access");
       localStorage.removeItem("refresh");

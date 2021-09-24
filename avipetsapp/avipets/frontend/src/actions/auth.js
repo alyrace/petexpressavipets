@@ -16,10 +16,12 @@ import {
   PASSWORD_RESET_FAIL,
   PASSWORD_RESET_CONFIRM_SUCCESS,
   PASSWORD_RESET_CONFIRM_FAIL,
+  SET_BOARD_CONTEXT,
 } from "./types";
 
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
+
 
 export const load_user = () => async (dispatch) => {
   if (localStorage.getItem("access")) {
@@ -130,41 +132,7 @@ export const signup =
       dispatch(setAlert("Error signup.", "error"));
     }
   };
-/*
-export const login = (email, password) => async (dispatch) => {
-  const config = {
-    headers: {
-      //"Authorization": "JWT " + localStorage.getItem("token"),
-      "Content-Type": "application/json",
-    },
-  };
-
-  const body = JSON.stringify({ email, password });
-
-  try {
-    const res = await axios.post(
-      `${process.env.REACT_APP_API_URL}/api/token/`,
-      body,
-      config
-      
-    );
-
-    dispatch({
-      type: LOGIN_SUCCESS,
-      payload: res.data,
-    });
-
-    dispatch(setAlert("Authenticated successfully", "success"));
-  } catch (err) {
-    dispatch({
-      type: LOGIN_FAIL,
-    });
-
-    dispatch(setAlert("Error Authenticating", "error"));
-  }
-};
-
-*/
+ 
 export const login = (email, password) => async (dispatch) => {
   const config = {
     headers: {
@@ -284,4 +252,9 @@ export const reset_password_confirm =
 export const logout = () => (dispatch) => {
   dispatch({ type: LOGOUT });
   dispatch(setAlert("logout successful.", "success"));
+};
+
+
+export const setBoardContext = (board, setBoard) => {
+  dispatch({ type: SET_BOARD_CONTEXT, board, setBoard });
 };

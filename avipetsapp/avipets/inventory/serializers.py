@@ -17,7 +17,7 @@ class InventorySerializer(serializers.ModelSerializer):
         return Inventory.objects.create(**validated_data)        
 
     def update(self, instance, validated_data):
-        instance.category = validated_data.get('category', instance.category)
+        instance.category = validated_data.get('scooby', instance.category)
         instance.item_name = validated_data.get('item_name', instance.item_name)
         instance.quantity = validated_data.get('quantity', instance.quantity)
         instance.save()

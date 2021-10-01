@@ -60,6 +60,8 @@ class EmployeeProfileSerializer(serializers.ModelSerializer):
     emergency_contact = serializers.CharField(max_length=200)
     emergency_contact_number = serializers.CharField(allow_blank=True, max_length=20)
     
+
+
     class Meta:
         model = Employee
         fields = [
@@ -80,4 +82,5 @@ class EmployeeProfileSerializer(serializers.ModelSerializer):
 
     def get_email(self, obj):
         return obj.user.email    
-        
+    
+       

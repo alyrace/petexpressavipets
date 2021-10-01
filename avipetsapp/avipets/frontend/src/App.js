@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, BrowserRouter as Router, Switch, } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 
@@ -33,7 +33,13 @@ import Invoice from "./pages/invoice/invoicehome";
 import EditInvoice from "./pages/invoice/editinvoice";
 import InvoiceAddItems from "./pages/invoice/invoiceadditems";
 import InvoiceDetail from "./pages/invoice/invoicedetail";
-
+import ClientHome from "./pages/clients/clienthome";
+import ClientDetail from "./pages/clients/clientdetail";
+import ClientAdd from "./pages/clients/clientadd";
+import ClientEdit from "./pages/clients/clientedit";
+import ClientDropdown from "./pages/invoice/clientdropdown";
+import NoteryHome from "./pages/notery/noteryhome";
+import InvoicePage from "./pages/invoice/invoicepage";
 
 
 
@@ -42,12 +48,21 @@ import InvoiceDetail from "./pages/invoice/invoicedetail";
 const App = () => (
   <Provider store={store}>
     <Router>
-      <Layout>
-        <Switch>
+      <Switch>
+        <Route exact path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/resetpassword" component={ResetPassword} />
+        <Layout>
           <Route exact path="/" component={Home} />
           <Route exact path="/activate/:uid/:token" component={Activate} />
           <Route path="/airlineportal" component={Airlines} />
           <Route exact path="/airline/:id" component={AirlineDetails} />
+          <Route path="/test" component={InvoicePage} />
+          <Route path="/clients" component={ClientHome} />
+          <Route path="/clientadd" component={ClientAdd} />
+          <Route path="/clientdetail/:id" component={ClientDetail} />
+          <Route path="/clienttest" component={ClientDropdown} />
+          <Route path="/clientupdate/:id" component={ClientEdit} />
           <Route path="/complianceportal" component={CompliancePortal} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/driversportal" component={DriversPortal} />
@@ -61,20 +76,18 @@ const App = () => (
           <Route path="/invoiceadd" component={InvoiceAddItems} />
           <Route path="/invoicedetail/:id" component={InvoiceDetail} />
           <Route path="/invoiceupdate/:id" component={EditInvoice} />
-          <Route exact path="/login" component={Login} />
+          <Router path="/notery" component={NoteryHome} />
           <Route path="/operationsportal" component={OperationsPortal} />
           <Route path="/petportal" component={PetPortal} />
           <Route path="/salesportal" component={SalesPortal} />
-          <Route path="/register" component={Register} />
-          <Route path="/resetpassword" component={ResetPassword} />
           <Route
             path="/resetpasswordconfirm"
             component={ResetPasswordConfirm}
           />
           <Route path="/tsaportal" component={TsaPortal} />
           <Route path="/usdavetportal" component={UsdaVetPortal} />
-        </Switch>
-      </Layout>
+        </Layout>
+      </Switch>
     </Router>
   </Provider>
 );

@@ -51,7 +51,9 @@ const EmployeeDetail = ({ isAuthenticated, match }) => {
           </Helmet>
         </main>
         <section>
-          <div className="row"></div>
+          <div className="row">
+            
+          </div>
         </section>
         <div className="container profile_box mt-3">
           <div className="row d-flex justify-content-center mt-4 mt-2">

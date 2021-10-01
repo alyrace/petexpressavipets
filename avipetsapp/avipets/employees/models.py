@@ -2,7 +2,7 @@ from django.db import models
 from .managers import EmployeeManager
 from django.utils.translation import gettext_lazy as _
 from django.db.models.signals import post_save
-from django.conf  import settings
+from django.conf import settings
 from django.utils import timezone
 
 def upload_to(instance, filename):
@@ -93,6 +93,11 @@ class Role(models.Model):
     def __str__(self):
         return self.role_title
 """
+class FollowerRelation(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile = models.ForeignKey("Employee", on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
 class Employee(models.Model):
     """
     BRANCHES = (
@@ -170,6 +175,8 @@ class Employee(models.Model):
     hiring_docs = models.FileField(blank=True)
     sta_docs = models.FileField(blank=True) 
     sta_exp = models.DateField();
+    
+    
 
     def __unicode__(self):
         return self.user.user_name

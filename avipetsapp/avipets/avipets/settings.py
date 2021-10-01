@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 # pip installed python.decouple dependency
 from decouple import config
+from datetime import timedelta
 from pathlib import Path
 
 
@@ -29,6 +30,10 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type("image/png", ".png", True)
+
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', ]
 
 
@@ -42,11 +47,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
-    'home',
+    'djoser',
+    'django_filters',
     'airlines',
     'users',
+    'employees',
+    'inventory',
+    'security',
+    'invoice',
+    'clients',
+    'notery',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,6 +72,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+#file uplads
+FILE_UPLOAD_HANDLERS = [
+     'django.core.files.uploadhandler.MemoryFileUploadHandler',
+    'django.core.files.uploadhandler.TemporaryFileUploadHandler',
 ]
 
 ROOT_URLCONF = 'avipets.urls'
@@ -92,13 +112,25 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.postgresql',
         # 'NAME': 'airs',
         # 'USER': 'postgres',
-        # 'PASSWORD': 'whovian12345',
+        # 'PASSWORD': config('DB_PASSWORD'),
         # 'HOST': 'localhost',
         # 'PORT': ''
     }
 }
 
 
+
+#djoser email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_PORT = 2525
+#EMAIL_PORT = 587
+EMAIL_HOST_USER = config('TESTEMAIL')
+EMAIL_HOST_PASSWORD = config('TESTPW')
+#EMAIL_HOST_USER = config('EMAIL')
+#EMAIL_HOST_PASSWORD = config('PASSWORD')
+EMAIL_USE_TLS = True
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -138,37 +170,87 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/build/static')
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+#DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSIONS_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication'
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        
     ],
-    'DEFAULT_PAGINATION_CLASS': [
-        'rest_framework.pagination.PageNumberPagination'
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+        # 'rest_framework.permissions.AllowAny',
     ],
-    'PAGE_SIZE': 10,
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),    
+    'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 12,
+    'DATETIME_FORMAT': '%m/%d/%Y - %H:%M:%S'
 }
 
-CORS_ORIGIN_ALLOW_ALL = True
+
+
 
 AUTH_USER_MODEL = 'users.NewUser'
-
-# CORS_ALLOWED_ORIGINS = [
-#   'http://127.0.0.1:3000',
-# ]
+AUTH_PROFILE_MODULE = 'custom.Employee'
+# CORS HEADERS
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+ ]
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 FILE_UPLOAD_PERMISSIONS = 0o640
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('JWT'),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'AUTH_TOKEN_CLASSES': (
+        'rest_framework_simplejwt.tokens.AccessToken',
+    )
+}
+
+DJOSER = {
+    'LOGIN_FIELD': 'email',
+    'USER_CREATE_PASSWORD_RETYPE': True,
+    'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
+    'SEND_CONFIRMATION_EMAIL': True,
+    'SET_USERNAME_RETYPE': True,
+    'SET_PASSWORD_RETYPE': True,
+    'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': 'email/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': 'activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+    'SERIALIZERS': {
+        'user_create': 'users.serializers.CustomUserSerializer',
+        'user': 'users.serializers.CustomUserSerializer',
+        'current_user': 'users.serializers.CustomUserSerializer',
+        'user_delete': 'djoser.serializers.CustomUserSerializer',
+    }
+}
+
+
+

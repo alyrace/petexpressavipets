@@ -16,7 +16,7 @@ import {
   PASSWORD_RESET_FAIL,
   PASSWORD_RESET_CONFIRM_SUCCESS,
   PASSWORD_RESET_CONFIRM_FAIL,
-  SET_BOARD_CONTEXT,
+  FETCH_PAGES,
 } from "./types";
 
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
@@ -254,7 +254,3 @@ export const logout = () => (dispatch) => {
   dispatch(setAlert("logout successful.", "success"));
 };
 
-
-export const setBoardContext = (board, setBoard) => {
-  dispatch({ type: SET_BOARD_CONTEXT, board, setBoard });
-};

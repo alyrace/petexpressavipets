@@ -60,6 +60,18 @@ const InventoryDetail = ({isAuthenticated, match}) => {
           <div className="container">
             <section>
               <div className="row mt-5 mb-5">
+                <div className="d-flex justify-content-center mt-2">
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                        <a href="/">Home</a>
+                      </li>
+                      <li class="breadcrumb-item">
+                        <a href="/dashboard">Dashboard</a>
+                      </li>
+                    </ol>
+                  </nav>
+                </div>
                 <div className="mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div className="text-center">
                     <Link to="/inventory">

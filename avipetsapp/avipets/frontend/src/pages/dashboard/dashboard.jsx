@@ -139,23 +139,42 @@ const Dashboard = ({ isAuthenticated }) => {
           <div className="row">
             <div className="col-md-3 mb-3">
               <Link to="/employees">
-                <div id="card_1" className="card card_dash text-white h-100">
+                <div
+                  id="card_1"
+                  className="card card_dash text-white h-100 text-center"
+                >
                   <div className="card-body py-5">
-                    <i className="fas fa-users fa-3x mb-2"></i>
+                    <i className="fas fa-user-astronaut fa-3x mb-2"></i>
                     <h3>Employees</h3>
                   </div>
                 </div>
               </Link>
             </div>
             <div className="col-md-3 mb-3">
-              <div id="card_2" className="card card_dash text-white h-100">
-                <div className="card-body py-5">Pets</div>
-              </div>
+              <Link to="/clients">
+                <div
+                  id="card_2"
+                  className="card card_dash text-white h-100 text-center"
+                >
+                  <div className="card-body py-5">
+                    <i className="fas fa-users fa-3x mb-2"></i> 
+                    <h3>Clients</h3>
+                  </div>
+                </div>
+              </Link>
             </div>
             <div className="col-md-3 mb-3">
-              <div id="card_3" className="card card_dash text-white h-100">
-                <div className="card-body py-5">Open Rooms</div>
-              </div>
+              <Link to="/invoices">
+                <div
+                  id="card_3"
+                  className="card card_dash text-white h-100 text-center"
+                >
+                  <div className="card-body py-5">
+                    <i class="fas fa-file-invoice-dollar fa-3x mb-2"></i>{" "}
+                    <h3>Invoice Generator</h3>
+                  </div>
+                </div>
+              </Link>
             </div>
             <div className="col-md-3 mb-3">
               <Link to="/inventory">
@@ -169,6 +188,45 @@ const Dashboard = ({ isAuthenticated }) => {
                   </div>
                 </div>
               </Link>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-3 mb-3">
+              <Link to="/inventory">
+                <div
+                  id="card_5"
+                  className="card card_dash text-white h-100 text-center"
+                >
+                  <div className="card-body py-5">
+                    <i className="fas fa-box-open fa-3x mb-2"></i>{" "}
+                    <h3>TSA List</h3>
+                  </div>
+                </div>
+              </Link>
+            </div>
+            <div className="col-md-3 mb-3">
+              <div
+                id="card_6"
+                className="card card_dash text-white h-100 text-center"
+              >
+                <div className="card-body py-5">Pets</div>
+              </div>
+            </div>
+            <div className="col-md-3 mb-3">
+              <div
+                id="card_7"
+                className="card card_dash text-white h-100 text-center"
+              >
+                <div className="card-body py-5">Rooms</div>
+              </div>
+            </div>
+            <div className="col-md-3 mb-3">
+              <div
+                id="card_8"
+                className="card card_dash text-white h-100 text-center"
+              >
+                <div className="card-body py-5">USDA Docs</div>
+              </div>
             </div>
           </div>
           <div className="row">

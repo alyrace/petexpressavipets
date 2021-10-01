@@ -12,7 +12,7 @@ const Invoice = ({ isAuthenticated }) => {
     if (isAuthenticated === false) return <Redirect to="/login" />;
     const [listings, setInvoiceListings] = useState([]);
     const [search, setSearch] = useState("");
-    const [searchParam] = useState(["category", "item_name"]);
+    const [searchParam] = useState(["invoice_type", "client"]);
     const [filterParam, setFilterParam] = useState(["All"]);
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -48,7 +48,7 @@ const Invoice = ({ isAuthenticated }) => {
     const renderTableRows = () => {
       function searchInvoices(listings) {
         return listings.filter((listing) => {
-          if (listing.category == filterParam) {
+          if (listing.invoice_type == filterParam) {
             return searchParam.some((newItem) => {
               return (
                 listing[newItem].toString().toLowerCase().indexOf(search) > -1
@@ -67,18 +67,26 @@ const Invoice = ({ isAuthenticated }) => {
       return searchInvoices(listings).map((listing) => {
         return (
           <tr key={listing.id}>
-            <td className="text-center text-secondary">{listing.invoice_type}</td>
-            <td className="text-center">
+            <td className="text-center text-secondary">
               <Link
-                className="link-danger"
+                className="link-primary"
                 to={`/invoicedetail/${listing.id}/`}
               >
-                {listing.scooby}
+                {listing.client}
               </Link>
             </td>
-            <td className="text-center text-secondary">{listing.total}</td>
+            <td className="text-center">{listing.gross_amount}</td>
+            {listing.paid ? (
+              <td className="text-center text-secondary">
+                <i class="fas fa-check-square"></i>
+              </td>
+            ) : (
+              <td className="text-center text-danger">
+                <i class="fas fa-times-circle"></i>
+              </td>
+            )}
             <td className="text-center text-secondary">
-              {listing.last_updated}
+              {listing.invoice_type}
             </td>
           </tr>
         );
@@ -145,108 +153,109 @@ const Invoice = ({ isAuthenticated }) => {
             <title>AVI PETS - Invoice Generator</title>
             <meta name="description" content="AVI Pets Invoice Generator" />
           </Helmet>
-          <div className="container">
-            <section>
-              <div className="row mt-5 mb-5">
-                <div className="mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <h2 className="text-center text-secondary font-weight-bold-display-4">
-                    Pet Express Invoice Generator
-                  </h2>
-                </div>
-                <div className="d-flex justify-content-center mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div className="row">
-                    <div className="container p-5 inventory_box_search">
-                      <div className="row">
-                        <div className="d-flex justify-content-center col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div className="row">
-                            <div className="container-fluid">
-                              <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="btn-group" role="group">
-                                  <Link to="/invoiceadd">
-                                    <i class="fas fa-plus-square fa-5x ivt_btn2"></i>
-                                  </Link>
-                                </div>
+        </main>
+        <div className="container">
+          <section>
+            <div className="row mt-5 mb-5">
+              <div className="mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 className="text-center text-secondary font-weight-bold-display-4">
+                  Pet Express Invoice Generator
+                </h2>
+              </div>
+              <div className="d-flex justify-content-center mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div className="row">
+                  <div className="container p-5 invoice_box_search">
+                    <div className="row">
+                      <div className="d-flex justify-content-center col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div className="row">
+                          <div className="container-fluid">
+                            <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                              <div className="btn-group" role="group">
+                                <Link to="/invoiceadd">
+                                  <i className="fas fa-plus-square fa-5x inc_btn2"></i>
+                                </Link>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div className="row">
-                        <div className="d-flex justify-content-center mt-2 mb-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                          <input
-                            className="form-control"
-                            type="text"
-                            name="set_search"
-                            id="set_search"
-                            placeholder="Search Invoices"
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                          />
-                        </div>
-                        <div className="d-flex justify-content-center mb-2 mt-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                          <select
-                            /* 
+                    </div>
+                    <div className="row">
+                      <div className="d-flex justify-content-center mt-2 mb-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <input
+                          className="form-control"
+                          type="text"
+                          name="set_search"
+                          id="set_search"
+                          placeholder="Search Invoices"
+                          value={search}
+                          onChange={(e) => setSearch(e.target.value)}
+                        />
+                      </div>
+                      <div className="d-flex justify-content-center mb-2 mt-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <select
+                          /* 
                      here we create a basic select input
                      we set the value to the selected value 
                      and update the setC() state every time onChange is called
                     */
-                            class="form-select form-select-lg"
-                            id="invoice_type"
-                            onChange={(e) => {
-                              setFilterParam(e.target.value);
-                            }}
-                            aria-label="Filter Invoices"
-                          >
-                            <option value="All">ALL CATEGORIES</option>
-                            <option value="RECIEPT">Receipt</option>
-                            <option value="PROFORMA INVOICE">
-                              Proforma Invoice
-                            </option>
-                            <option value="INVOICE">Invoice</option>
-                          </select>
-                        </div>
+                          class="form-select form-select-lg"
+                          id="invoice_type"
+                          onChange={(e) => {
+                            setFilterParam(e.target.value);
+                          }}
+                          aria-label="Filter Invoices"
+                        >
+                          <option value="All">ALL CATEGORIES</option>
+                          <option value="RECIEPT">Reciept</option>
+                          <option value="PROFORMA INVOICE">
+                            Profoma Invoice
+                          </option>
+                          <option value="INVOICE">Invoice</option>
+                          <option value="CREDIT">Credit</option>
+                        </select>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div className="inventory_box">
-                    <table className="table table-striped table-responsive">
-                      <thead className="bg_inventory_thead">
-                        <tr className="text-light">
-                          <th scope="col" className="uppercase text-center">
-                            CATEGORY
-                          </th>
-                          <th scope="col" className="uppercase text-center">
-                            SCOOBY
-                          </th>
-                          <th scope="col" className="uppercase text-center">
-                            TOTAL
-                          </th>
-                          <th scope="col" className="uppercase text-center">
-                            UPDATED
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>{renderTableRows()}</tbody>
-                    </table>
-                    <div className="d-flex justify-content-center mb-3">
-                      <Pagination
-                        itemsPerPage={12}
-                        count={count}
-                        visitPage={visitPage}
-                        previous={previous_number}
-                        next={next_number}
-                        active={active}
-                        setActive={setActive}
-                      />
-                    </div>
+              </div>
+              <div className="mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div className="invoice_box">
+                  <table className="table table-striped table-responsive">
+                    <thead className="bg_invoice_thead">
+                      <tr className="text-light">
+                        <th scope="col" className="uppercase text-center">
+                          CLIENT
+                        </th>
+                        <th scope="col" className="uppercase text-center">
+                          TOTAL
+                        </th>
+                        <th scope="col" className="uppercase text-center">
+                          PAID
+                        </th>
+                        <th scope="col" className="uppercase text-center">
+                          TYPE
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>{renderTableRows()}</tbody>
+                  </table>
+                  <div className="d-flex justify-content-center mb-3">
+                    <Pagination
+                      itemsPerPage={12}
+                      count={count}
+                      visitPage={visitPage}
+                      previous={previous_number}
+                      next={next_number}
+                      active={active}
+                      setActive={setActive}
+                    />
                   </div>
                 </div>
               </div>
-            </section>
-          </div>
-        </main>
+            </div>
+          </section>
+        </div>
       </div>
     );};
 };

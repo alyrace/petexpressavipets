@@ -77,6 +77,18 @@ const InventoryEditItems = ({ isAuthenticated, match }) => {
         </Helmet>
       </main>
       <div className="row mt-5 d-flex justify-content-center">
+        <div className="d-flex justify-content-center mt-2">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="/dashboard">Dashboard</a>
+              </li>
+            </ol>
+          </nav>
+        </div>
         <div className="text-center mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-12 col-sm-12 col-xs-12">
           <h2 className="font-weight-bold-display-4">Update Item</h2>
         </div>

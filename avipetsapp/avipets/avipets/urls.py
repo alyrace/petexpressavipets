@@ -15,32 +15,35 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path, include
-from .views import index
-
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
+
+
 urlpatterns = [
-    path('api-auth', include('rest_framework.urls')),
-    path('api/token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
-    path('admin/', admin.site.urls),
-    path('', index),
-    path('airlines/', include('airlines.urls')),
-    path('api/users/', include('users.urls')),
-    # path('', TemplateView.as_view(template_name='index.html'))
-    # re_path('', TemplateView.as_view(template_name='index.html'))
-    # re_path('.*', TemplateView.as_view(template_name='index.html'))
-    # path('', include('home.urls', namespace='home')),
-    # path('airlines/', include('airlines.urls', namespace='airlines')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('admin', admin.site.urls),
+    path('api/airlines/', include('airlines.urls')),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.jwt')),
+    path('', include('users.urls')),
+    path('api/employees/', include('employees.urls')),
+    path('api/inventory/', include('inventory.urls')),
+    path('api/security/', include('security.urls')),
+    path('api/invoice/', include('invoice.urls')),
+    path('api/clients/', include('clients.urls')),
+    path('api/notery/', include('notery.urls')),
+]
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
+urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name='index.html'))]
 
-urlpatterns += [re_path(r'^.*',
-                        TemplateView.as_view(template_name='index.hmtl'))]
 # AMDIN SITE PREFERENCES
 admin.site.index_title = 'AVI PETS'
 admin.site.site_header = 'AVI PETS ADMIN'

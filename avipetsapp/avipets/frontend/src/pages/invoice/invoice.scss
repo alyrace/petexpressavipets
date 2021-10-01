@@ -5,6 +5,22 @@ $maindarkblue: rgb(14,99,117);
 $maindarkbluealpha: rgba(14,99,117,0.7);
 $mainmidblue: #67A7B0;
 $mainlightblue: #87B3BE;
+.invoice_box_search {
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px $mainlightblue;
+}
+.invoice_box {
+    border: 1px solid black;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 10px 20px $mainlightblue;
+    background: $mainyellow;
+}
+.bg_invoice_thead {
+background: $mainyellow;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, $midyellow, $mainyellowalpha, $mainyellow);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, $midyellow, $mainyellowalpha, $mainyellow); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 .invoice_box_edit {
     border: 1px solid black;
     border-radius: 20px;
@@ -23,6 +39,12 @@ $mainlightblue: #87B3BE;
 .inc_btn1:hover {
  color: white;   
 }
+.inc_btn2 {
+color: $maindarkblue;
+}
+.inc_btn2:hover {
+color: $mainlightblue;
+}
 .inc_btn5 {
     background: $mainyellow;
     color: #FFFFFF;
@@ -30,4 +52,107 @@ $mainlightblue: #87B3BE;
 .inc_btn5:hover {
     background: $midyellow;
     color: $mainmidblue;
+}
+//===========================
+.bg_pdf{
+    background-color: $maindarkblue;
+}
+.input,
+.span,
+.select {
+  display: inline-block;
+  width: 98%;
+  padding: 4px 12px 4px 0;
+  margin-bottom: 1px;
+  border: 1px dotted transparent;
+  transition: background 0.1s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.input,
+.select {
+  &:hover,
+  &:focus {
+    background: $mainyellow
+  }
+
+  &:focus {
+    border-color: $maindarkblue;
+  }
+
+  &.white {
+    &:hover,
+    &:focus {
+      color: inherit;
+    }
+  }
+}
+.btn_pdf {
+    border: none;
+    background: transparent;
+    color: gray;
+}
+.pdf_icon{
+  display: inline-block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border: 0;
+  border-radius: 50%;
+}
+.icon-absolute {
+  position: absolute;
+}
+
+.row__remove {
+  padding: 0;
+  //position: absolute;
+  //top: 10px;
+  //right: -20px;
+  opacity: 0.1;
+  border: none;
+  transition: opacity 0.2s ease-in-out;
+}
+.row__remove:hover {
+  padding: 0;
+  //position: absolute;
+  //top: 10px;
+  //right: -20px;
+  opacity: 1;
+  border: none;
+}
+.pdfitem_add {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    left: 7px;
+    top: 3px;
+    background-color: #FFFFFF;
+  }
+
+  &::after {
+    transform: rotate(-90deg);
+  }
+}
+.pdfitem_remove{
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    left: 7px;
+    top: 3px;
+    background-color: red;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
 }

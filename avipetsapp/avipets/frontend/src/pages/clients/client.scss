@@ -1,0 +1,182 @@
+$maindarkblue: rgb(14,99,117);
+$mainyellow: #F6A47A;
+$maindarkbluealpha: rgba(14,99,117,0.7);
+
+.client_box {
+    border: 1px solid black;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 10px 20px $mainyellow;
+    //background: #C5D7F2; 
+}
+.bg_client_thead {
+    background: $maindarkbluealpha;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, $mainyellow, $maindarkblue);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, $mainyellow, $maindarkblue); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.bg-dets {
+    background: $maindarkbluealpha;
+}
+.client_scooby_box {
+    background: $mainyellow;
+    color: $maindarkblue;
+    border-radius: 20px;
+}
+.client_btn1{
+    color: $mainyellow
+}
+.client_btn1:hover{
+    color: $maindarkblue
+}
+.client_btn6{
+ background: $mainyellow;
+ color: #FFFFFF;
+}
+.client_btn6:hover{
+ color: $mainyellow;
+ background: white;
+ border: 1px solid $mainyellow;
+}
+/*
+.client_dropdown {
+    position: relative;
+    color: #333333;
+    cursor: auto;
+}
+.control .selected_value input{
+        line-height: 1.5;
+        font-size: 1rem;
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        border-radius: 2px;
+        box-sizing: border-box;
+        cursor: auto;
+        outline: none;
+        padding: 8px 52px 8px 10px;
+        transition: all 200ms ease;
+        width: 100%;
+    }
+
+.control .arrow {
+        border-color: #999999 transparent transparent;
+        border-style: solid;
+        width: 5px 5px 0;
+        content: "";
+        display: block;
+        height: 0;
+        margin-top: 0.3rem;
+        position: absolute;
+        right: 12px;
+        width: 0;
+        &.open {
+            border-color: transparent transparent #999999;
+            border-width: 0 5px 5px;
+        }
+    }       
+    
+.options {
+        display: none;
+        background-color: #FFFFFF;
+        border: 1px soli #CCCCCC;
+        box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+        box-sizing: border-box;
+        margin-top: -1px;
+        max-height: 200px;
+        overflow-y: auto;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        z-index: 1000;
+        display: block;
+        -webkit-overflow-scrolling: touch;
+        &.open {
+            display: block;
+        }    
+    }      
+ .option {
+        box-sizing: border-box;
+        color: rgba(51,51,51,0.8);
+        cursor: pointer;
+        display: block;
+        padding: 8px 10px;
+        &.selected {
+            background-color: #F2F9FC;
+            color: #333333;
+            }
+        }
+.option:hover{
+            background-color: #F2F9FC;
+            color: #333333;
+        }   
+*/
+.client_dropdown {
+  position: relative;
+  color: #333;
+  cursor: default;
+}
+
+.client_dropdown .arrow {
+  border-color: #999 transparent transparent;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  content: " ";
+  display: block;
+  height: 0;
+  margin-top: 0.3rem;
+  position: absolute;
+  right: 10px;
+  top: 14px;
+  width: 0;
+}
+
+.client_dropdown .arrow.open {
+  border-color: transparent transparent #999;
+  border-width: 0 5px 5px;
+}
+
+.client_dropdown .selected_value input{
+  line-height: 1.5;
+  font-size: 1rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  cursor: default;
+  outline: none;
+  padding: 6px 52px 6px 10px;
+  transition: all 200ms ease;
+  width: 100%;
+}
+
+.client_dropdown .options {
+  display: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  margin-top: -1px;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 1000;
+  -webkit-overflow-scrolling: touch;
+}
+
+.client_dropdown .options.open {
+  display: block;
+}
+
+.client_dropdown .option {
+  box-sizing: border-box;
+  color: rgba(51, 51, 51, 0.8);
+  cursor: pointer;
+  display: block;
+  padding: 8px 10px;
+}
+
+.client_dropdown .option.selected,
+.client_dropdown .option:hover {
+  background-color: #f2f9fc;
+  color: #333;
+}        

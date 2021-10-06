@@ -2,17 +2,21 @@ $maindarkblue: rgb(14,99,117);
 $mainyellow: #F6A47A;
 $maindarkbluealpha: rgba(14,99,117,0.7);
 
-.client_box {
-    border: 1px solid black;
-    border-radius: 0 0 20px 20px;
-    box-shadow: 0 10px 20px $mainyellow;
-    //background: #C5D7F2; 
+
+.scooby_clt{
+  color: $maindarkbluealpha;
 }
-.bg_client_thead {
-    background: $maindarkbluealpha;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, $mainyellow, $maindarkblue);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, $mainyellow, $maindarkblue); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+.scooby_clt2 {
+  color: $maindarkblue;
 }
+.client_clt{
+  background: $maindarkbluealpha;
+  border: 1px solid $maindarkblue;
+  box-shadow: 0 2px 2px #496369;
+  border-radius: 5px;
+  color: white;
+}
+
 .bg-dets {
     background: $maindarkbluealpha;
 }

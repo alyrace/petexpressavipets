@@ -21,18 +21,14 @@ const InvoiceItem = ({
     unit_price,
     setUnitPrice,
     discount_amount,
-    setDiscountAmount   
+    setDiscountAmount,   
 }) => {
-    
-        const [refs] = useState({
-          quantity: React.createRef(),
-          unit_price: React.createRef(),
-          item_net_amount: React.createRef(),
-        });
+        
+        const sumCalc = () => {
+          return (item_net_amount = quantity * unit_price);
+        };
         
     
-
-   
     return (
       <div className="row mt-2">
         <hr className="bg-light" />
@@ -41,7 +37,7 @@ const InvoiceItem = ({
             Service
           </label>
           <select
-            class="form-select"
+            className="form-select"
             id="service"
             value={service}
             aria-label="Service select"
@@ -72,7 +68,6 @@ const InvoiceItem = ({
             type="number"
             id="quantity"
             name="quantity"
-            ref={refs.quantity}
             value={quantity}
             onChange={(e) => setQuantity(+e.target.value)}
           />
@@ -86,7 +81,6 @@ const InvoiceItem = ({
             type="number"
             id="unit_price"
             name="unit_price"
-            ref={refs.unit_price}
             value={unit_price}
             onChange={(e) => setUnitPrice(+e.target.value)}
           />
@@ -99,9 +93,8 @@ const InvoiceItem = ({
             className="form-control"
             type="number"
             id="item_net_amount"
-            ref={refs.item_net_amount}
             name="item_net_amout"
-            value={item_net_amount}
+            value={sumCalc()}
             onChange={(e) => setItemNetAmount(e.target.value)}
           />
         </div>

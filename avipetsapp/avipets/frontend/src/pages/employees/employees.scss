@@ -43,9 +43,7 @@ $mainyellowalpha: rgba(246,164,122, 0.7);
 }
 .ivt_btn1 {color: $midmaroon;}
 .ivt_btn1:hover {color: $maindarkblue;}
-.emp_btn2 {color: $maindarkblue;}
-.emp_btn2:hover {color: $mistyrose;}
-.ivt_btn3 {color: $mainmaroon}
+
 .ivt_btn4 {
     background: $mainlightblue;
     color: #FFFFFF;
@@ -86,12 +84,39 @@ $mainyellowalpha: rgba(246,164,122, 0.7);
     background: #FFFFFF;
     border: 1px solid $maindarkblue;
 }
-.employee_box {
-    border: 1px solid black;
-    border-radius: 0 0 20px 20px;
-    box-shadow: 0 10px 20px $mainyellowalpha;
+//hompage
+.emp_row {
+    border: 1px solid $mainyellowalpha;
+    border-radius: 12px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    box-shadow: 0 3px 3px $mainyellowalpha;
     background: #FFFFFF;
 }
+.emp_row:hover {
+    border: 1px solid rgba(14,99,117, 0.2);
+    border-radius: 12px;
+    padding-top: 27px;
+    padding-bottom: 27px;
+    background: #FFFFFF;
+    transition: background .3s;
+    box-shadow: 0 4px 4px $mainmidblue;
+}
+.emp_office {
+    border: 1px solid $mainmidblue;
+    background: rgba(14,99,117, 0.5);
+    box-shadow: 0 2px 2px #496369;
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+}
+.emp_link {
+    color: $maindarkbluealpha;
+}
+.emp_link:hover {
+    color: $maindarkblue;
+}
+//details
 .profile_box{
     border: 1px solid $mainmidblue;
     border-radius: 20px;

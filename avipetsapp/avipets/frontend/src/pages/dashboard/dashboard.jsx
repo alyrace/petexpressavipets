@@ -39,7 +39,7 @@ const Dashboard = ({ isAuthenticated }) => {
       <h2 className="text-center text-secondary">AVI Pets Dasboard</h2>
       <div
         className="offcanvas offcanvas-start sidebar-nav"
-        tabindex="-1"
+        tabIndex="-1"
         id="sidebar"
       >
         <div className="offcanvas-body p-0">
@@ -170,7 +170,7 @@ const Dashboard = ({ isAuthenticated }) => {
                   className="card card_dash text-white h-100 text-center"
                 >
                   <div className="card-body py-5">
-                    <i class="fas fa-file-invoice-dollar fa-3x mb-2"></i>{" "}
+                    <i className="fas fa-file-invoice-dollar fa-3x mb-2"></i>{" "}
                     <h3>Invoice Generator</h3>
                   </div>
                 </div>

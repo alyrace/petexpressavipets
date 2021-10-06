@@ -29,7 +29,7 @@ const Home = ({isAuthenticated}) => {
             <a className="Link" href="/airlineportal">
               <div className="container box box_1">
                 <div className="row pt-5">
-                  <i class="fas fa-plane portal_icon"></i>
+                  <i className="fas fa-plane portal_icon"></i>
                 </div>
                 <div className="row mt-4">
                   <span className="portal_title">Airlines</span>
@@ -41,7 +41,7 @@ const Home = ({isAuthenticated}) => {
             <a className="Link" href="/driversportal">
               <div className="container box box_2">
                 <div className="row pt-5">
-                  <i class="fas fa-truck-moving portal_icon"></i>
+                  <i className="fas fa-truck-moving portal_icon"></i>
                 </div>
                 <div className="row mt-4">
                   <span className="portal_title">Drivers</span>
@@ -53,7 +53,7 @@ const Home = ({isAuthenticated}) => {
             <a className="Link" href="/complianceportal">
               <div className="container box box_3">
                 <div className="row pt-5">
-                  <i class="fas fa-passport portal_icon"></i>
+                  <i className="fas fa-passport portal_icon"></i>
                 </div>
                 <div className="row mt-4">
                   <span className="portal_title">Compliance</span>
@@ -65,7 +65,7 @@ const Home = ({isAuthenticated}) => {
             <a className="Link" href="/operationsportal">
               <div className="container box box_4">
                 <div className="row pt-5">
-                  <i class="fas fa-store-alt portal_icon"></i>
+                  <i className="fas fa-store-alt portal_icon"></i>
                 </div>
                 <div className="row mt-4">
                   <span className="portal_title">Operations</span>
@@ -77,7 +77,7 @@ const Home = ({isAuthenticated}) => {
             <a className="Link" href="/petportal">
               <div className=" container box box_5">
                 <div className="row pt-5">
-                  <i class="fas fa-paw portal_icon"></i>
+                  <i className="fas fa-paw portal_icon"></i>
                 </div>
                 <div className="row mt-4">
                   <span className="portal_title">Pet Portal</span>
@@ -122,9 +122,6 @@ const Home = ({isAuthenticated}) => {
             </a>
           </div>
         </div>
-      </section>
-      <section className="container bg-primary mt-5">
-        <h2>hello</h2>
       </section>
     </div>
   );

@@ -8,6 +8,13 @@ $maindarkbluealpha: rgba(14,99,117,0.7);
 $mainmidblue: #67A7B0;
 $mainlightblue: #87B3BE;
 
+.ivt_qt_box { 
+    background: $mistyrose;
+    color: $maindarkblue;
+    border-radius: 20px;
+}
+//=======inventory buttons-==========
+
 .btn_csv {
     background: $mainmidblue;
     color: #FFFFFF;
@@ -17,12 +24,12 @@ $mainlightblue: #87B3BE;
     color: $mistyrose;
 }
 
-.btn_pdf {
+.btn_pdf1 {
     background: $mainmaroon;
     color: #FFFFFF;
     border-radius: 10px; 
 }
-.btn_pdf:hover {
+.btn_pdf1:hover {
     color: $mainlightblue;
 }
 .ivt_cat_title {
@@ -34,15 +41,24 @@ $mainlightblue: #87B3BE;
     box-shadow: 0 5px 5px $mistyrose;
     border-radius: 20px 20px 0 0;
 }
-.ivt_qt_box { 
-    background: $mistyrose;
-    color: $maindarkblue;
-    border-radius: 20px;
-}
 .ivt_btn1 {color: $midmaroon;}
 .ivt_btn1:hover {color: $maindarkblue;}
-.ivt_btn2 {color: $maindarkblue;}
-.ivt_btn2:hover {color: $mistyrose;}
+.ivt_btn2 {color: white;}
+.ivt_btn2_outline {
+    border: 1px solid $mistyrose;
+    border-radius: 10px;
+    padding: .5rem;
+    background: $mainlightblue;
+    box-shadow: 3px 3px 12px $mainmaroon;
+
+}
+.ivt_btn2_outline:hover {
+    border: 2px solid $mainlightblue;
+    border-radius: 10px;
+    padding: .5rem;
+    background: $maindarkblue;
+    box-shadow: 3px 3px 10px $mainlightblue;
+}
 .ivt_btn3 {color: $mainmaroon}
 .ivt_btn4 {
     background: $mainlightblue;
@@ -84,35 +100,126 @@ $mainlightblue: #87B3BE;
     background: #FFFFFF;
     border: 1px solid $maindarkblue;
 }
-.inventory_box {
-    border: 1px solid black;
-    border-radius: 0 0 20px 20px;
-    box-shadow: 0 10px 20px $maindarkbluealpha;
-    background: $mistyrose;
-}
+//============detail page=============
 .inventory_box_detail{
     border: 1px solid $mainmidblue;
     border-radius: 20px;
     box-shadow: 0 5px 5px $maindarkbluealpha;
     background: #FFFFFF;
 }
-
+//========== edit page===========
 .inventory_box_edit{
     border: 1px solid black;
     border-radius: 20px;
     box-shadow: 0 5px 5px $maindarkbluealpha;
     background: $mistyrose;
 }
-.inventory_box_search{
+
+//=================homepage===============
+//10/6/21 move table css to main.scss
+
+.table_bg {
+    background: #F8F8FB;
+}
+ .inventory_box_search{
     border: 1px solid black;
     border-radius: 20px;
     box-shadow: 0 5px 5px $mainmaroonalpha;
+} 
+.table_box {
+    //overflow: hidden;
+  //box-shadow: 4px 4px 16px 4px #3a3a3a0c;
+    //border-radius: 10px;
+    //border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    max-width: 1250px;
+    margin: 3rem 1rem 1rem;
+    background: #F8F8FB;
+    //height: 100%;
+    //border: 1px solid black;
+    //border-radius: 0 0 20px 20px;
+    //box-shadow: 0 10px 20px $maindarkbluealpha;
+    //background: $mistyrose;
 }
-.bg_inventory_thead {
-    background: $mainmaroon;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, $lightmaroon, $midmaroon, $mainmaroon);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, $lightmaroon, $midmaroon, $mainmaroon); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+.custom_table {
+    //overflow: hidden;
+  //box-shadow: 4px 4px 16px 4px #3a3a3a0c;
+  //border-radius: 10px;
+  //border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  max-width: 1250px;
+  margin: 3rem 1rem 1rem;
+  background: #F8F8FB;
+    //width: 100%;
+    //border-spacing: 0;
+    //padding-top: 2rem;
+    //background: #F8F8FB;
+    //transition: background .3s;
 }
+
+
+.table_body {
+    background: #F8F8FB;
+}
+.ivt_row {
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 12px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    box-shadow: 0 3px 3px rgba(14,99,117, 0.3);
+    background: #FFFFFF;
+}
+.ivt_row:hover {
+    border: 1px solid rgba(14,99,117, 0.2);
+    border-radius: 12px;
+    padding-top: 27px;
+    padding-bottom: 27px;
+    background: #FFFFFF;
+    transition: background .3s;
+    box-shadow: 0 4px 4px $mainmidblue;
+}
+
 .ivt_hr {
     background: $maindarkblue;
+}
+//-----homepage table-
+.ivt_cat {
+    border: 1px solid rgba(14,99,117, 0.4);
+    background: rgba(135,179,190,0.4);
+    box-shadow: 0 2px 2px $maindarkbluealpha;
+    border-radius: 5px;
+    color: $maindarkbluealpha
+}
+.ivt_date{
+    border: 1px solid $mistyrose;
+    background: white;
+    box-shadow: 0 2px 2px $mistyrose;
+    border-radius: 5px;
+    color: $maindarkblue;
+}
+.ivt_item {
+    color: $mainmaroon;
+}
+.ivt_item:hover {
+    color: $maindarkbluealpha;
+}
+
+//10/6/21 move to main.scss
+//flex
+.full_between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.half_center {
+    display: flex;
+    justify-content: center;
+}
+.full_center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.full_end {
+    display: flex;
+    align-items: center;
+    justify-content: end;
 }

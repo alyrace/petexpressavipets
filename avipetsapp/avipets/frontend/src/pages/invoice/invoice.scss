@@ -1,10 +1,139 @@
 $mainyellow: #F6A47A;
-$mainyellowalpha: rgba(246,164,122, 0.9);
+$mainyellowalpha: rgba(246,164,122, 0.3);
 $midyellow: #FBB08A;
 $maindarkblue: rgb(14,99,117);
 $maindarkbluealpha: rgba(14,99,117,0.7);
+$maindarkbluealpha2: rgba(14,99,117,0.3);
 $mainmidblue: #67A7B0;
+$mainMidBlueAlpha: rgba(135,179,190,0.7);
 $mainlightblue: #87B3BE;
+$mainlightbluealpha: rgba(135,179,190,0.3);
+$mainmaroon: #723538;
+$mainmaroonalpha: rgba(114,53,56,0.3);
+$mainGreen: #2C7B77;
+$mainGreenAlpha: rgba(44,123,119,0.3);
+$mainGreenAlpha2: rgba(44,123,119,0.7);
+//home dashboard
+//------inv nav--------
+.inc_nav {
+    box-shadow: 2px 4px 18px rgba(0, 0, 0, 0.08);
+    max-width: 300px;
+    height: 100vh;
+    background: whitesmoke;
+  a {
+    margin: 1rem 3rem 1rem;
+  }
+}
+@media(max-width: 991px) {
+    .inc_nav {
+        position: absolute;
+        left: -300px;
+        transition:  .01s;
+    }
+}
+@media (min-width: 991px) 
+and (max-width: 1140px) {
+    .inc_nav p {
+        font-size: 0.6rem;
+    }
+}
+
+//------inv_buttons---------
+.inc_nav_btns {
+    display: inline-block;
+    //border: transparent;
+    border-radius: 50px;
+    transition: box-shadow 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    font-size: 1.1rem;
+    p,
+    span {
+    display: inline-block;
+    color: #6b7c93;
+  }
+    span {
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    vertical-align: middle;
+    padding: 0.5rem;
+    border-radius: 150px;
+    transition: background-color 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    i {
+      height: 1.1rem;
+    }
+  }
+  p {
+    padding: 0 0.8rem 0 0.8rem;
+    line-height: 0.5rem;
+    vertical-align: middle;
+    margin-top: 14px;
+    transition: color 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+}
+.inc_nav_btn1 span {
+    
+      color: $maindarkblue;  
+}
+.inc_nav_btn1:hover {
+    box-shadow: 3px 3px 12px $maindarkblue;
+    border: 1px solid $maindarkbluealpha2;
+    span {
+        box-shadow: 3px 3px 12px $maindarkblue;
+        background: $maindarkbluealpha2;
+    }
+    p, span {
+       color: $maindarkblue;  
+    }
+}
+
+.inc_nav_btn2 span {
+    
+      color: $mainlightblue;  
+}
+.inc_nav_btn2:hover {
+        box-shadow: 3px 3px 12px $mainlightblue;
+        border: 1px solid $mainlightbluealpha;
+        span{
+            box-shadow: 3px 3px 12px $mainlightblue;
+            background: $mainlightbluealpha;
+        }
+    p, span {
+      color: $mainlightblue;  
+    }
+}
+
+.inc_nav_btn3 span {
+    
+      color: $mainmaroon;  
+}
+.inc_nav_btn3:hover {
+        box-shadow: 3px 3px 12px $mainmaroon;
+        border: 1px solid $mainmaroonalpha;
+        span {
+            box-shadow: 3px 3px 12px $mainmaroon;
+            background: $mainmaroonalpha;
+        }
+    p, span {
+      color: $mainmaroon;  
+    }
+}
+
+.inc_nav_btn4 span {
+    
+      color: $mainyellow;  
+}
+.inc_nav_btn4:hover {
+        box-shadow: 3px 3px 12px $mainyellow ;
+        border: 1px solid $mainyellowalpha;
+        span {
+            box-shadow: 3px 3px 12px $mainyellow;
+            background: $mainyellowalpha;
+        }   
+    p, span {
+      color: $mainyellow;  
+    }
+}
+
+//--------Homaetable-----------
 .invoice_box_search {
     border: 1px solid black;
     border-radius: 20px;
@@ -21,18 +150,8 @@ background: $mainyellow;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, $midyellow, $mainyellowalpha, $mainyellow);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, $midyellow, $mainyellowalpha, $mainyellow); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-.invoice_box_edit {
-    border: 1px solid black;
-    border-radius: 20px;
-    box-shadow: 0 5px 5px $mainyellowalpha;
-    background: $maindarkblue;
-}
-.inc_qt_box {
-    background: $mainyellow;
-    color: $mainmidblue;
-    border-radius: 20px;
-    width: 130px;
-}
+ 
+//---------Additinal inovoice buttons----------
 .inc_btn1 {
  color: $midyellow;   
 }
@@ -53,106 +172,153 @@ color: $mainlightblue;
     background: $midyellow;
     color: $mainmidblue;
 }
-//===========================
-.bg_pdf{
-    background-color: $maindarkblue;
-}
-.input,
-.span,
-.select {
-  display: inline-block;
-  width: 98%;
-  padding: 4px 12px 4px 0;
-  margin-bottom: 1px;
-  border: 1px dotted transparent;
-  transition: background 0.1s ease-in-out, border-color 0.2s ease-in-out;
-}
 
-.input,
-.select {
-  &:hover,
-  &:focus {
-    background: $mainyellow
-  }
-
-  &:focus {
-    border-color: $maindarkblue;
-  }
-
-  &.white {
-    &:hover,
-    &:focus {
-      color: inherit;
+//------------Widgets components---------------
+//move to universals
+.widget {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 15px;
+    padding: 1.5rem 1rem;
+    color: #3a3a3a;
+    margin: 1.5rem;
+    i {
+        display: inline-block;
+        font-size: 62px;
+        line-height: 62px;
+        vertical-align: middle;
+        padding: 1rem;
+        border-radius: 80px;
     }
+    h2 {
+        font-weight: 700;
+    }
+}
+//is a link 
+.create_invoice_widget {
+    box-shadow: 4px 4px 16px 4px $mainlightbluealpha;
+   i {
+    color: $mainlightblue;
+    background: $mainlightbluealpha + '1a';
+    box-shadow: 0px 0px 24px $mainlightblue;
+
+  }
+  h2{
+      color: $mainlightblue;
+  } 
+  
+}
+.create_invoice_widget:hover {
+   i {
+    color: $maindarkblue;
+    background: $mainlightblue;
+    box-shadow: 0px 0px 24px $mainlightblue;
+
+  }
+  
+}
+#fulfilled_invoice_widget {
+    box-shadow: 4px 4px 16px 4px $mainGreenAlpha2;
+   i {
+    color: $mainGreen;
+    background: $mainGreenAlpha2 + '1a';
+    box-shadow: 0px 0px 24px $mainGreen;
+  } 
+  h2{
+      color: $mainGreen;
+  }
+  
+}
+#pending_invoice_widget {
+    box-shadow: 4px 4px 16px 4px $mainmaroonalpha;
+   i {
+    color: $mainmaroon;
+    background: $mainmaroonalpha + '1a';
+    box-shadow: 0px 0px 24px $mainmaroon;
+  } 
+  h2{
+      color: $mainmaroon;
   }
 }
-.btn_pdf {
-    border: none;
-    background: transparent;
-    color: gray;
-}
-.pdf_icon{
-  display: inline-block;
-  position: relative;
-  width: 16px;
-  height: 16px;
-  border: 0;
-  border-radius: 50%;
-}
-.icon-absolute {
-  position: absolute;
+//----graph widget
+#graph_widget {
+    box-shadow: 4px 4px 16px 4px #3a3a3a1a;
+    border-radius: 15px;
+    margin: 3rem 1rem 1rem;
+    padding: 1rem;
+    h3 {
+        text-align: center;
+    }
 }
 
-.row__remove {
-  padding: 0;
-  //position: absolute;
-  //top: 10px;
-  //right: -20px;
-  opacity: 0.1;
-  border: none;
-  transition: opacity 0.2s ease-in-out;
+//-----------Graph Loader-----------
+//should move to universersal or a loader scss
+.pie_loader {
+    background: #f6f7f8;
+    background-image: -webkit-gradient(
+    linear,
+    left center,
+    right center,
+    from(#f6f7f8),
+    color-stop(0.2, #edeef1),
+    color-stop(0.4, #f6f7f8),
+    to(#f6f7f8)
+  );
+     background-image: -webkit-linear-gradient(
+    left,
+    #f6f7f8 0%,
+    #edeef1 20%,
+    #f6f7f8 40%,
+    #f6f7f8 100%
+  );
+    box-shadow: 4px 4px 16px 4px #3a3a3a1a;
+    border-radius: 15px;
+    margin: 3rem 1rem 1rem;
+    overflow: hidden;
+    
+.graph_img {
+    width: 100%;
+    height: 100%;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    display: block;
+    }
 }
-.row__remove:hover {
-  padding: 0;
-  //position: absolute;
-  //top: 10px;
-  //right: -20px;
-  opacity: 1;
-  border: none;
+
+@keyframes placeHolderShimmer {
+    0% {
+      background-position: -490px 0;
+    }
+    100% {
+      background-position: 490px 0;
+    }
 }
-.pdfitem_add {
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    width: 2px;
-    height: 10px;
-    left: 7px;
-    top: 3px;
-    background-color: #FFFFFF;
-  }
 
-  &::after {
-    transform: rotate(-90deg);
-  }
+
+
+
+//=========Edit Page==================
+.inc_text {
+    color: $mainlightblue;
 }
-.pdfitem_remove{
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    width: 2px;
-    height: 10px;
-    left: 7px;
-    top: 3px;
-    background-color: red;
-  }
-
-  &::before {
-    transform: rotate(45deg);
-  }
-
-  &::after {
-    transform: rotate(-45deg);
-  }
+/*
+.invoice_box_edit {
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px $mainyellowalpha;
+    background: $maindarkblue;
+}*/
+.inc_qt_box {
+    background: $mainyellow;
+    color: $mainmidblue;
+    border-radius: 20px;
+    width: 130px;
 }

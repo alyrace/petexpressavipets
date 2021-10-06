@@ -78,16 +78,27 @@ const Inventory = ({isAuthenticated}) => {
     
    return searchInventory(listings).map(listing => {
      return (
-       <tr key={listing.id}>
-         <td className="text-center text-secondary">{listing.category}</td>
-         <td className="text-center">
-           <Link className="link-danger" to={`/inventorydetail/${listing.id}/`}>
-             {listing.item_name}
-           </Link>
-         </td>
-         <td className="text-center text-secondary">{listing.quantity}</td>
-         <td className="text-center text-secondary">{listing.last_updated}</td>
-       </tr>
+       <Link to={`/inventorydetail/${listing.id}/`}>
+         <div key={listing.id} className="row ivt_row mb-5 full_between">
+           <div className="col-3 ivt_cat full_center text-center">
+             <span>{listing.category}</span>
+           </div>
+           <div className="col full_center text-center">
+             <Link
+               className="ivt_item"
+               to={`/inventorydetail/${listing.id}/`}
+             >
+               {listing.item_name}
+             </Link>
+           </div>
+           <div className="col full_center text-secondary text-center">
+             <span className="fw-bold">{listing.quantity}</span>
+           </div>
+           <div className="col ivt_date full_center text-center me-2">
+             <span className="fw-bolder">{listing.last_updated}</span>
+           </div>
+         </div>
+       </Link>
      );
    })
  }
@@ -184,16 +195,16 @@ const Inventory = ({isAuthenticated}) => {
           <meta name="description" content="AVI Pets Inventory" />
         </Helmet>
       </main>
-      <div className="container">
+      <div className="container-fluid table_bg">
         <section>
-          <div className="row mt-5 mb-5">
-            <div className="d-flex justify-content-center mt-2">
+          <div className="row mb-5">
+            <div className="half_center mt-2">
               <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item">
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item">
                     <a href="/">Home</a>
                   </li>
-                  <li class="breadcrumb-item">
+                  <li className="breadcrumb-item">
                     <a href="/dashboard">Dashboard</a>
                   </li>
                 </ol>
@@ -204,26 +215,30 @@ const Inventory = ({isAuthenticated}) => {
                 Pet Express Inventory
               </h2>
             </div>
-            <div className="d-flex justify-content-center mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div className="half_center mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div className="row">
-                <div className="container p-5 inventory_box_search">
+                <div className="container p-4 inventory_box_search">
                   <div className="row">
-                    <div className="d-flex justify-content-center col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div className="half_center col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <div className="row">
                         <div className="container-fluid">
-                          <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="btn-group" role="group">
-                              <Link to="/inventoryadd">
-                                <i class="fas fa-plus-square fa-5x ivt_btn2"></i>
+                          <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-2">
+                            <button type="button" className="ivt_btn2_outline">
+                              <Link
+                                to="/inventoryadd"
+                                className="full_center link-light"
+                              >
+                                <i className="fas fa-plus-square fa-2x ivt_btn2 me-2"></i>
+                                Add items
                               </Link>
-                            </div>
+                            </button>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="row">
-                    <div className="d-flex justify-content-center mt-2 mb-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <div className="half_center mt-2 mb-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                       <input
                         className="form-control"
                         type="text"
@@ -234,14 +249,14 @@ const Inventory = ({isAuthenticated}) => {
                         onChange={(e) => setSearch(e.target.value)}
                       />
                     </div>
-                    <div className="d-flex justify-content-center mb-2 mt-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <div className="half_center mb-2 mt-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                       <select
                         /* 
                      here we create a basic select input
                      we set the value to the selected value 
                      and update the setC() state every time onChange is called
                     */
-                        class="form-select form-select-lg"
+                        className="form-select form-select-lg"
                         id="category"
                         onChange={(e) => {
                           setFilterParam(e.target.value);
@@ -262,19 +277,19 @@ const Inventory = ({isAuthenticated}) => {
                     </div>
                   </div>
                   <div className="row">
-                    <div className="d-flex justify-content-center mt-2 mb-2 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <div class="btn-group" role="group">
+                    <div className="half_center mt-2 mb-2 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div className="btn-group" role="group">
                         <CSVLink
                           className="btn btn_csv"
                           data={listings}
                           filename={"inventory.csv"}
                         >
                           <i className="fas fa-file-csv fa-2x pe-2"></i>
-                          <i class="fas fa-download fa-sm"></i>
+                          <i className="fas fa-download fa-sm"></i>
                         </CSVLink>
-                        <button className="btn btn_pdf" onClick={exportPDF}>
+                        <button className="btn btn_pdf1" onClick={exportPDF}>
                           <i className="fas fa-file-pdf fa-2x me-1"></i>
-                          <i class="fas fa-download fa-sm"></i>
+                          <i className="fas fa-download fa-sm"></i>
                         </button>
                       </div>
                     </div>
@@ -282,28 +297,20 @@ const Inventory = ({isAuthenticated}) => {
                 </div>
               </div>
             </div>
-            <div className="mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <div className="inventory_box">
-                <table className="table table-striped table-responsive">
-                  <thead className="bg_inventory_thead">
-                    <tr className="text-light">
-                      <th scope="col" className="uppercase text-center">
-                        CATEGORY
-                      </th>
-                      <th scope="col" className="uppercase text-center">
-                        ITEM
-                      </th>
-                      <th scope="col" className="uppercase text-center">
-                        QTY
-                      </th>
-                      <th scope="col" className="uppercase text-center">
-                        UPDATED
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>{renderTableRows()}</tbody>
-                </table>
-                <div className="d-flex justify-content-center mb-3">
+            <div className="mt-3 half_center w-100 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div className="table_box p-1 w-100">
+                <div className="custom_table">
+                  <div className="mb-2">
+                    <div className="text-secondary row full_between bg-light shadow p-3 mb-5 bg-body rounded">
+                      <div className="col text-center fw-bold">CAT.</div>
+                      <div className="col text-center fw-bold">ITEM</div>
+                      <div className="col text-center fw-bold">QTY.</div>
+                      <div className="col text-center fw-bold">DATE</div>
+                    </div>
+                  </div>
+                  <div className="table_body">{renderTableRows()}</div>
+                </div>
+                <div className="half_center mb-3">
                   <Pagination
                     itemsPerPage={12}
                     count={count}

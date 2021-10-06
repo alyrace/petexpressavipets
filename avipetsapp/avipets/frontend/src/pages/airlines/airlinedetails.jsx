@@ -79,7 +79,7 @@ const AirlineDetails = ({isAuthenticated, match}) => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className="table_bg text-light">
+                      <tr className="table_bga text-light">
                         <th scope="row">
                           <i className="fas fa-map-marker-alt"></i>
                           <span className="ms-2">Address</span>

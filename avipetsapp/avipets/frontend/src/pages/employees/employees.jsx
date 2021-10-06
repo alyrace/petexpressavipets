@@ -70,21 +70,27 @@ const Employees = ({ isAuthenticated }) => {
 
       return searchEmployees(employees).map((employee) => {
         return (
-          <tr key={employee.id}>
-            <td className="text-center text-secondary">{employee.office}</td>
-            <td className="text-center">
-              <Link
-                className="link-primary"
-                to={`/employeeprofile/${employee.id}/`}
-              >
-                {employee.fullname}
-              </Link>
-            </td>
-            <td className="text-center text-secondary">
-              {employee.department_type}
-            </td>
-            <td className="text-center text-secondary">{employee.role_title}</td>
-          </tr>
+          <Link to={`/employeeprofile/${employee.id}/`}>
+            <div key={employee.id} className="row emp_row mb-5 full_between">
+              <div className="col emp_office full_center text-center fw-bold">
+                <span>{employee.office}</span>
+              </div>
+              <div className="col full_center text-center">
+                <Link
+                  className="emp_link"
+                  to={`/employeeprofile/${employee.id}/`}
+                >
+                  {employee.fullname}
+                </Link>
+              </div>
+              <div className="col full_center text-center">
+                <span className="link-secondary fw-bolder">{employee.department_type}</span>
+              </div>
+              <div className="col ivt_cat full_center text-center fw-bold">
+                <span>{employee.role_title}</span>
+              </div>
+            </div>
+          </Link>
         );
       });
     };
@@ -181,16 +187,16 @@ const Employees = ({ isAuthenticated }) => {
             <meta name="description" content="AVI Pets Employee" />
           </Helmet>
         </main>
-        <div className="container">
+        <div className="container-fluid table_bg">
           <section>
-            <div className="row mt-5 mb-5">
-              <div className="d-flex justify-content-center mt-2">
+            <div className="row mb-5">
+              <div className="half_center mt-2">
                 <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
+                  <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
                       <a href="/">Home</a>
                     </li>
-                    <li class="breadcrumb-item">
+                    <li className="breadcrumb-item">
                       <a href="/dashboard">Dashboard</a>
                     </li>
                   </ol>
@@ -201,26 +207,11 @@ const Employees = ({ isAuthenticated }) => {
                   Pet Express Employees
                 </h2>
               </div>
-              <div className="d-flex justify-content-center mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div className="half_center mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div className="row">
-                  <div className="container p-5 employee_box_search">
+                  <div className="container p-4 employee_box_search">
                     <div className="row">
-                      <div className="d-flex justify-content-center col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div className="row">
-                          <div className="container-fluid">
-                            <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                              <div class="btn-group" role="group">
-                                <Link to="/inventoryadd">
-                                  <i class="fas fa-plus-square fa-5x emp_btn2"></i>
-                                </Link>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="d-flex justify-content-center mt-2 mb-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                      <div className="half_center mt-2 mb-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                         <input
                           className="form-control"
                           type="text"
@@ -231,9 +222,9 @@ const Employees = ({ isAuthenticated }) => {
                           onChange={(e) => setSearch(e.target.value)}
                         />
                       </div>
-                      <div className="d-flex justify-content-center mb-2 mt-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                      <div className="half_center mb-2 mt-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                         <select
-                          class="form-select form-select-lg"
+                          className="form-select form-select-lg"
                           id="department_types"
                           onChange={(e) => {
                             setFilterParam(e.target.value);
@@ -258,19 +249,19 @@ const Employees = ({ isAuthenticated }) => {
                       </div>
                     </div>
                     <div className="row">
-                      <div className="d-flex justify-content-center mt-2 mb-2 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="btn-group" role="group">
+                      <div className="half_center mt-2 mb-2 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div className="btn-group" role="group">
                           <CSVLink
                             className="btn btn_csv2"
                             data={employees}
                             filename={"inventory.csv"}
                           >
                             <i className="fas fa-file-csv fa-2x pe-2"></i>
-                            <i class="fas fa-download fa-sm"></i>
+                            <i className="fas fa-download fa-sm"></i>
                           </CSVLink>
                           <button className="btn btn_pdf2" onClick={exportPDF}>
                             <i className="fas fa-file-pdf fa-2x me-1"></i>
-                            <i class="fas fa-download fa-sm"></i>
+                            <i className="fas fa-download fa-sm"></i>
                           </button>
                         </div>
                       </div>
@@ -278,28 +269,20 @@ const Employees = ({ isAuthenticated }) => {
                   </div>
                 </div>
               </div>
-              <div className="mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div className="employee_box">
-                  <table className="table table-striped table-responsive">
-                    <thead className="bg_employee_thead">
-                      <tr className="text-light">
-                        <th scope="col" className="uppercase text-center">
-                          OFFICE
-                        </th>
-                        <th scope="col" className="uppercase text-center">
-                          USER
-                        </th>
-                        <th scope="col" className="uppercase text-center">
-                          DPT
-                        </th>
-                        <th scope="col" className="uppercase text-center">
-                          TITLE
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>{renderTableRows()}</tbody>
-                  </table>
-                  <div className="d-flex justify-content-center mb-3">
+              <div className="mt-3 mb-3 half_center w-100 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div className="table_box p-1 w-100">
+                  <div className="custom_table">
+                    <div className="mb-2">
+                      <div className="text-secondary row full_between bg-light shadow p-3 mb-5 bg-body rounded">
+                        <div className="col text-center fw-bold">OFFICE</div>
+                        <div className="col text-center fw-bold">USER</div>
+                        <div className="col text-center fw-bold">DPT.</div>
+                        <div className="col text-center fw-bold">TITLE</div>
+                      </div>
+                    </div>
+                    <div className="table_body">{renderTableRows()}</div>
+                  </div>
+                  <div className="half_center mb-3">
                     <Pagination
                       itemsPerPage={12}
                       count={count}

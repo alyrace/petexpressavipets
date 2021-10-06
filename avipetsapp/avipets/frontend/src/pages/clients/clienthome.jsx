@@ -65,16 +65,27 @@ const ClientHome = ({ isAuthenticated }) => {
 
     return searchInvoices(listings).map((listing) => {
       return (
-        <tr key={listing.id}>
-          <td className="text-center text-secondary">{listing.active_client}</td>
-          <td className="text-center">
-            <Link className="link-primary" to={`/clientdetail/${listing.id}/`}>
-              {listing.scooby}
-            </Link>
-          </td>
-          <td className="text-center text-secondary">{listing.client_name}</td>
-          <td className="text-center text-secondary">{listing.last_updated}</td>
-        </tr>
+        <Link to={`/clientdetail/${listing.id}/`}>
+          <div key={listing.id} className="row ivt_row mb-5 full_between">
+            <div className="col-3 full_center text-center fw-bold scooby_clt2">
+              <span>{listing.active_client}</span>
+            </div>
+            <div className="col full_center text-center">
+              <Link
+                className="scooby_clt fw-bold"
+                to={`/clientdetail/${listing.id}/`}
+              >
+                {listing.scooby}
+              </Link>
+            </div>
+            <div className="col client_clt full_center text-center fw-bolder">
+              <span>{listing.client_name}</span>
+            </div>
+            <div className="col full_center text-center scooby_clt2">
+              <span>{listing.last_updated}</span>
+            </div>
+          </div>
+        </Link>
       );
     });
   };
@@ -139,20 +150,23 @@ const ClientHome = ({ isAuthenticated }) => {
             <title>AVI PETS - Client Home </title>
             <meta name="description" content="AVI Pets Client Home Generator" />
           </Helmet>
-          <div className="container">
+          <div className="container-fluid table_bg">
             <section>
               <div className="row mt-5 mb-5">
                 <div className="mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div className="d-flex justify-content-center mt-2">
+                  <div className="half_center mt-2">
                     <nav aria-label="breadcrumb">
-                      <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
+                      <ol className="breadcrumb">
+                        <li className="breadcrumb-item">
                           <a href="/">Home</a>
                         </li>
-                        <li class="breadcrumb-item">
+                        <li className="breadcrumb-item">
                           <a href="/dashboard">Dashboard</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">
+                        <li
+                          className="breadcrumb-item active"
+                          aria-current="page"
+                        >
                           <a href="/invoices">Invoices</a>
                         </li>
                       </ol>
@@ -162,11 +176,11 @@ const ClientHome = ({ isAuthenticated }) => {
                     Pet Express Client List
                   </h2>
                 </div>
-                <div className="d-flex justify-content-center mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div className="half_center mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div className="row">
                     <div className="container p-5 invoice_box_search">
                       <div className="row">
-                        <div className="d-flex justify-content-center col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div className="half_center col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div className="row">
                             <div className="container-fluid">
                               <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -181,7 +195,7 @@ const ClientHome = ({ isAuthenticated }) => {
                         </div>
                       </div>
                       <div className="row">
-                        <div className="d-flex justify-content-center mt-2 mb-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <div className="half_center mt-2 mb-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                           <input
                             className="form-control"
                             type="text"
@@ -192,14 +206,14 @@ const ClientHome = ({ isAuthenticated }) => {
                             onChange={(e) => setSearch(e.target.value)}
                           />
                         </div>
-                        <div className="d-flex justify-content-center mb-2 mt-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <div className="half_center mb-2 mt-2 col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                           <select
                             /* 
                      here we create a basic select input
                      we set the value to the selected value 
                      and update the setC() state every time onChange is called
                     */
-                            class="form-select form-select-lg"
+                            className="form-select form-select-lg"
                             id="active_client"
                             onChange={(e) => {
                               setFilterParam(e.target.value);
@@ -215,28 +229,20 @@ const ClientHome = ({ isAuthenticated }) => {
                     </div>
                   </div>
                 </div>
-                <div className="mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div className="client_box">
-                    <table className="table table-striped table-responsive">
-                      <thead className="bg_client_thead">
-                        <tr className="text-light">
-                          <th scope="col" className="uppercase text-center">
-                            CAT
-                          </th>
-                          <th scope="col" className="uppercase text-center">
-                            SCOOBY
-                          </th>
-                          <th scope="col" className="uppercase text-center">
-                            CLIENT
-                          </th>
-                          <th scope="col" className="uppercase text-center">
-                            UPDATED
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>{renderTableRows()}</tbody>
-                    </table>
-                    <div className="d-flex justify-content-center mb-3">
+                <div className="mt-3 mb-3 half_center w-100 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div className="table_box p-1 w-100">
+                    <div className="custom_table">
+                      <div className="mb-2">
+                        <div className="text-secondary row full_between">
+                          <div className="col text-center">CAT</div>
+                          <div className="col text-center">SCOOBY</div>
+                          <div className="col text-center">CLIENT</div>
+                          <div className="col text-center">DATE</div>
+                        </div>
+                      </div>
+                      <div>{renderTableRows()}</div>
+                    </div>
+                    <div className="half_center mb-3">
                       <Pagination
                         itemsPerPage={12}
                         count={count}

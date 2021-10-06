@@ -35,7 +35,7 @@ const LoginForm = ({ login, isAuthenticated }) => {
       </div>
       <form className="login_form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-group">
-          <i class="far fa-user-circle"></i>
+          <i className="far fa-user-circle"></i>
           <label htmlFor="email" className="form_label">
             Username
           </label>
@@ -51,7 +51,7 @@ const LoginForm = ({ login, isAuthenticated }) => {
           />
         </div>
         <div className="form-group">
-          <i class="fas fa-lock"></i>
+          <i className="fas fa-lock"></i>
           <label htmlFor="password" className="form_label m-1">
             Password
           </label>
@@ -72,7 +72,7 @@ const LoginForm = ({ login, isAuthenticated }) => {
           </a>
         </div>
         <div className="row">
-          <button type="submit" class="btn btn-outline-danger login_btn">Login</button>
+          <button type="submit" className="btn btn-outline-danger login_btn">Login</button>
         </div>
       </form>
     </div>

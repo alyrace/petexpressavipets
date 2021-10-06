@@ -39,7 +39,7 @@ import ClientAdd from "./pages/clients/clientadd";
 import ClientEdit from "./pages/clients/clientedit";
 import ClientDropdown from "./pages/invoice/clientdropdown";
 import NoteryHome from "./pages/notery/noteryhome";
-import InvoicePage from "./pages/invoice/invoicepage";
+//import InvoicePage from "./pages/invoice/invoicepage";
 
 
 
@@ -57,7 +57,6 @@ const App = () => (
           <Route exact path="/activate/:uid/:token" component={Activate} />
           <Route path="/airlineportal" component={Airlines} />
           <Route exact path="/airline/:id" component={AirlineDetails} />
-          <Route path="/test" component={InvoicePage} />
           <Route path="/clients" component={ClientHome} />
           <Route path="/clientadd" component={ClientAdd} />
           <Route path="/clientdetail/:id" component={ClientDetail} />

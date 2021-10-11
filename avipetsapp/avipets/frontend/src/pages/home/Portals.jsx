@@ -1,13 +1,10 @@
 //import React, { useState, useEffect } from "react";
 import React from "react";
-import { Helmet } from "react-helmet";
-import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-//import Navbar from "../../components/navigation/navbar.component";
-import "./home.scss";
 
-const Home = ({isAuthenticated}) => {
-  if (isAuthenticated === false) return <Redirect to="/login" />;
+
+
+const Portals = () => {
   /*useEffect(() => {
         const config = {
             headers: {
@@ -17,12 +14,6 @@ const Home = ({isAuthenticated}) => {
         }*/
   return (
     <div className="Home">
-      <main>
-        <Helmet>
-          <title>AVI PETS - HOME</title>
-          <meta name="description" content="AVI Pets Hompage" />
-        </Helmet>
-      </main>
       <section className="container">
         <div className="row text-center text-white gx-3 gy-3">
           <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -126,7 +117,5 @@ const Home = ({isAuthenticated}) => {
     </div>
   );
 };
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-});
-export default connect(mapStateToProps)(Home);
+
+export default Portals;

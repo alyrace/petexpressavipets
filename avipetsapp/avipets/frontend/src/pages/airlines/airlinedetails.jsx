@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import { Redirect} from "react-router-dom";
 
-
-//import Navbar from "../../components/navigation/navbar.component";
 import Carousel from '../../components/carousel/carousel.component';
 import "../../sass/carousel.scss";
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const CreateInvoiceWidget = ({invoices}) => {
     return (
-      <Link to="invoiceadd">
+      <Link to="/invoiceadd">
         <div className="widget create_invoice_widget">
           <div>
             <i className="fas fa-plus-circle"></i>

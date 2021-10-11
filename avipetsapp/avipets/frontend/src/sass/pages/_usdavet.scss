@@ -1,0 +1,97 @@
+.banner_usda {
+  background: linear-gradient(
+    to bottom,
+    $mainMidBlue,
+    $white
+ );
+}
+#usda_usda_widget {
+  box-shadow: 4px 4px 16px 4px $mainLightBlue;
+   i {
+    color: $mainDarkBlue;
+    background: $mainDarkBlue + '1a';
+    box-shadow: 0px 0px 24px $mainPink;
+
+  }
+  h2{
+      color: $mainDarkBlueAlpha;
+  } 
+}
+#usda_usda_widget:hover {
+   i {
+    color: $mainYellow;
+    background: $mainLightBlue;
+    box-shadow: 0px 0px 24px $mainGreen;
+
+  }
+  
+}
+#usda_country_widget {
+  box-shadow: 4px 4px 16px 4px $mainPink;
+   i {
+    color: $mainGreen;
+    background: $mainDarkBlue + '1a';
+    box-shadow: 0px 0px 24px $mainGreen;
+
+  }
+  h2{
+      color: $mainDarkBlueAlpha;
+  } 
+}
+#usda_country_widget:hover {
+   i {
+    color: $mainGreen;
+    background: $mainMidBlue;
+    box-shadow: 0px 0px 24px $mainPinkAlpha;
+
+  }
+  
+}
+#usda_res_widget {
+  box-shadow: 4px 4px 16px 4px $mainLightBlue;
+   i {
+    color: $mainDarkBlueAlpha;
+    background: $mainDarkBlue + '1a';
+    box-shadow: 0px 0px 24px $mainPink;
+
+  }
+  h2{
+      color: $mainDarkBlueAlpha;
+  } 
+}
+#usda_res_widget:hover {
+   i {
+    color: $mainLightBlue;
+    background: $mainPinkAlpha;
+    box-shadow: 0px 0px 24px $mainGreen;
+
+  }
+  
+}
+#usda_vet_widget {
+  box-shadow: 4px 4px 16px 4px $mainPink;
+   i {
+    color: $mainLightBlue;
+    background: $mainMidBlue + '1a';
+    box-shadow: 0px 0px 24px $mainGreen;
+  }
+  h2{
+      color: $mainDarkBlue;
+  } 
+}
+#usda_vet_widget:hover {
+   i {
+    color: $mainPink;
+    background: $mainMidBlue;
+    box-shadow: 0px 0px 24px $mainPinkAlpha;
+
+  }
+  
+}
+//=======Location Page===============
+.vet_logo {
+    width: 100px;
+    height: 70px;
+    object-fit: contain;
+    object-position: center;
+}

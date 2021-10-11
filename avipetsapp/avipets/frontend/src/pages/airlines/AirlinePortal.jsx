@@ -4,14 +4,12 @@ import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import {Redirect} from "react-router-dom";
 //import { useHistory } from 'react-router-dom';
-import Pagination from "../../components/pagination/pagination";
+import Pagination from "../../components/pagination/Pagination";
 //import Loader from 'react-loader-spinner';
 
-//import Navbar from "../../components/navigation/navbar.component";
-import "../airlines/airlines.scss";
 import airlineimg from "../../images/airline.png";
 import AirlineCard from "../../components/airliines/airline.component";
-//import axiosInstance from "../../axios";
+
 //import PostLoading from '../../components/airliines/loadingairlines';
 
 

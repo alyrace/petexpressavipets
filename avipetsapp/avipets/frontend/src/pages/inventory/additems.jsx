@@ -73,18 +73,6 @@ const InventoryAddItems = ({isAuthenticated}) => {
         </Helmet>
       </main>
       <div className="row mt-5">
-        <div className="d-flex justify-content-center mt-2">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                <a href="/">Home</a>
-              </li>
-              <li class="breadcrumb-item">
-                <a href="/dashboard">Dashboard</a>
-              </li>
-            </ol>
-          </nav>
-        </div>
         <div className="text-center col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-12 col-sm-12 col-xs-12">
           <h2 className="font-weight-bold-display-4">Add Items</h2>
         </div>

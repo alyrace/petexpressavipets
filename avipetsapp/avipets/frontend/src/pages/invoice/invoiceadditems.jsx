@@ -12,13 +12,13 @@ import * as Yup from "yup";
 import { ToastContainer, Bounce, toast, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import ClientDropdown from "./clientdropdown";
+import ClientDropdown from "./ClientDropdown";
 import InvoiceItem from "./invoiceitem";
 
 import InvoiceNav from "./invoicenav";
 
 import "../../sass/toast.scss";
-import clientadd from "../clients/clientadd";
+import clientadd from "../clients/ClientAdd";
 
 const InvoiceAddItems = ({ isAuthenticated }) => {
   if (isAuthenticated === false) return <Redirect to="/login" />;

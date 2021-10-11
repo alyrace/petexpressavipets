@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 //import Navbar from "../../components/navigation/navbar.component";
-import "../airlines/airlines.scss";
+
 import pethotel from "../../images/pethotel.png";
 
 class PetPortal extends Component {

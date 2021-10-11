@@ -1,0 +1,270 @@
+//10/6/21
+//Put these colos in colors sass and 
+//change name of this folder to portal themes for main 8 
+
+//==============================
+// Airline Page Detail
+//==============================
+/*table {
+ border-radius: 20px;
+}*/
+//===========Portals========================
+a {
+    text-decoration: none;
+}
+a:hover {
+ cursor: pointer;
+}
+@media only screen 
+    and (min-width: $extra_small)
+    and (max-width: $mid_small) {
+        .box {
+            height: 200px;
+            width: 200px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            box-shadow: 0 5px 5px $blackAlpha1;
+            color: white;
+        }
+        .portal_icon {
+            font-size: 65px;
+        }
+        .portal_title {
+            font-size: 20px;
+        }
+    }
+    @media only screen 
+    and (min-width: 576px) {
+        .box {
+            height: 380px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            box-shadow: 0 5px 5px $blackAlpha1;
+            color: white;
+        }
+        .portal_icon {
+            font-size: 200px;
+        }
+        .portal_title {
+            font-size: 40px;
+        }
+    }
+.box:hover {
+    box-shadow: 0 5px 5px $blackAlpha1;
+}
+
+.box_1 {
+    background: $mainMidBlue;
+}
+.box_1:hover {
+    box-shadow: 0 5px 5px $mainPinkAlpha;
+    background: $mainMidBlue;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, $mainPink, $mainMidBlue);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, $mainPink, $mainMidBlue); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.box_2 {
+    background: $mainYellow;
+}
+.box_2:hover {
+    box-shadow: 0 5px 5px $mainLightBlueAlpha4;
+    background: $mainYellow;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, $mainLightBlue, $mainYellow);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, $mainLightBlue, $mainYellow); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.box_3 {
+    background: $mainDarkBlue;
+}
+.box_3:hover {
+    box-shadow: 0 5px 5px $mainTanAlpha;
+    background: $mainDarkBlue;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, $mainTan, $mainDarkBlue);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, $mainTan, $mainDarkBlue); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.box_4 {
+    background: $mainMaroon;
+}
+.box_4:hover {
+    box-shadow: 0 5px 5px $mainGreenAlpha2;
+    background: $mainMaroon;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, $mainGreen, $mainMaroon);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, $mainGreen, $mainMaroon); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.box_5 {
+    background: $mainPink;
+}
+.box_5:hover {
+    box-shadow: 0 5px 5px $mainMidBlueAlpha;
+    border: solid $mainPink 2px;
+    background: $mainPink;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, $mainMidBlue, $mainPink);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, $mainMidBlue, $mainPink); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.box_6 {
+    background: $mainLightBlue;
+}
+.box_6:hover {
+    box-shadow: 0 5px 5px $mainYellowAlpha2;
+    background: $mainLightBlue;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom,$mainYellow, $mainLightBlue);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, $mainYellow, $mainLightBlue); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.box_7 {
+    background: $mainGreen;
+}
+.box_7:hover {
+    box-shadow: 0 5px 5px $mainMaroonAlpha2;
+    background: $mainGreen;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, $mainMaroon, $mainGreen);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, $mainMaroon, $mainGreen); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.box_8 {
+    background: $mainTan;
+}
+.box_8:hover {
+    box-shadow: 0 5px 5px $mainDarkBlueAlpha;
+    background: $mainTan;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, $mainDarkBlue, $mainTan);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, $mainDarkBlue, $mainTan); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+//==========================================
+.table_bga {
+  background-color: $mainLightBlue;
+  box-shadow: 0 5px 5px $mainTanAlpha;
+  border-radius: 14px;
+}
+.airline_dets{
+  border-radius: 10px;
+  box-shadow: 0 5px 5px $mainPinkAlpha;
+  background: $mainMidBlue;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, $mainMidBlue, $mainLightBlue, $mainMidBlue);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, $mainMidBlue, $mainLightBlue, $mainMidBlue); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.box_airlines {
+  height: 300px;
+  text-transform: uppercase;
+  border-radius: 20px;
+  box-shadow: 0 5px 5px $blackAlpha1;
+  color: $white;
+  border-top: 1px solid $mainGray2;
+}
+
+//==============================
+// Airline Page
+//==============================
+.airline_img {
+  object-fit: cover;
+  object-position: center;
+  height: 25vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner {
+  background: $skyBlue; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    $skyBlue,
+    $white
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    $skyBlue,
+    $white
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.banner_ops {
+   background: linear-gradient(
+    to bottom,
+    $mainLightGreen,
+    $purpleBlue,
+    $white,
+    );
+}
+.search_airs {
+  color: #B88195;
+}
+.btn_airs {
+  background: $skyBlue2;
+  color: $white;
+}
+.banner_dvr {
+   background: linear-gradient(
+    to bottom,
+    $skyBlue,
+    $mainLightYellow,
+    $mainGray3
+    );
+}
+.search_dvr {
+  color: $mainGray3;
+}
+.btn_dvr {
+  background: $skyBlue2;
+  color: $white;
+}
+.search_pet {
+  color: $mainLightGreen;
+}
+.btn_pet {
+  background: $skyBlue3;
+  color: $mainLightPink;
+}
+.search_ops {
+  color: $mainPink;
+}
+.btn_ops {
+  background: $mainMidBlue;
+  color: $white;
+}
+
+/*
+.search_comp {
+  color: $mainMaroon;
+}
+.btn_comp {
+  background: $mainMidBlue2;
+  color: $mainYellow;
+}
+*/
+.banner_sales {
+  background: linear-gradient(
+    to bottom,
+    $skyBlue,
+    $white,
+    $mainYellow,
+ );
+}
+.search_sales {
+  color: $mainMaroon;
+}
+.btn_sales {
+  background: $skyBlue;
+  color: $white;
+}
+.banner_tsa {
+  background: linear-gradient(
+    to bottom,
+    $mainDarkBlue2,
+    $white
+  
+ );
+}
+.search_tsa {
+  color: $mainDarkBlue2;
+}
+.btn_tsa {
+  background: $mainGreen;
+  color: $mainLightYellow;
+}
+/*
+.search_usda {
+  color: $mainGray3;
+}
+.btn_usda {
+  background: $mainGreen;
+  color: $mainYellow;
+}
+*/

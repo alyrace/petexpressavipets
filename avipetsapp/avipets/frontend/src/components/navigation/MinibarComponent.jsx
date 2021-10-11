@@ -8,7 +8,7 @@ const Minibar = () => {
           role="group"
           aria-label="mini nav"
         >
-          <a href="/dashboard" className="link-secondary">
+          <a href="/" className="link-secondary">
             <button type="button" className="btn btn-outline-dark mini_btn p-2">
               <i className="fas fa-th fa-lg"></i>
             </button>

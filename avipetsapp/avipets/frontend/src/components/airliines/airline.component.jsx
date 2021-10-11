@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import "../../pages/airlines/airlines.scss";
+
 
 //import defaultimg from "../../images/cat.png";
 

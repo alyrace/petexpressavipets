@@ -1,0 +1,86 @@
+$offcanvas-width: 300px;
+//$topNavbarHeight: 56px;
+.card_dash {
+  border-radius: 15px;
+}
+#card_1 {
+  background: $mainMidBlue;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, $mainPink, $mainMidBlue);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, $mainPink, $mainMidBlue); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+#card_2 {
+  background: $mainYellow;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, $mainLightBlue, $mainYellow);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, $mainLightBlue, $mainYellow); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+#card_3 {
+  background: $mainDarkBlue;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, $mainTan, $mainDarkBlue);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, $mainTan, $mainDarkBlue); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+#card_4 {
+  background: $mainGreen;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, $mainMaroon, $mainGreen);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, $mainMaroon, $mainGreen); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+#card_5{
+  background: $mainPink;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, $mainMidBlue, $mainPink);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, $mainMidBlue, $mainPink); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+#card_6{
+  background: $mainLightBlue;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom,$mainYellow, $mainLightBlue);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, $mainYellow, $mainLightBlue); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+#card_7{
+  background: $mainTan;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, $mainDarkBlue, $mainTan);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, $mainDarkBlue, $mainTan); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+#card_8{
+  background: $mainMaroon;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, $mainGreen, $mainMaroon);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, $mainGreen, $mainMaroon); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.nav_list{
+    background: $mainDarkBlue;
+}
+.sidebar-nav {
+  width: $offcanvas-width;
+  background: $mainDarkBlue;
+  border-radius: 0 20px 20px 0;
+}
+.sidebar-link {
+  display: flex;
+  align-items: center;
+}
+.sidebar-link .right-icon {
+  display: inline-flex;
+}
+.sidebar-link[aria-expanded="true"] .right-icon {
+  transform: rotate(180deg);
+}
+/*
+@media (min-width: 992px) {
+  body {
+    overflow: auto !important;
+  }
+  main {
+    margin-left: $offcanvas-width;
+  }
+  //this is to remove the backdrop 
+  .offcanvas-backdrop::before {
+    display: none;
+  }
+  .sidebar-nav {
+    -webkit-transform: none;
+    transform: none;
+    visibility: visible !important;
+    height: calc(100% - 56px);
+    top: $topNavbarHeight;
+  }
+}*/

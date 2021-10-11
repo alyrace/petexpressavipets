@@ -7,7 +7,7 @@ import { CSVLink } from "react-csv";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 
-import Pagination from "../../components/pagination/pagination";
+import Pagination from "../../components/pagination/Pagination";
 
 import "./employees.scss";
 

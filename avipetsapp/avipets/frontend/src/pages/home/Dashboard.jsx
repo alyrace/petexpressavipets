@@ -6,8 +6,8 @@ import { Redirect, Link } from "react-router-dom";
 
 import Calendar from "../../components/calendar/calendar";
 
-import "../dashboard/dashboard.scss";
 import "../dashboard/theme.scss";
+import Portals from "./Portals";
 
 
 
@@ -19,8 +19,8 @@ const Dashboard = ({ isAuthenticated }) => {
     <div>
       <main>
         <Helmet>
-          <title>AVI PETS - Dashboard</title>
-          <meta name="description" content="AVI Pets Dashboard" />
+          <title>AVI PETS - Home Dashboard</title>
+          <meta name="description" content="AVI Pets Home Dashboard" />
         </Helmet>
       </main>
       <button
@@ -129,6 +129,11 @@ const Dashboard = ({ isAuthenticated }) => {
       </div>
       <main class="mt-3">
         <div className="container mt-5 mb-5">
+          <div className="row mb-5">
+            <div className="col-md-12">
+              <Portals />
+            </div>
+          </div>
           <div className="row">
             <div className="col-md-12">
               <Calendar />
@@ -157,7 +162,7 @@ const Dashboard = ({ isAuthenticated }) => {
                   className="card card_dash text-white h-100 text-center"
                 >
                   <div className="card-body py-5">
-                    <i className="fas fa-users fa-3x mb-2"></i> 
+                    <i className="fas fa-users fa-3x mb-2"></i>
                     <h3>Clients</h3>
                   </div>
                 </div>

@@ -9,7 +9,7 @@ import { login } from "../../actions/auth";
 
 import dog from "../../images/dog3.png";
 import "./welcome.scss";
-import LoginForm from "../../components/forms/loginform.component";
+import LoginForm from "../../components/forms/LoginformComponent";
 
 
 const Login = () => {

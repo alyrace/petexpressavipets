@@ -1,1 +1,9 @@
-@import './_colors';
+@import './abstracts/variables';
+
+@import 'pages/compliance';
+@import 'pages/dashboard';
+@import 'pages/invoice';
+@import 'pages/usdavet';
+@import 'pages/mainportalstyles';
+
+@import 'components/checklist';

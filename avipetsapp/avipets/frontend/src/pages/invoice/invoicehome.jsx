@@ -3,13 +3,13 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import { Redirect, Link } from "react-router-dom";
-import PieGraph from "./widgets/piegraph";
-import "./invoice.scss";
+import PieGraph from "../../components/widgets/PieGraph";
 
-import Pagination from "../../components/pagination/pagination";
+
+import Pagination from "../../components/pagination/Pagination";
 import InvoiceNav from "./invoicenav";
-import WidgetComponent from "./widgets/widget.component";
-import CreateInvoiceWidget from "./widgets/createinvoicewidget";
+import WidgetComponent from "../../components/widgets/WidgetComponent";
+import CreateInvoiceWidget from "../../components/widgets/CreateInvoiceWidget";
 
 const Invoice = ({ isAuthenticated }) => {
     if (isAuthenticated === false) return <Redirect to="/login" />;

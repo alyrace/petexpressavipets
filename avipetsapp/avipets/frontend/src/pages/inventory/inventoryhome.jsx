@@ -7,7 +7,7 @@ import {CSVLink} from "react-csv";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 
-import Pagination from "../../components/pagination/pagination";
+import Pagination from "../../components/pagination/Pagination";
 
 import "./inventory.scss";
 
@@ -198,18 +198,6 @@ const Inventory = ({isAuthenticated}) => {
       <div className="container-fluid table_bg">
         <section>
           <div className="row mb-5">
-            <div className="half_center mt-2">
-              <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <a href="/">Home</a>
-                  </li>
-                  <li className="breadcrumb-item">
-                    <a href="/dashboard">Dashboard</a>
-                  </li>
-                </ol>
-              </nav>
-            </div>
             <div className="mt-3 mb-3 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <h2 className="text-center text-secondary font-weight-bold-display-4">
                 Pet Express Inventory

@@ -1,18 +1,3 @@
-$mainyellow: #F6A47A;
-$mainyellowalpha: rgba(246,164,122, 0.3);
-$midyellow: #FBB08A;
-$maindarkblue: rgb(14,99,117);
-$maindarkbluealpha: rgba(14,99,117,0.7);
-$maindarkbluealpha2: rgba(14,99,117,0.3);
-$mainmidblue: #67A7B0;
-$mainMidBlueAlpha: rgba(135,179,190,0.7);
-$mainlightblue: #87B3BE;
-$mainlightbluealpha: rgba(135,179,190,0.3);
-$mainmaroon: #723538;
-$mainmaroonalpha: rgba(114,53,56,0.3);
-$mainGreen: #2C7B77;
-$mainGreenAlpha: rgba(44,123,119,0.3);
-$mainGreenAlpha2: rgba(44,123,119,0.7);
 //home dashboard
 //------inv nav--------
 .inc_nav {
@@ -48,7 +33,7 @@ and (max-width: 1140px) {
     p,
     span {
     display: inline-block;
-    color: #6b7c93;
+    color: $mainGray;
   }
     span {
     font-size: 1.3rem;
@@ -71,65 +56,65 @@ and (max-width: 1140px) {
 }
 .inc_nav_btn1 span {
     
-      color: $maindarkblue;  
+      color: $mainDarkBlue;  
 }
 .inc_nav_btn1:hover {
-    box-shadow: 3px 3px 12px $maindarkblue;
-    border: 1px solid $maindarkbluealpha2;
+    box-shadow: 3px 3px 12px $mainDarkBlue;
+    border: 1px solid $mainDarkBlueAlpha2;
     span {
-        box-shadow: 3px 3px 12px $maindarkblue;
-        background: $maindarkbluealpha2;
+        box-shadow: 3px 3px 12px $mainDarkBlueAlpha2;
+        background: $mainDarkBlueAlpha2;
     }
     p, span {
-       color: $maindarkblue;  
+       color: $mainDarkBlue;  
     }
 }
 
 .inc_nav_btn2 span {
     
-      color: $mainlightblue;  
+      color: $mainLightBlue;  
 }
 .inc_nav_btn2:hover {
-        box-shadow: 3px 3px 12px $mainlightblue;
-        border: 1px solid $mainlightbluealpha;
+        box-shadow: 3px 3px 12px $mainLightBlue;
+        border: 1px solid $mainLightBlueAlpha;
         span{
-            box-shadow: 3px 3px 12px $mainlightblue;
-            background: $mainlightbluealpha;
+            box-shadow: 3px 3px 12px $mainLightBlue;
+            background: $mainLightBlueAlpha;
         }
     p, span {
-      color: $mainlightblue;  
+      color: $mainLightBlue;  
     }
 }
 
 .inc_nav_btn3 span {
     
-      color: $mainmaroon;  
+      color: $mainMaroon;  
 }
 .inc_nav_btn3:hover {
-        box-shadow: 3px 3px 12px $mainmaroon;
-        border: 1px solid $mainmaroonalpha;
+        box-shadow: 3px 3px 12px $mainMaroon;
+        border: 1px solid $mainMaroonAlpha;
         span {
-            box-shadow: 3px 3px 12px $mainmaroon;
-            background: $mainmaroonalpha;
+            box-shadow: 3px 3px 12px $mainMaroon;
+            background: $mainMaroonAlpha;
         }
     p, span {
-      color: $mainmaroon;  
+      color: $mainMaroon;  
     }
 }
 
 .inc_nav_btn4 span {
     
-      color: $mainyellow;  
+      color: $mainYellow;  
 }
 .inc_nav_btn4:hover {
-        box-shadow: 3px 3px 12px $mainyellow ;
-        border: 1px solid $mainyellowalpha;
+        box-shadow: 3px 3px 12px $mainYellow;
+        border: 1px solid $mainYellowAlpha;
         span {
-            box-shadow: 3px 3px 12px $mainyellow;
-            background: $mainyellowalpha;
-        }   
+            box-shadow: 3px 3px 12px $mainYellow;
+            background: $mainYellowAlpha
+    ;    }   
     p, span {
-      color: $mainyellow;  
+      color: $mainYellow;  
     }
 }
 
@@ -137,40 +122,36 @@ and (max-width: 1140px) {
 .invoice_box_search {
     border: 1px solid black;
     border-radius: 20px;
-    box-shadow: 0 5px 5px $mainlightblue;
+    box-shadow: 0 5px 5px $mainLightBlue;
 }
 .invoice_box {
     border: 1px solid black;
     border-radius: 0 0 20px 20px;
-    box-shadow: 0 10px 20px $mainlightblue;
-    background: $mainyellow;
+    box-shadow: 0 10px 20px $mainLightBlue;
+    background: $mainYellow;
 }
-.bg_invoice_thead {
-background: $mainyellow;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, $midyellow, $mainyellowalpha, $mainyellow);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, $midyellow, $mainyellowalpha, $mainyellow); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
+
  
 //---------Additinal inovoice buttons----------
 .inc_btn1 {
- color: $midyellow;   
+ color: $midYellow;   
 }
 .inc_btn1:hover {
  color: white;   
 }
 .inc_btn2 {
-color: $maindarkblue;
+color: $mainDarkBlue;
 }
 .inc_btn2:hover {
-color: $mainlightblue;
+color: $mainLightBlue;
 }
 .inc_btn5 {
-    background: $mainyellow;
+    background: $mainYellow;
     color: #FFFFFF;
 }
 .inc_btn5:hover {
-    background: $midyellow;
-    color: $mainmidblue;
+    background: $midYellow;
+    color: $mainMidBlue;
 }
 
 //------------Widgets components---------------
@@ -197,23 +178,23 @@ color: $mainlightblue;
 }
 //is a link 
 .create_invoice_widget {
-    box-shadow: 4px 4px 16px 4px $mainlightbluealpha;
+    box-shadow: 4px 4px 16px 4px $mainLightBlueAlpha;
    i {
-    color: $mainlightblue;
-    background: $mainlightbluealpha + '1a';
-    box-shadow: 0px 0px 24px $mainlightblue;
+    color: $mainLightBlue;
+    background: $mainLightBlueAlpha + '1a';
+    box-shadow: 0px 0px 24px $mainLightBlue;
 
   }
   h2{
-      color: $mainlightblue;
+      color: $mainLightBlue;
   } 
   
 }
 .create_invoice_widget:hover {
    i {
-    color: $maindarkblue;
-    background: $mainlightblue;
-    box-shadow: 0px 0px 24px $mainlightblue;
+    color: $mainDarkBlue;
+    background: $mainLightBlue;
+    box-shadow: 0px 0px 24px $mainLightBlue;
 
   }
   
@@ -231,14 +212,14 @@ color: $mainlightblue;
   
 }
 #pending_invoice_widget {
-    box-shadow: 4px 4px 16px 4px $mainmaroonalpha;
+    box-shadow: 4px 4px 16px 4px $mainMaroonAlpha
    i {
-    color: $mainmaroon;
-    background: $mainmaroonalpha + '1a';
-    box-shadow: 0px 0px 24px $mainmaroon;
+    color: $mainMaroon;
+    background: $mainMaroonAlpha + '1a';
+    box-shadow: 0px 0px 24px $mainMaroon;
   } 
   h2{
-      color: $mainmaroon;
+      color: $mainMaroon;
   }
 }
 //----graph widget
@@ -307,18 +288,18 @@ color: $mainlightblue;
 
 //=========Edit Page==================
 .inc_text {
-    color: $mainlightblue;
+    color: $mainLightBlue;
 }
 /*
 .invoice_box_edit {
     border: 1px solid black;
     border-radius: 20px;
-    box-shadow: 0 5px 5px $mainyellowalpha;
-    background: $maindarkblue;
+    box-shadow: 0 5px 5px $mainYellowAlpha
+    ;background: $mainDarkBlue;
 }*/
 .inc_qt_box {
-    background: $mainyellow;
-    color: $mainmidblue;
+    background: $mainYellow;
+    color: $mainMidBlue;
     border-radius: 20px;
     width: 130px;
 }

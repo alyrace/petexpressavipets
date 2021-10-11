@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import { Redirect, Link } from "react-router-dom";
 
 import "./client.scss";
-import Pagination from "../../components/pagination/pagination";
+import Pagination from "../../components/pagination/Pagination";
 
 const ClientHome = ({ isAuthenticated }) => {
   if (isAuthenticated === false) return <Redirect to="/login" />;

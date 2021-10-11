@@ -1,0 +1,126 @@
+.bg_comp {
+  background-color: $mainTan;
+}
+.banner_compliance {
+  background: linear-gradient(
+    to bottom,
+    $mainPink,
+    $skyBlue
+ );
+}
+#comp_usda_widget {
+    box-shadow: 4px 4px 16px 4px $mainDarkBlue;
+   i {
+    color: $mainMaroon;
+    background: $mainMaroon + '1a';
+    box-shadow: 0px 0px 24px $mainMaroonAlpha;
+
+  }
+  h2{
+      color: $mainMaroon;
+  } 
+  
+}
+#comp_usda_widget:hover {
+   i {
+    color: $mainDarkBlue;
+    background: $mainMaroonAlpha2;
+    box-shadow: 0px 0px 24px $mainYellow;
+
+  }
+  
+}
+#comp_country_widget {
+    box-shadow: 4px 4px 16px 4px $mainMaroon;
+   i {
+    color: $mainDarkBlueAlpha;
+    background: $mainDarkBlueAlpha + '1a';
+    box-shadow: 0px 0px 24px $mainDarkBlueAlpha;
+
+  }
+  h2{
+      color: $mainDarkBlueAlpha;
+  } 
+  
+}
+#comp_country_widget:hover {
+   i {
+    color: $mainDarkBlueAlpha2;
+    background: $mainGreenAlpha;
+    box-shadow: 0px 0px 24px $mainYellow;
+
+  }
+  
+}
+#comp_res_widget {
+  box-shadow: 4px 4px 16px 4px $mainDarkBlue;
+   i {
+    color: $mainYellow;
+    background: $mainDarkBlue + '1a';
+    box-shadow: 0px 0px 24px $mainYellow;
+
+  }
+  h2{
+      color: $mainYellow;
+  } 
+}
+#comp_res_widget:hover {
+   i {
+    color: $mainDarkBlue;
+    background: $midYellow;
+    box-shadow: 0px 0px 24px $mainDarkBlueAlpha;
+
+  }
+  
+}
+
+#comp_airline_widget {
+  box-shadow: 4px 4px 16px 4px $mainMaroon;
+   i {
+    color: $mainDarkBlueAlpha;
+    background: $mainDarkBlue + '1a';
+    box-shadow: 0px 0px 24px $mainYellow;
+
+  }
+  h2{
+      color: $mainDarkBlueAlpha;
+  } 
+}
+#comp_airline_widget:hover {
+   i {
+    color: $midYellow;
+    background: $mainMidBlueAlpha;
+    box-shadow: 0px 0px 24px $mainYellow;
+
+  }
+  
+}
+.usda_title {
+  color: $mainDarkBlue;
+  letter-spacing: 10px;
+  //font-weight: 600;
+  text-shadow: 1px -1px 0 $mainDarkBlue, -1px 1px 3px $mainDarkBlue; 
+}
+.usda_title:hover {
+  color: $mainMaroon;
+}
+.country_title{
+  color: $skyBlue3;
+  letter-spacing: 10px;
+  //font-weight: 600;
+  text-shadow: 1px -1px 0 $mainMidBlue2, -1px 1px 3px $mainMidBlue2; 
+}
+.country_title:hover{
+  color: $mainMaroon;
+  
+}
+.usda_card_box {
+ box-shadow: 4px 4px 16px 4px $mainMaroonAlpha; 
+ background-color: $offWhite;
+ height: 150px;
+}
+.country_card_box {
+  box-shadow: 4px 4px 16px 4px $mainDarkBlueAlpha;
+  width: 400px;
+  background-color: $offWhite;
+}

@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from "react";
-import PieLoader from "../loaders/pieloader";
+import PieLoader from "../../pages/invoice/loaders/PieLoader";
 import { Doughnut } from "react-chartjs-2";
 
 const PieGraph = () => {

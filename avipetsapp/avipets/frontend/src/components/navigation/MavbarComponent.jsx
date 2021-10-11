@@ -5,7 +5,7 @@ import { Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { logout } from "../../actions/auth";
 import Logo from "../../images/logo3.png";
-import Minibar from "./minibar.component";
+import Minibar from "./MinibarComponent";
 
 
 

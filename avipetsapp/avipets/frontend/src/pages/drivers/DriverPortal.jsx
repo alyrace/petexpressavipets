@@ -1,29 +1,31 @@
 import React, { Component } from "react";
-//import Navbar from "../../components/navigation/navbar.component";
-import "../airlines/airlines.scss";
-import usdavet from "../../images/usdavet3.png";
 
-class UsdaVetPortal extends Component {
+import driverimg from "../../images/drivers.png";
+
+class DriversPortal extends Component {
   render() {
     return (
       <div>
-          <section className="container-fluid banner_usda">
+          <section className="container-fluid banner_dvr">
             <div className="row">
               <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h1 className="text-white text-center mt-3 pt-2">USDA Vet Portal</h1>
+                <h1 className="text-white text-center mt-3 pt-2">
+                  Driver Portal
+                </h1>
               </div>
             </div>
             <div className="row">
               <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <h2 className="text-center text-white mt-3 pt-4 pb-5 ms-0 me-0">
-                  All access info to all thing vet and usda related for you pet travel needs.
+                  Your one stop shop for boarding and pet care at Pet Express
+                  International Transport.
                 </h2>
               </div>
               <div className="center col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <img
                   className="img-fluid text-center mb-5"
-                  src={usdavet}
-                  alt="usdavetimg"
+                  src={driverimg}
+                  alt="drvinmg"
                 />
               </div>
             </div>
@@ -39,7 +41,10 @@ class UsdaVetPortal extends Component {
                 <form className="form-group" action="">
                   <div className="input-group form-container">
                     <span className="input-group-text">
-                      <i class="fas fa-search-location search_usda fa-2x" id="Search"></i>
+                      <i
+                        class="fas fa-search-location search_dvr fa-2x"
+                        id="Search"
+                      ></i>
                     </span>
                     <input
                       className="form-control"
@@ -49,7 +54,7 @@ class UsdaVetPortal extends Component {
                     />
                     <div className="input-group-append position-relative">
                       <button
-                        className="btn btn_usda btn-lg position-absolute top-0 end-0"
+                        className="btn btn_dvr btn-lg position-absolute top-0 end-0"
                         type="submit"
                         id="Search"
                       >
@@ -69,4 +74,4 @@ class UsdaVetPortal extends Component {
   }
 }
 
-export default UsdaVetPortal;
+export default DriversPortal;

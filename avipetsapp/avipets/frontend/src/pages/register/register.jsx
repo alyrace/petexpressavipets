@@ -1,8 +1,8 @@
 import React from "react"
 import { Helmet } from "react-helmet";
 import cat from "../../images/cat.png";
-import RegisterForm from "../../components/forms/registerform.component";
-import "../register/registerpage.scss";
+import RegisterForm from "../../components/forms/RegisterformComponent";
+import "../register/registerPage.scss";
 
 
 const Register = ({ isAuthenticated, match }) => {

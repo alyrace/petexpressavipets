@@ -1,20 +1,34 @@
 .opsvet-bg {
+    border-radius: 20px;
     background: $skyBlue;
 	background: linear-gradient(to bottom, $skyBlue2, $white);
 }
+.opsusda-bg {
+    border-radius: 20px;
+    background: $skyBlue;
+	background: linear-gradient(to bottom, $skyBlue2, $mainYellow);
+}
+.drvrvet-bg {
+    border-radius: 20px;
+    background: $skyBlue;
+	background: linear-gradient(to bottom, $skyBlue2, $mainLightYellow);
+}
+.drvrusda-bg {
+    border-radius: 20px;
+    background: $skyBlue;
+	background: linear-gradient(to bottom, $skyBlue2, $mainDarkBlueAlpha);
+}
 .task_container{
-		  //max-width:600px;
-		  margin:0 auto;
-		  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-		  background-color: #fff;
-		  margin-top:100px;
-		  margin-bottom:100px;
-
-		  justify-content: space-around;
-		  align-items: flex-start;
-
-		  
-
+	max-width:900px;
+    border-radius: 15px;
+    margin:0 auto;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	background-color: #fff;
+	margin-top:100px;
+	margin-bottom:100px;
+    //height: 100vh;
+	justify-content: space-around;
+	//align-items: center;
 		}
 #form_wrapper{
 		  position: -webkit-sticky;
@@ -30,11 +44,89 @@
     cursor: pointer;
 	border-bottom: 1px solid  #e9e9e9;
 	color: #686868;
+    background: whitesmoke;
 }
 
-#submit{
-		  background-color: $skyBlue2;
-		  border-radius: 0;
-		  border:0;
-		  color: $offWhite;
-		}
+#ops_vet_submit{
+	background-color: $skyBlue2;
+	border-radius: 0;
+	border:0;
+	color: $offWhite;
+}
+#ops_vet_edit{
+    background-color: $mainYellow;
+    color: $mainDarkBlue;
+    box-shadow: 0px 0px 24px $mainYellow;
+}
+#ops_vet_delete{
+    background-color: $mainMaroon;
+	color: $mainPinkAlpha;
+    box-shadow: 0px 0px 24px $mainMaroon;
+}
+#ops_usda_submit{
+	background-color: $skyBlue2;
+	border-radius: 0;
+	border:0;
+	color: $offWhite;
+}
+#ops_usda_edit{
+    background-color: $mainYellow;
+    color: $mainDarkBlueAlpha;
+    box-shadow: 0px 0px 24px $mainDarkBlue2;
+}
+#ops_usda_delete{
+    background-color: $mainMaroonAlpha2;
+	color: $offWhite;
+    box-shadow: 0px 0px 24px $mainPinkAlpha
+}
+#drvr_vet_submit{
+	background-color: $skyBlue2;
+	border-radius: 0;
+	border:0;
+	color: $offWhite;
+}
+#driver_vet_edit{
+    background-color: $mainLightYellow;
+    color: $mainDarkBlue;
+    box-shadow: 0px 0px 24px $mainYellow;
+}
+#driver_vet_delete{
+    background-color: $mainMaroon;
+	color: $offWhite;
+    box-shadow: 0px 0px 24px $mainPinkAlpha;
+}
+#driver_usda_submit{
+	background-color: $mainMidBlue;
+	border-radius: 0;
+	border:0;
+	color: $offWhite;
+}
+#driver_usda_edit{
+    background-color: $mainYellow;
+    color: $mainDarkBlue;
+    box-shadow: 0px 0px 24px $mainYellow;
+}
+#driver_usda_delete{
+    background-color: $mainMaroonAlpha;
+	color: $mainPinkAlpha;
+    box-shadow: 0px 0px 24px $mainMaroonAlpha;
+}
+.task-wrapper{
+    cursor: pointer;
+    border: 1px solid  $mainDarkBlue;
+    color: #686868;
+    border-radius: 10px;
+    margin:5px;
+    padding:10px;
+}
+.task-wrapper:hover{
+    background-color: $mainDarkBlue;
+    color: $white;
+    font-weight: 600;
+}
+.item_title{
+    flex:6,
+}
+.item_btns {
+    flex:1;
+}

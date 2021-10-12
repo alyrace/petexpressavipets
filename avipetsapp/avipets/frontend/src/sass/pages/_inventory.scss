@@ -1,23 +1,14 @@
-$mistyrose: #FFE4E1;
-$mainmaroon: #723538;
-$lightmaroon: #F17077;
-$midmaroon: #C75D62;
-$mainmaroonalpha: rgba(133,62,66,0.7);
-$maindarkblue: rgb(14,99,117);
-$maindarkbluealpha: rgba(14,99,117,0.7);
-$mainmidblue: #67A7B0;
-$mainlightblue: #87B3BE;
 
 .ivt_qt_box { 
     background: $mistyrose;
-    color: $maindarkblue;
+    color: $mainDarkBlue;
     border-radius: 20px;
 }
 //=======inventory buttons-==========
 
 .btn_csv {
-    background: $mainmidblue;
-    color: #FFFFFF;
+    background: $mainMidBlue;
+    color: $white;
     border-radius: 10px;
 }
 .btn_csv:hover {
@@ -25,93 +16,93 @@ $mainlightblue: #87B3BE;
 }
 
 .btn_pdf1 {
-    background: $mainmaroon;
-    color: #FFFFFF;
+    background: $mainMaroon;
+    color: $white;
     border-radius: 10px; 
 }
 .btn_pdf1:hover {
-    color: $mainlightblue;
+    color: $mainLightBlue;
 }
 .ivt_cat_title {
-    color: $maindarkblue
+    color: $mainDarkBlue
 }
 .ivt_detail_title {
-    background: $mainmidblue;
-    border-bottom: $mainmidblue;
+    background: $mainMidBlue;
+    border-bottom: $mainMidBlue;
     box-shadow: 0 5px 5px $mistyrose;
     border-radius: 20px 20px 0 0;
 }
-.ivt_btn1 {color: $midmaroon;}
-.ivt_btn1:hover {color: $maindarkblue;}
+.ivt_btn1 {color: $midMaroon;}
+.ivt_btn1:hover {color: $mainDarkBlue;}
 .ivt_btn2 {color: white;}
 .ivt_btn2_outline {
     border: 1px solid $mistyrose;
     border-radius: 10px;
     padding: .5rem;
-    background: $mainlightblue;
-    box-shadow: 3px 3px 12px $mainmaroon;
+    background: $mainLightBlue;
+    box-shadow: 3px 3px 12px $mainMaroon;
 
 }
 .ivt_btn2_outline:hover {
-    border: 2px solid $mainlightblue;
+    border: 2px solid $mainLightBlue;
     border-radius: 10px;
     padding: .5rem;
-    background: $maindarkblue;
-    box-shadow: 3px 3px 10px $mainlightblue;
+    background: $mainDarkBlue;
+    box-shadow: 3px 3px 10px $mainLightBlue;
 }
-.ivt_btn3 {color: $mainmaroon}
+.ivt_btn3 {color: $mainMaroon}
 .ivt_btn4 {
-    background: $mainlightblue;
-    color: #FFFFFF;
+    background: $mainLightBlue;
+    color: $white;
 }
 .ivt_btn4:hover {
-    color: $mainlightblue;
-    background: #FFFFFF;
-    border: 1px solid $mainlightblue;
+    color: $mainLightBlue;
+    background: $white;
+    border: 1px solid $mainLightBlue;
 }
 .ivt_btn5 {
-    background: $mainmidblue;
-    color: #FFFFFF;
+    background: $mainMidBlue;
+    color: $white;
 }
 .ivt_btn5:hover {
-    color: $mainmidblue;
-    background: #FFFFFF;
-    border: 1px solid $mainmidblue;
+    color: $mainMidBlue;
+    background: $white;
+    border: 1px solid $mainMidBlue;
 }
 
 .ivt_btn6 {
-    color: #FFFFFF;
-    background: $mainmaroon;
-    border: 1px solid $mainmaroon;
+    color: $white;
+    background: $mainMaroon;
+    border: 1px solid $mainMaroon;
 }
 .ivt_btn6:hover {
-    color: $mainmaroon;
-    background: #FFFFFF;
-    border: 1px solid $mainmaroon;
+    color: $mainMaroon;
+    background: $white;
+    border: 1px solid $mainMaroon;
 }
 
 .ivt_btn7 {
-    color: #FFFFFF;
-    background: $maindarkblue;
-    border: 1px solid $maindarkblue;
+    color: $white;
+    background: $mainDarkBlue;
+    border: 1px solid $mainDarkBlue;
 }
 .ivt_btn7:hover {
-    color: $maindarkblue;
-    background: #FFFFFF;
-    border: 1px solid $maindarkblue;
+    color: $mainDarkBlue;
+    background: $white;
+    border: 1px solid $mainDarkBlue;
 }
 //============detail page=============
 .inventory_box_detail{
-    border: 1px solid $mainmidblue;
+    border: 1px solid $mainMidBlue;
     border-radius: 20px;
-    box-shadow: 0 5px 5px $maindarkbluealpha;
-    background: #FFFFFF;
+    box-shadow: 0 5px 5px $mainDarkBlueAlpha;
+    background: $white;
 }
 //========== edit page===========
 .inventory_box_edit{
     border: 1px solid black;
     border-radius: 20px;
-    box-shadow: 0 5px 5px $maindarkbluealpha;
+    box-shadow: 0 5px 5px $mainDarkBlueAlpha;
     background: $mistyrose;
 }
 
@@ -119,12 +110,12 @@ $mainlightblue: #87B3BE;
 //10/6/21 move table css to main.scss
 
 .table_bg {
-    background: #F8F8FB;
+    background: $offWhite;
 }
  .inventory_box_search{
     border: 1px solid black;
     border-radius: 20px;
-    box-shadow: 0 5px 5px $mainmaroonalpha;
+    box-shadow: 0 5px 5px $mainMaroonAlpha;
 } 
 .table_box {
     //overflow: hidden;
@@ -133,7 +124,7 @@ $mainlightblue: #87B3BE;
     //border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     max-width: 1250px;
     margin: 3rem 1rem 1rem;
-    background: #F8F8FB;
+    background: $offWhite;
     //height: 100%;
     //border: 1px solid black;
     //border-radius: 0 0 20px 20px;
@@ -147,7 +138,7 @@ $mainlightblue: #87B3BE;
   //border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   max-width: 1250px;
   margin: 3rem 1rem 1rem;
-  background: #F8F8FB;
+  background:$offWhite;
     //width: 100%;
     //border-spacing: 0;
     //padding-top: 2rem;
@@ -157,49 +148,49 @@ $mainlightblue: #87B3BE;
 
 
 .table_body {
-    background: #F8F8FB;
+    background: $offWhite;
 }
 .ivt_row {
-    border: 1px solid rgba(0,0,0,0.07);
+    border: 1px solid $blackAlpha2;
     border-radius: 12px;
     padding-top: 25px;
     padding-bottom: 25px;
-    box-shadow: 0 3px 3px rgba(14,99,117, 0.3);
-    background: #FFFFFF;
+    box-shadow: 0 3px 3px $mainDarkBlueAlpha2;
+    background: $white;
 }
 .ivt_row:hover {
-    border: 1px solid rgba(14,99,117, 0.2);
+    border: 1px solid $mainLightBlue4;
     border-radius: 12px;
     padding-top: 27px;
     padding-bottom: 27px;
-    background: #FFFFFF;
+    background: $white;
     transition: background .3s;
-    box-shadow: 0 4px 4px $mainmidblue;
+    box-shadow: 0 4px 4px $mainMidBlue;
 }
 
 .ivt_hr {
-    background: $maindarkblue;
+    background: $mainDarkBlue;
 }
 //-----homepage table-
 .ivt_cat {
-    border: 1px solid rgba(14,99,117, 0.4);
-    background: rgba(135,179,190,0.4);
-    box-shadow: 0 2px 2px $maindarkbluealpha;
+    border: 1px solid $mainLightBlue2;
+    background: $mainLightBlue3;
+    box-shadow: 0 2px 2px $mainDarkBlueAlpha;
     border-radius: 5px;
-    color: $maindarkbluealpha
+    color: $mainDarkBlueAlpha
 }
 .ivt_date{
     border: 1px solid $mistyrose;
     background: white;
     box-shadow: 0 2px 2px $mistyrose;
     border-radius: 5px;
-    color: $maindarkblue;
+    color: $mainDarkBlue;
 }
 .ivt_item {
-    color: $mainmaroon;
+    color: $mainMaroon;
 }
 .ivt_item:hover {
-    color: $maindarkbluealpha;
+    color: $mainDarkBlue;
 }
 
 //10/6/21 move to main.scss

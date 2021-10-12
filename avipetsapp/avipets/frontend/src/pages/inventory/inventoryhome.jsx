@@ -9,7 +9,7 @@ import "jspdf-autotable";
 
 import Pagination from "../../components/pagination/Pagination";
 
-import "./inventory.scss";
+
 
 
 const Inventory = ({isAuthenticated}) => {

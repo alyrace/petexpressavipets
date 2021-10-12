@@ -5,10 +5,6 @@ import { Helmet } from "react-helmet";
 import { Redirect, Link } from "react-router-dom";
 import { useHistory } from "react-router";
 
-
-import "./inventory.scss";
-
-
 const InventoryDetail = ({isAuthenticated, match}) => {
     if (isAuthenticated === false) return <Redirect to="/login" />;
     //get list 

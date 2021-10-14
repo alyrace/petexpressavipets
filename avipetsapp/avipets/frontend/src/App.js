@@ -48,8 +48,6 @@ import UsdaHome from "./pages/compliance/UsdaHome";
 import "./App.scss";
 import Layout from "./hocs/layout";
 
-
-import NoteryHome from "./pages/notery/noteryhome";
 //import InvoicePage from "./pages/invoice/invoicepage";
 
 import "./sass/main.scss";
@@ -57,7 +55,7 @@ import LeadDashBoard from "./pages/sales/LeadDashBoard";
 import AssignAgent from "./pages/sales/AssignAgent";
 import CreateLead from "./pages/sales/CreateLead";
 import EditLead from "./pages/sales/EditLead";
-
+import LeadDetail from "./pages/sales/LeadDetail";
 
 //import { withTheme } from '../../frontend/src/themes/Theme';
 
@@ -96,14 +94,14 @@ const App = () => (
           <Route path="/invoiceadd" component={InvoiceAddItems} />
           <Route path="/invoicedetail/:id" component={InvoiceDetail} />
           <Route path="/invoiceupdate/:id" component={EditInvoice} />
-          <Router path="/notery" component={NoteryHome} />
           <Route path="/operationsportal" component={OperationsPortal} />
           <Route path="/petportal" component={PetPortal} />
           <Route exact path="/salesportal" component={SalesPortal} />
-          <Route path="/salesportal/salesdashboard" component={LeadDashBoard} />
+          <Route path="/salesportal/leaddashboard" component={LeadDashBoard} />
           <Route path="/salesportal/assignent" component={AssignAgent} />
           <Route path="/salesportal/createlead" component={CreateLead} />
-          <Route path="/salesportal/leadupdate" component={EditLead} />
+          <Route path="/salesportal/salesleaddetail/:id" component={LeadDetail} />
+          <Route path="/salesportal/leadupdate/:id" component={EditLead} />
           <Route
             path="/resetpasswordconfirm"
             component={ResetPasswordConfirm}

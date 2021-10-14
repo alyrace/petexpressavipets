@@ -35,7 +35,7 @@ const ClientDetail = ({ isAuthenticated, match }) => {
   const history = useHistory();
 
   const deleteItem = async (id) => {
-    await axios.delete(`${process.env.REACT_APP_API_URL}/api/clients/${id}/`);
+    await axios.delete(`${process.env.REACT_APP_API_URL}/api/clients/delete/${id}/`);
     history.push("/clients");
   };
 

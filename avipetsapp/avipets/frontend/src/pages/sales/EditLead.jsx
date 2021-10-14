@@ -8,10 +8,10 @@ import * as Yup from "yup";
 
 const EditLead = ({ isAuthenticated, match }) => {
     if (isAuthenticated === false) return <Redirect to="/login" />;
-    const [first_name, setFirst] = useState("");
-    const [last_name, setLast] = useState("");
-    const [phone_number, setPhone] = useState("");
-    const [email, setEmail] = useState("");
+    const [lead_first_name, setFirst] = useState("");
+    const [lead_last_name, setLeadLast] = useState("");
+    const [phone_number, setLeadPhone] = useState("");
+    const [email, setLeadEmail] = useState("");
     const [description, setDesc] = useState("");
     const [agent, setAgent] = useState("");
     const [category, setCategory] = useState("");
@@ -25,9 +25,9 @@ const EditLead = ({ isAuthenticated, match }) => {
       );
         console.log(response.data);
         setFirst(response.data.first_name);
-        setLast(response.data.item_name);
-        setPhone(response.data.phone_nubber);
-        setEmail(response.data.phone_email);
+        setLeadLast(response.data.last_name);
+        setLeadPhone(response.data.phone_number);
+        setLeadEmail(response.data.email);
         setDesc(response.data.description);
     };
 
@@ -58,8 +58,8 @@ const EditLead = ({ isAuthenticated, match }) => {
 
       let formField = new FormData();
 
-      formField.append("first_name", first_name);
-      formField.append("last_name", last_name);
+      formField.append("first_name", lead_first_name);
+      formField.append("last_name", lead_last_name);
       formField.append("email", email);
       formField.append("phone_number", phone_number);
       formField.append("description", description);
@@ -106,7 +106,7 @@ const EditLead = ({ isAuthenticated, match }) => {
                 type="text"
                 className="form-control"
                 name="first_name"
-                value={first_name}
+                value={lead_first_name}
                 id="first_name"
                 onChange={(e) => setFirst(e.target.value)}
               />
@@ -120,8 +120,8 @@ const EditLead = ({ isAuthenticated, match }) => {
                 className="form-control"
                 id="last_name"
                 name="last_name"
-                value={last_name}
-                onChange={(e) => setLast(e.target.value)}
+                value={lead_last_name}
+                onChange={(e) => setLeadLast(e.target.value)}
               />
             </div>
             <div className="mb-3">
@@ -134,7 +134,7 @@ const EditLead = ({ isAuthenticated, match }) => {
                 id="email"
                 name="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setLeadEmail(e.target.value)}
               />
             </div>
             <div className="mb-3">
@@ -147,7 +147,7 @@ const EditLead = ({ isAuthenticated, match }) => {
                 id="phone_number"
                 name="phone_number"
                 value={phone_number}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={(e) => setLeadPhone(e.target.value)}
               />
             </div>
             <div className="mb-3">

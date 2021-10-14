@@ -28,14 +28,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+#DEBUG = True
+DEBUG = config('DEBUG')=='1'
 if DEBUG:
     import mimetypes
     mimetypes.add_type("image/png", ".png", True)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', ]
-
+ENV_ALLOWED_HOST = config('DJANGO_ALLOWED_HOST') or None
+ALLOWED_HOSTS = []
+if ENV_ALLOWED_HOST is not None:
+    ALLOWED_HOSTS = [ ENV_ALLOWED_HOST ]
 
 # Application definition
 
@@ -52,14 +54,20 @@ INSTALLED_APPS = [
     'corsheaders',
     'djoser',
     'django_filters',
+    #'storages',
     'airlines',
     'users',
     'employees',
     'inventory',
     'security',
+    'compliance',
     'invoice',
     'clients',
-    'notery',
+    'usdavet',
+    'operations',
+    'sales',
+    'drivers',
+    'pethotel'
 ]
 
 
@@ -98,28 +106,48 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'avipets.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'airs',
-        # 'USER': 'postgres',
-        # 'PASSWORD': config('DB_PASSWORD'),
-        # 'HOST': 'localhost',
-        # 'PORT': ''
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
+WSGI_APPLICATION = 'avipets.wsgi.application'
+
+#==============================================
+# Database
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+POSTGRES_DB = config("POSTGRES_DB")
+POSTGRES_PASSWORD = config("POSTGRES_PASSWORD")
+POSTGRES_USER = config("POSTGRES_USER")
+POSTGRES_HOST = config("POSTGRES_HOST")
+POSTGRES_PORT = config("POSTGRES_PORT")
+
+POSTGRES_READY = (
+    POSTGRES_DB is not None
+    and POSTGRES_PASSWORD is not None
+    and POSTGRES_USER is not None
+    and POSTGRES_HOST is not None
+    and POSTGRES_PORT is not None
+)
+
+if POSTGRES_READY:
+    DATABASES = {
+        'default': {
+            #'ENGINE': 'django.db.backends.sqlite3',
+            #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": POSTGRES_DB,
+            "USER": POSTGRES_USER,
+            "PASSWORD": POSTGRES_PASSWORD,
+            "HOST": POSTGRES_HOST,
+            "PORT": POSTGRES_PORT,
+        }
+    }
 
 
+#=====================================
 #djoser email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #EMAIL_HOST = 'smtp.gmail.com'
@@ -134,6 +162,20 @@ EMAIL_USE_TLS = True
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
+#=================================================
+#AWS
+"""
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_BUCKET')
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+"""
+
+#=================================================
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

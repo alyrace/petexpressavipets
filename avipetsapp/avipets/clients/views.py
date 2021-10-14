@@ -43,7 +43,7 @@ class DeleteClientView(generics.DestroyAPIView):
     permission_classes = [permissions.AllowAny]
     serializer_class = ClientSerializer
 
-class ClientDetailView(generics.RetrieveDestroyAPIView):
+class ClientDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Client.objects.all()
     permission_classes = [permissions.AllowAny]
     serializer_class = ClientSerializer

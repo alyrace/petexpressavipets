@@ -104,7 +104,6 @@ const Navbar = ({ logout, isAuthenticated }) => {
                         href="/"
                         onClick={logout_user}
                       >
-                        <span className="text-secondary">Logout</span>
                       </a>
                     </li>
                   </ul>

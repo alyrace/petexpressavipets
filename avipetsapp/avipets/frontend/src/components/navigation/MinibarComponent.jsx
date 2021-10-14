@@ -8,47 +8,50 @@ const Minibar = () => {
           role="group"
           aria-label="mini nav"
         >
-          <a href="/" className="link-secondary">
+          <a href="/" className="link-secondary text-center">
             <button type="button" className="btn btn-outline-dark mini_btn p-2">
               <i className="fas fa-th fa-lg"></i>
             </button>
           </a>
           <a href="/airlineportal" className="link-secondary">
-            <button type="button" className="btn btn-outline-dark mini_btn p-2">
+            <button
+              type="button"
+              className="btn btn-outline-dark mini_btn p-2 text-center"
+            >
               <i className="fas fa-plane fa-lg"></i>
             </button>
           </a>
-          <a href="/driversportal" className="link-secondary">
+          <a href="/driversportal" className="link-secondary text-center">
             <button type="button" className="btn btn-outline-dark mini_btn p-2">
               <i className="fas fa-truck-moving fa-lg"></i>
             </button>
           </a>
-          <a href="/complianceportal" className="link-secondary">
+          <a href="/complianceportal" className="link-secondary text-center">
             <button type="button" className="btn btn-outline-dark mini_btn p-2">
               <i className="fas fa-passport fa-lg"></i>
             </button>
           </a>
-          <a href="/operationsportal" className="link-secondary">
+          <a href="/operationsportal" className="link-secondary text-center">
             <button type="button" className="btn btn-outline-dark mini_btn p-2">
               <i className="fas fa-store-alt fa-lg"></i>
             </button>
           </a>
-          <a href="petportal" className="link-secondary">
+          <a href="petportal" className="link-secondary text-center">
             <button type="button" className="btn btn-outline-dark mini_btn p-2">
               <i className="fas fa-paw fa-lg"></i>
             </button>
           </a>
-          <a href="/salesportal" className="link-secondary">
+          <a href="/salesportal" className="link-secondary text-center">
             <button type="button" className="btn btn-outline-dark mini_btn p-2">
               <i className="fas fa-mobile-alt fa-lg"></i>
             </button>
           </a>
-          <a href="/tsaportal" className="link-secondary">
+          <a href="/tsaportal" className="link-secondary text-center">
             <button type="button" className="btn btn-outline-dark mini_btn p-2">
               <i className="fas fa-user-shield fa-lg"></i>
             </button>
           </a>
-          <a href="/usdavetportal" className="link-secondary">
+          <a href="/usdavetportal" className="link-secondary text-center">
             <button type="button" className="btn btn-outline-dark mini_btn p-2">
               <i className="fas fa-landmark fa-lg"></i>
             </button>

@@ -76,7 +76,7 @@ const Inventory = ({isAuthenticated}) => {
       });
     }
     
-   return searchInventory(listings).map(listing => {
+   return searchInventory(listings)?.map(listing => {
      return (
        <Link to={`/inventorydetail/${listing.id}/`}>
          <div key={listing.id} className="row ivt_row mb-5 full_between">
@@ -164,7 +164,7 @@ const Inventory = ({isAuthenticated}) => {
    const title = "Pet Express Inventory";
    const headers = [["CATEGORY", "ITEM NAME", "QUANTITY", "LAST UPDATED"]];
 
-   const data = listings.map((listing) => [
+   const data = listings?.map((listing) => [
      listing.category,
      listing.item_name,
      listing.quantity,

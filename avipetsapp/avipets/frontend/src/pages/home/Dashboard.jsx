@@ -230,10 +230,11 @@ const Dashboard = ({ isAuthenticated }) => {
                 id="card_8"
                 className="card card_dash text-white h-100 text-center"
               >
-                <div className="card-body py-5">USDA Docs</div>
+                <div className="card-body py-5">Document Resources</div>
               </div>
             </div>
           </div>
+          {/*
           <div className="row">
             <div className="col-md-6 mb-3">
               <div className="card h-100">
@@ -273,7 +274,7 @@ const Dashboard = ({ isAuthenticated }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </div>/*/}
         </div>
       </main>
     </div>

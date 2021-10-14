@@ -2,11 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import { Redirect, Link } from "react-router-dom";
-import { CSVLink } from "react-csv";
-import jsPDF from "jspdf";
-import "jspdf-autotable";
 
-import Pagination from "../../components/pagination/Pagination";
 
 import ComplianceWidget from "../../components/widgets/ComplianceWidget";
 
@@ -44,7 +40,7 @@ const SalesPortal = ({ isAuthenticated }) => {
           <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <ComplianceWidget
               title="Leads"
-              destination="/sales/leaddashboard"
+              destination="/salesportal/leaddashboard"
               style_widget="comp_usda_widget"
               icon={<i className="fas fa-funnel-dollar"></i>}
             />

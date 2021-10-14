@@ -78,8 +78,20 @@ const CreateLead = ({ isAuthenticated }) => {
             />
           </div>
           <div className="mb-3">
-            <label className="form-check-label">Check me out</label>
-            <input type="text" className="form-control" />
+            <label className="form-label">Agent</label>
+            <select
+              className="form-select form-select-lg"
+              id="agent"
+              
+              onChange={(e) => {
+                setAgent(e.target.value);
+              }}
+              aria-label="Filter Agents"
+            >
+              <option name="All">ALL CATEGORIES</option>
+              <option name="CALLED">Called</option>
+              
+            </select>
           </div>
           <button type="button" className="btn btn-primary">
             Add

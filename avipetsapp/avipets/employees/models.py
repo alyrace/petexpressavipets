@@ -178,8 +178,8 @@ class Employee(models.Model):
     
     
 
-    def __unicode__(self):
-        return self.user.user_name
+    def __str__(self):
+        return self.user.email
 
     objects = EmployeeManager()
 

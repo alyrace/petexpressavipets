@@ -35,8 +35,12 @@ urlpatterns = [
     path('api/inventory/', include('inventory.urls')),
     path('api/security/', include('security.urls')),
     path('api/invoice/', include('invoice.urls')),
+    path('api/compliance/', include('compliance.urls')),
+    path('api/usdavet/', include('usdavet.urls')),
+    #path('api/operations/', include('operations.urls')),
+    path('api/pethotel/', include('pethotel.urls')),
+    path('api/sales/', include('sales.urls')),
     path('api/clients/', include('clients.urls')),
-    path('api/notery/', include('notery.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

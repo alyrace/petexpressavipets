@@ -132,7 +132,7 @@ const ClientAdd = ({isAuthenticated}) => {
           <h2 className="font-weight-bold-display-4">Add Client</h2>
         </div>
         <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-12 col-sm-12 col-xs-12">
-          <div className="container invoice_box_edit p-5">
+          <div className="container bg-primary rounded p-5">
             <div className="row">
               <div className="d-flex justify-content-center col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div className="row">

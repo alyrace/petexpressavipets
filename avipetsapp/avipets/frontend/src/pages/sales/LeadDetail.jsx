@@ -5,7 +5,6 @@ import { Helmet } from "react-helmet";
 import { Redirect, Link } from "react-router-dom";
 import { useHistory } from "react-router";
 
-import "./client.scss";
 
 const LeadDetail = ({ isAuthenticated, match }) => {
   if (isAuthenticated === false) return <Redirect to="/login" />;
@@ -20,7 +19,7 @@ const LeadDetail = ({ isAuthenticated, match }) => {
     const id = match.params.id;
 
     axios
-      .get(`${process.env.REACT_APP_API_URL}/api/sales/leads/${id}/`)
+      .get(`${process.env.REACT_APP_API_URL}/api/sales/lead/${id}/`)
       .then((res) => {
         //setIsLoaded(true);
         setItem(res.data);
@@ -35,7 +34,7 @@ const LeadDetail = ({ isAuthenticated, match }) => {
   const history = useHistory();
 
   const deleteItem = async (id) => {
-    await axios.delete(`${process.env.REACT_APP_API_URL}/api/sales/leads/delete/${id}/`);
+    await axios.delete(`${process.env.REACT_APP_API_URL}/api/sales/lead/delete/${id}/`);
     history.push("/salesportal/leaddashboard");
   };
 
@@ -85,7 +84,7 @@ const LeadDetail = ({ isAuthenticated, match }) => {
                   <div className="row d-flex justify-content-center ivt_detail_title">
                     <div className="col">
                       <h1 className="text-center mt-0 font-weight-bold-display-4">
-                        {item.first_name} {item.last_name}
+                        {item.first_name} <span></span> {item.last_name}
                       </h1>
                     </div>
                   </div>
@@ -93,8 +92,8 @@ const LeadDetail = ({ isAuthenticated, match }) => {
                     <div className="d-flex justify-content-center mt-2 col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-3 col-xs-3">
                       <div className="container">
                         <h2 className="text-center client_scooby_box p-4 font-weight-bold-display-5">
-                          Lead ID: <br />
-                          {item.id}
+                          ID: <br />
+                          {item.travel_type}
                         </h2>
                       </div>
                     </div>
@@ -124,7 +123,7 @@ const LeadDetail = ({ isAuthenticated, match }) => {
                         <div className="col">
                           <p className="text-secondary text-center">
                             <u className="fw-bold">Updated:</u>{" "}
-                            {item.converted_date}
+                            {item.last_updated}
                           </p>
                         </div>
                       </div>
@@ -142,6 +141,7 @@ const LeadDetail = ({ isAuthenticated, match }) => {
                         <h5 className="text-center text-secondary">
                           <b>Lead Name: </b>
                           {item.first_name}
+                          <span></span>
                           {item.last_name}
                         </h5>
                       </div>
@@ -191,7 +191,7 @@ const LeadDetail = ({ isAuthenticated, match }) => {
                         >
                           <i className="fas fa-trash-alt"></i> DELETE
                         </button>
-                        <Link to={`/leadupdate/${item.id}`}>
+                        <Link to={`/salesportal/leadupdate/${item.id}`}>
                           <button className="btn ivt_btn7">EDIT</button>
                         </Link>
                       </div>
